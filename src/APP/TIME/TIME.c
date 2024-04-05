@@ -66,27 +66,15 @@ return LocTimeError; }
 void update_time(void)
 {
     counter+=UPDATE_TICK;
-    if(counter==TIME_ONE_SECOND)
+    if(counter == TIME_ONE_SECOND)
     {
-        if (current_time.second<NUM_OF_SCONDS)
-        {
-            current_time.second++;
-        }
-        else
-        {
-            if (current_time.minute<NUM_OF_MINUTES)
-            {
-               current_time.minute++; 
-            }
-            else
-            {
-                current_time.hour<NUM_OF_HOURS?current_time.hour++:(current_time.hour=DEFAULT_HOUR);
-            }
-            
-        }
-    counter=0;    
+        current_time.second++;
+        current_time.second %= NUM_OF_SCONDS;
+        current_time.minute += ((current_time.second == 0)?INC_MINUTE:0);
+        current_time.hour   += ((current_time.minute == NUM_OF_MINUTES)?INC_HOUR:0);
+        current_time.minute %= (NUM_OF_MINUTES);
+        current_time.hour   %= NUM_OF_HOURS;
+        counter=0;    
     }
-
-
 }
 
