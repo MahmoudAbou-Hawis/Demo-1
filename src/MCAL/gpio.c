@@ -27,6 +27,7 @@
 #define MASK_OTYPER    0b1
 #define MASK_PUPDR     0b11
 #define MASK_OSPEEDER  0b11
+#define MASK_AF		   0b1111
 
 #define GET_MODER_BITS     0b11000
 #define GET_OTYPER_BITS    0b00100
@@ -172,5 +173,47 @@ GPIO_ErrorState GPIO_GetPinValue(u8 port,u8 pin,u8 *ptr){
 			Loc_ReturnError =GPIO_enumOK;
 			*ptr =(arrOfPorts[port]->IDR >>pin) & 1;
 		}
+	return Loc_ReturnError;
+}
+
+/*
+ * @brief:Function to configure Alternative Function
+ * @parameter: The pin number within a specific port and pointer to carry the return value
+ * @return:Error State
+ * */
+
+GPIO_ErrorState GPIO_CFG_AlternativeFunction(u8 port,u8 pin,u8 Copy_AFNumber) {
+	GPIO_ErrorState Loc_ReturnError = GPIO_enumNOK;
+	u32 Loc_AFRValue = 0;
+	/*----------------Check on Port Number----------------*/
+		if((port > PORT_H)||(port < PORT_A)){
+			Loc_ReturnError = GPIO_enumWrongPort;
+
+	/*----------------Check on Pin Number----------------*/
+		}else if((pin > PIN_15)||(pin < PIN_0)){
+			Loc_ReturnError = GPIO_enumWrongPin;
+
+	/*------------Check on Alternative Function Number----------*/
+		}else if((Copy_AFNumber > GPIO_AF15)||(Copy_AFNumber < GPIO_AF00)){
+
+			Loc_ReturnError = GPIO_enumWrongAF;
+
+		}else {
+
+	/*Implementation*/
+		Loc_ReturnError =GPIO_enumOK;
+		if(Copy_AFNumber <= GPIO_AF07){
+			
+			Loc_AFRValue = arrOfPorts[port]->AFRL;
+			Loc_AFRValue &=~(MASK_AF <<(pin*4));
+			Loc_AFRValue |= (Copy_AFNumber <<(pin*4));
+			arrOfPorts[port]->AFRL = Loc_AFRValue;
+		}else{
+			Loc_AFRValue = arrOfPorts[port]->AFRH;
+			Loc_AFRValue &=~(MASK_AF <<((pin-8)*4));
+			Loc_AFRValue |= (Copy_AFNumber <<((pin-8)*4));
+			arrOfPorts[port]->AFRH = Loc_AFRValue;
+		}
+	  }
 	return Loc_ReturnError;
 }

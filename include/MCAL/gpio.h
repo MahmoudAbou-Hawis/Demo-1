@@ -72,6 +72,24 @@
 #define LOGIC_LOW        0
 #define LOGIC_HIGH       1
 
+/*--------------------------- Alternative Functions --------------------------------*/
+#define GPIO_AF00         (0UL)
+#define GPIO_AF01         (1UL)
+#define GPIO_AF02         (2UL)
+#define GPIO_AF03         (3UL)
+#define GPIO_AF04         (4UL)
+#define GPIO_AF05         (5UL)
+#define GPIO_AF06         (6UL)
+#define GPIO_AF07         (7UL)
+#define GPIO_AF08         (8UL)
+#define GPIO_AF09         (9UL)
+#define GPIO_AF10         (10UL)
+#define GPIO_AF11         (11UL)
+#define GPIO_AF12         (12UL)
+#define GPIO_AF13         (13UL)
+#define GPIO_AF14         (14UL)
+#define GPIO_AF15         (15UL)
+
 
 /********************************** 2- Types ****************************************/
 typedef struct{
@@ -89,6 +107,7 @@ typedef enum {
 	GPIO_enumNullPointer,
 	GPIO_enumWrongPort,
 	GPIO_enumWrongPin,
+	GPIO_enumWrongAF,
 	GPIO_enumWrongValue,
 	GPIO_enumWrongSpeed
 }GPIO_ErrorState;
@@ -112,5 +131,12 @@ GPIO_ErrorState GPIO_SetPinValue(u8 port,u8 pin,u8 value);
  * @return:Error State
  * */
 GPIO_ErrorState GPIO_GetPinValue(u8 port,u8 pin,u8 *ptr);
+/*
+ * @brief:Function to configure Alternative Function
+ * @parameter: The pin number within a specific port and pointer to carry the return value
+ * @return:Error State
+ * */
+
+GPIO_ErrorState GPIO_CFG_AlternativeFunction(u8 port,u8 pin,u8 Copy_AFNumber) ;
 
 #endif /* MCAL_GPIO_GPIO_H_ */
