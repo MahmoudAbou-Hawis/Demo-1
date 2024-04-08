@@ -8,7 +8,7 @@
  *************************Brief: This Header file defines functions for Switch driver*******************.
  ************************************************************************************************************/
 #include"HSW.h"
-#include"../../MCAL/GPIO/GPIO.h"
+#include"GPIO.h"
 
 
 u8 swState[_SW_NUM] = {0};
