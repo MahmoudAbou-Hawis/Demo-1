@@ -8,10 +8,10 @@
  *************************Brief: This Header file defines functions for Switch driver*******************.
  ************************************************************************************************************/
 #include"HSW.h"
-#include"GPIO.h"
+#include"../../MCAL/GPIO/GPIO.h"
 
 
-u8 swState = 0;
+u8 swState[_SW_NUM] = {0};
 
 extern SW_CONFG_t arrayOfSw[_SW_NUM];
 /*
@@ -38,31 +38,37 @@ SW_ErrorState SW_init(void){
 }
 
 void HSW_Runnable(void){
-	u8 current;
+	u8 current = 0;
 
-	static u8 previous =0;
-	static u8 counts;   /*Number of counts to make sure that reading value is stable*/
+	static u8 previous[_SW_NUM] = {0};
+	static u8 counts[_SW_NUM] = {0};   /*Number of counts to make sure that reading value is stable*/
 
-	GPIO_GetPinValue(arrayOfSw[Switch_1].port,arrayOfSw[Switch_1].pin,&current);
-	if (current == previous)
-	{
-		counts++;
-	}else{
-		counts =0;
-	}
+	for(u8 sw_index=0; sw_index<_SW_NUM; sw_index++){	
 
-	/*Check if there are 5 identical readings*/
+		/*Get the switch value*/
+		GPIO_GetPinValue(arrayOfSw[sw_index].port,arrayOfSw[sw_index].pin,&current);
 
-	if (counts %5 == 0){
-		swState =current;
-	}
+		if (current == previous[sw_index])
+		{
+			counts[sw_index]++;
+		}else{
+			counts[sw_index] =0;
+		}
+		/*Check if there are 5 identical readings*/
+
+		if (counts[sw_index] %5 == 0){
+			swState[sw_index] =current;
+		}
 	
-	/*Update Previous value*/
-	previous =current;
+		/*Update Previous value*/
+		previous[sw_index] =current;
+		
+	}
 }
 
 SW_ErrorState SW_getSwState(SWs_t switchName,u8* switchState){
 	SW_ErrorState returnError = SW_enumNOK;
-	*switchState = swState;
+	*switchState = swState[switchName];
 	return returnError;
 }
+
