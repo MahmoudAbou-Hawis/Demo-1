@@ -45,7 +45,6 @@ void STOPWATCH_Update(void){
 
             }
         }
-         printf("H = %i\tM= %i\tS = %i",current_time.hour,current_time.minute,current_time.second);
     }
 }
 StopWatch_Error STOPWATCH_GetTime(StopWatchTime_t *time)
