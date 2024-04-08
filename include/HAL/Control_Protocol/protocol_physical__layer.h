@@ -1,21 +1,27 @@
-/*******************************************************************************/
+/******************************************************************************/
 /**
- * @file FILE.h
- * @brief 
+ * @file control_protocol_physical_layer.h
+ * @brief Header File for Physical Layer of Control Protocol over UART
  *
  * @par Project Name
- * 
+ * Embedded Control Protocol for UART
  *
  * @par Code Language
  * C
  *
  * @par Description
- * 
+ * This header file declares the interface for the physical layer of the control 
+ * protocol over UART. It provides function prototypes for initializing UART 
+ * communication, sending data frames, and handling low-level UART operations 
+ * to ensure reliable transmission of data packets. Users of the control 
+ * protocol can include this header file to access the physical layer functions 
+ * for UART communication.
  *
  * @par Author
  * Mahmoud Abou-Hawis
  *
- ******************************************************************************/
+ */
+/******************************************************************************/
 
 /******************************************************************************/
 /* MULTIPLE INCLUSION GUARD */
@@ -82,10 +88,28 @@ extern "C"
 /******************************************************************************/
 /* PUBLIC FUNCTION PROTOTYPES */
 /******************************************************************************/
+
+/**
+ * @brief Initialize hardware for UART communication
+ *
+ * @param CallBack Callback function pointer to be called when UART communication is ready
+ */
 void HardWare_Init(void (*CallBack)(void));
 
+/**
+ * @brief Send data over UART
+ *
+ * @param data Pointer to the data buffer
+ * @param len Length of the data to be sent
+ */
 void HardWare_Send(char * data, uint8_t len);
 
+/**
+ * @brief Receive data over UART
+ *
+ * @param data Pointer to the data buffer to store received data
+ * @param len Length of the data to be received
+ */
 void HardWare_Receive(char * data, uint8_t len);
 
 /******************************************************************************/

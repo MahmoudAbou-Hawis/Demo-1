@@ -1,22 +1,27 @@
 /******************************************************************************/
 /**
- * @file FILE.c
- * @brief 
+ * @file control_protocol_physical_layer.c
+ * @brief Physical Layer Implementation for Control Protocol over UART
  *
  * @par Project Name
- * 
+ * Embedded Control Protocol for UART
  *
  * @par Code Language
  * C
  *
  * @par Description
- * 
- * 
+ * This file contains the implementation of the physical layer for the control 
+ * protocol over UART. It is responsible for sending data frames over UART 
+ * interface. This includes functions for initializing UART communication,
+ * sending data frames, and handling low-level UART operations to ensure
+ * reliable transmission of data packets.
+ *
  * @par Author
  * Mahmoud Abou-Hawis
  *
  */
 /******************************************************************************/
+
 
 /******************************************************************************/
 /* INCLUDES */

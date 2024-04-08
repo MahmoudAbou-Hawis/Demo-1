@@ -1,17 +1,21 @@
 /******************************************************************************/
 /**
- * @file FILE.c
- * @brief 
+ * @file control_protocol.c
+ * @brief Control Protocol Implementation
  *
  * @par Project Name
- * 
+ * Embedded Control Protocol
  *
  * @par Code Language
  * C
  *
  * @par Description
- * 
- * 
+ * This file contains the implementation of a control protocol designed for 
+ *  communication. The protocol facilitates the exchange of commands and 
+ * data between systems connected via (UART , I2C , SPI). It defines the structure of 
+ * messages, including command codes and data formats, and provides functions
+ * to encode and decode messages for transmission .
+ *
  * @par Author
  * Mahmoud Abou-Hawis
  *
