@@ -202,7 +202,7 @@ GPIO_ErrorState GPIO_CFG_AlternativeFunction(u8 port,u8 pin,u8 Copy_AFNumber) {
 
 	/*Implementation*/
 		Loc_ReturnError =GPIO_enumOK;
-		if(Copy_AFNumber <= GPIO_AF07){
+		if(pin <= PIN_7){
 			
 			Loc_AFRValue = arrOfPorts[port]->AFRL;
 			Loc_AFRValue &=~(MASK_AF <<(pin*4));

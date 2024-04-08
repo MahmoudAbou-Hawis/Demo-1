@@ -12,10 +12,25 @@
 
 SW_CONFG_t arrayOfSw[_SW_NUM]={
 
-		[Switch_1]={
-			.port = PORT_A,
-			.pin  = PIN_3,
-			.connection= SW_PULLDOWN
-		},
+	[UP_SWITCH]={
+		.port = PORT_A,
+		.pin  = PIN_0,
+		.connection= SW_PULLDOWN
+	},
+	[DOWN_SWITCH]={
+		.port = PORT_A,
+		.pin  = PIN_1,
+		.connection= SW_PULLDOWN
+	},
+	[RIGHT_SWITCH]={
+		.port = PORT_A,
+		.pin  = PIN_2,
+		.connection= SW_PULLDOWN
+	},
+	[LEFT_SWITCH]={
+		.port = PORT_A,
+		.pin  = PIN_3,
+		.connection= SW_PULLDOWN
+	},
 		
 };

@@ -66,7 +66,7 @@ void HSW_Runnable(void){
 	}
 }
 
-SW_ErrorState SW_getSwState(SWs_t switchName,u8* switchState){
+SW_ErrorState SWITCH_enuGetStatus(SWs_t switchName,u32* switchState){
 	SW_ErrorState returnError = SW_enumNOK;
 	*switchState = swState[switchName];
 	return returnError;

@@ -62,7 +62,7 @@ SW_ErrorState SW_init(void);
  * @parameter: The pin number of switch within a specific port
  * @return :Error State
  * */
-SW_ErrorState SW_getSwState(SWs_t switchName,u8* switchState);
+SW_ErrorState SWITCH_enuGetStatus(SWs_t switchName,u32* switchState);
 
 
 

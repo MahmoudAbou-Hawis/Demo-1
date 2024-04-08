@@ -138,5 +138,12 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false
+  "C_Cpp_Runner.msvcSecureNoWarnings": false,
+  "files.associations": {
+    "demo1_lcd.h": "c",
+    "protocol_physical__layer.h": "c",
+    "hsw.h": "c",
+    "hsw_confg.h": "c",
+    "cswitch.h": "c"
+  }
 }

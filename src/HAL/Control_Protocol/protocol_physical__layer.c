@@ -157,6 +157,7 @@ void HardWare_Init(void (*CallBack)(void))
 	TX.pin	    = PIN_9;
 	TX.port		= PORT_A;
 	TX.speed	= SPEED_MEDIUM;
+	TX.mode     = GPIO_AF_OUTPUT_PUSHPULL_PULL_DOWN;
 
 	/** input pulldown */
 	/** Alternative 7 */
@@ -165,10 +166,16 @@ void HardWare_Init(void (*CallBack)(void))
 	RX.pin	    = PIN_10;
 	RX.port		= PORT_A;
 	RX.speed	= SPEED_MEDIUM;
+	RX.mode     = GPIO_ALTERNATIVE_FUNC;
+
+	GPIO_CFG_AlternativeFunction(PORT_A,PIN_9,GPIO_AF07);
+    GPIO_CFG_AlternativeFunction(PORT_A,PIN_10,GPIO_AF07);
 	
 	GPIO_InitPin(&TX);
 	GPIO_InitPin(&RX);
 
+
+	
 
 	uart_handle.pUartInstance 				= USART1;
 	uart_handle.UartConfiguration.BaudRate 	= 9600;

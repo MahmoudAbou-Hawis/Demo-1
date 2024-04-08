@@ -13,8 +13,10 @@
 /*Switch Names*/
 
 typedef enum {
-	Switch_1 = 0,
-
+	UP_SWITCH,
+    DOWN_SWITCH,
+    RIGHT_SWITCH,
+    LEFT_SWITCH,
 
 	/*Number of switches*/
 	_SW_NUM
