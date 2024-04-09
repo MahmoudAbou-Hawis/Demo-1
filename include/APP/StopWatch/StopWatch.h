@@ -7,7 +7,7 @@
 
 
 
-#define TIME_ONE_SECOND     600    // one second =1000ms 
+#define STOP_TIME_ONE_SECOND     600    // one second =1000ms 
 #define NUM_OF_SCONDS       60      // numbaer of secondes =60 secondes in a minute
 #define NUM_OF_MINUTES      60      // numbaer of minutes =60 minutes in an hour
 #define NUM_OF_HOURS        24      // numbaer of hours =24  in acday

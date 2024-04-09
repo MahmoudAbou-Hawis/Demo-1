@@ -12,53 +12,53 @@ LCD_Pins_Confg ArrayOfPins[]={
   [D0] = 
   {
 	  .port = PORT_A,
-	  .pin  = PIN_0,
+	  .pin  = PIN_4,
   },
   [D1] =
   {
 	  .port = PORT_A,
-	  .pin  = PIN_1,
+	  .pin  = PIN_5,
   },
   [D2] =
   {
 	  .port = PORT_A,
-	  .pin  = PIN_2,
+	  .pin  = PIN_6,
   },
   [D3] =
   {
 	  .port = PORT_A,
-	  .pin  = PIN_3,
+	  .pin  = PIN_7,
   },
   #endif
   
   [D4] =
   {
 	  .port = PORT_A,
-	  .pin  = PIN_4,
+	  .pin  = PIN_8,
   },
   [D5] =
   {
-	  .port = PORT_A,
-	  .pin  = PIN_5,
+	  .port = PORT_B,
+	  .pin  = PIN_0,
 	},
   [D6] =
   {
-  	.port = PORT_A,
-  	.pin  = PIN_6,
+  	.port = PORT_B,
+  	.pin  = PIN_1,
   },
   [D7] =
   {
-  	.port = PORT_A,
-  	.pin  = PIN_7,
+  	.port = PORT_B,
+  	.pin  = PIN_2,
   },
   [EN] =
   {
-	  .port = PORT_A,
-	  .pin  = PIN_8, 
-  },
+	  .port = PORT_B,
+	  .pin  = PIN_3, 
+  }, 
   [RS] =
   {
-	  .port = PORT_A,
-	  .pin  = PIN_9
+	  .port = PORT_B,
+	  .pin  = PIN_4
   }
 };

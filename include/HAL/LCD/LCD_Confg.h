@@ -14,10 +14,10 @@
 
 #define LCD_MODE         LCD_8BITS_MODE
 
-#define NUM_PINS      10
+#define NUM_PINS        10
 
 /*Periodicity of LCD Task*/
-#define PERIODICIY_TIME   2
+#define PERIODICIY_TIME   1
 
 typedef struct 
 {

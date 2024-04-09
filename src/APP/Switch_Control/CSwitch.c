@@ -180,7 +180,6 @@ static void CheckButtonsInStopWatchState(void)
     /** Go to start the stopwatch */
     if(ButtonRead == PRESSED)
     {
-        isStopWatchWorking = WORKING;
         msg.pMessage[1] = 'G';
         Protocol_SendAsync(&msg);
         return;
@@ -189,7 +188,7 @@ static void CheckButtonsInStopWatchState(void)
     /**Pause the stopwatch*/
     if(ButtonRead == PRESSED)
     {
-        isStopWatchWorking = NOT_WORKING;
+
         msg.pMessage[1] = 'P';
         Protocol_SendAsync(&msg);
         return;
@@ -199,7 +198,6 @@ static void CheckButtonsInStopWatchState(void)
     if(ButtonRead == PRESSED)
     {
         msg.pMessage[1] = 'Z';
-        isStopWatchWorking = RESET;
         Protocol_SendAsync(&msg);
         return;
     }
@@ -317,6 +315,7 @@ void ReceiveCallBack(void)
         if(Mymsg.pMessage[1] == 'G')
         {
             MyPbutton = GO;
+            isStopWatchWorking = WORKING;
         }
         /** move the cursor left */
         else if(Mymsg.pMessage[1] == 'L')
@@ -352,10 +351,12 @@ void ReceiveCallBack(void)
         else if(Mymsg.pMessage[1] == 'P')
         {
             MyPbutton = PAUSE;
+            isStopWatchWorking = NOT_WORKING;
         }
         /** reset the stopwatch */
         else if(Mymsg.pMessage[1] == 'Z')
         {
+            isStopWatchWorking = CLEAR;
             MyPbutton = RESET;
         }
     }
@@ -372,7 +373,7 @@ void CSWITCH_Init(void)
     Protocol_ReceiveAsync(&Mymsg);
 }
 
-void CSWIRCH_SendUpdate(void)
+void CSWITCH_SendUpdate(void)
 {
     switch (state)
     {
@@ -390,7 +391,7 @@ void CSWIRCH_SendUpdate(void)
     }
 }
 
-CSWITCH_ErrorStatus_t CSWIRCH_ReceivedUpdate(CSWITCH_ScreenState_t * Updates)
+CSWITCH_ErrorStatus_t CSWITCH_ReceivedUpdate(CSWITCH_ScreenState_t * Updates)
 {
     CSWITCH_ErrorStatus_t RET_ErrorStatus = CSWITCH_OK;
     if(Updates != NULL)

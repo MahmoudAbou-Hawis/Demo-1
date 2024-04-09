@@ -21,7 +21,7 @@ void STOPWATCH_Update(void){
     Loc_u32CommanCounter += TICK_TIME;
 
 
-    if (Loc_u32CommanCounter % TIME_ONE_SECOND == DEFAULT){
+    if (Loc_u32CommanCounter % STOP_TIME_ONE_SECOND == DEFAULT){
         current_time.second++;
 
         if ( current_time.second == NUM_OF_SCONDS){

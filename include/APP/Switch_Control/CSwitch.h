@@ -144,7 +144,7 @@ extern void CSWITCH_Init(void);
 /**
  * @brief Send update over UART
  */
-extern void CSWIRCH_SendUpdate(void);
+extern void CSWITCH_SendUpdate(void);
 
 /**
  * @brief Receive update over UART
@@ -152,7 +152,7 @@ extern void CSWIRCH_SendUpdate(void);
  * @param Updates Pointer to structure to hold received updates
  * @return CSWITCH_ErrorStatus_t Error status of the operation
  */
-extern CSWITCH_ErrorStatus_t CSWIRCH_ReceivedUpdate(CSWITCH_ScreenState_t * Updates);
+extern CSWITCH_ErrorStatus_t CSWITCH_ReceivedUpdate(CSWITCH_ScreenState_t * Updates);
 
 
 /******************************************************************************/

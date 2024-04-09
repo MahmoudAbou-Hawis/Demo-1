@@ -50,11 +50,10 @@ typedef enum{
 
 /** @brief Sets the time value based on the specified operation and type.
  *
- *  @param state The operation to perform (increment or decrement).
- *  @param type The time component to modify (second, minute, or hour).
+ *  @param time refer to the new time.
  *  @return Returns an error code (time_ok or invalid_input) on failure.
  */
-RetTimeError set_time(state_t state , type_t type);
+RetTimeError set_time(time_t *time);
 
 /** @brief Retrieves the current time.
  *

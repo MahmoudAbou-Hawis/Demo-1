@@ -22,30 +22,21 @@ static time_t current_time={
     .hour=DEFAULT_HOUR
 };
 
-RetTimeError set_time(state_t state , type_t type)
+RetTimeError set_time(time_t * time)
 {
-    RetTimeError Loc_TimeError=time_ok;
-    if (IS_STATE_VALIDE(state))
+    RetTimeError RET_ErrorStatus = time_ok;
+    if(time != NULL)
     {
-        switch (type)
-        {
-        case SECOND:
-            current_time.second+=(state==INCREMENT?INC_SECOND:DEC_SECOND);
-            break;
-        case MINUTE:
-            current_time.minute+=(state==INCREMENT?INC_MINUTE:DEC_MINUTE);
-        case HOUR:
-            current_time.hour+=(state==INCREMENT?INC_HOUR:DEC_HOUR);    
-        default:
-            break;
-        }
+        current_time.hour   = time->hour;
+        current_time.minute = time->minute;
+        current_time.second = time->second ;
     }
     else
     {
-        RetTimeError Loc_TimeError=invalid_input;
+        RET_ErrorStatus = invalid_input;
     }
-    
-return Loc_TimeError;}
+    return RET_ErrorStatus;
+}
 
 RetTimeError get_time(time_t * time)
 {

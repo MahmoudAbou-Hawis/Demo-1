@@ -34,12 +34,11 @@ typedef struct Date {
 
 /** @brief Sets the date value based on the specified operation and type.
  *
- *  @param operation The operation to perform (increase or decrease).
- *  @param type The date component to modify (day, month, or year).
+ *  @param Date The new date.
  *  @return Returns an error code (DATE_NULL_PTR_PASSED or DATE_INVALID_VALUE) on failure,
  *          or DATE_OK on success. (Error handling could be improved)
  */
-DateError_t Date_SetDate(Operation_t operation, DateType_t type);
+DateError_t Date_SetDate(Date_t *  Date);
 
 /** @brief Retrieves the current date value.
  *

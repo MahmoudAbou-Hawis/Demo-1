@@ -7,7 +7,8 @@
 #include "Sched.h"
 
 extern void HSW_Runnable(void);
-extern void APP_Runnable(void);
+extern void MainApp(void);
+extern void LCD_Task_Runnable(void);
 
 const User_RInfo UsrRInfo[_MAX] = {
 
@@ -21,6 +22,13 @@ const User_RInfo UsrRInfo[_MAX] = {
         .name ="APP_TASK",
         .periodicity =100,
         .firstDelay =100,
-        .cb = APP_Runnable
+        .cb = MainApp
+    },
+    [LCD_TASK] = 
+    {
+        .name       = "LCD Task",
+        .firstDelay = 0,
+        .cb = LCD_Task_Runnable,
+        .periodicity = 1
     }
 };

@@ -144,6 +144,8 @@
     "protocol_physical__layer.h": "c",
     "hsw.h": "c",
     "hsw_confg.h": "c",
-    "cswitch.h": "c"
+    "cswitch.h": "c",
+    "time.h": "c",
+    "lcd_control.h": "c"
   }
 }

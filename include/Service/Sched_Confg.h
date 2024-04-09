@@ -21,6 +21,7 @@ typedef enum
 {  
     SWITCHES,
     Main_APP,
+    LCD_TASK,
     _MAX
 } runnables;
 

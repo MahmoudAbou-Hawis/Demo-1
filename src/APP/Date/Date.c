@@ -49,29 +49,21 @@ static Date_t Current_date = {
     .year  = DEFAULT_YEAR
 };
 
-const static uint32_t DayInMilliSeconds = 86400000;
-static uint32_t millisCounter = 0;
+
 
 /*@brief Function to set date */
-DateError_t Date_SetDate(Operation_t operation, DateType_t type)
+DateError_t Date_SetDate(Date_t * Date)
 {
     DateError_t RET_ErrorStatus = DATE_OK;
-    if (IS_VALID_OPERATION(operation) && IS_VALID_TYPE(type)) {
-        switch (type) {
-        case DAY:
-            Current_date.day += ((operation == INCREASE) ? INCREASE_DAY_BY_ONE : DECREASE_DAY_BY_ONE);
-            break;
-        case MONTH:
-            Current_date.month = ((operation == INCREASE) ? INCREASE_MONTH_BY_ONE : DECREASE_MONTH_BY_ONE);
-            break;
-        case YEAR:
-            Current_date.month = ((operation == INCREASE) ? INCREASE_YEAR_BY_ONE : DECREASE_YEAR_BY_ONE);
-            break;
-        default:
-            break;
-        }
-    } else {
-        RET_ErrorStatus = DATE_INVALID_VALUE;
+    if(Date != NULL)
+    {
+        Current_date.day = Date->day;
+        Current_date.month = Date->month;
+        Current_date.year = Date->year;
+    }
+    else 
+    {
+        RET_ErrorStatus = DATE_NULL_PTR_PASSED;
     }
     return RET_ErrorStatus;
 }
@@ -93,35 +85,32 @@ DateError_t Date_GetDate(Date_t * date)
 /*@brief Function to update date */
 void Date_UpdateDate(void)
 {
-    millisCounter += UPDATE_TICK;
-    if (millisCounter == DayInMilliSeconds) {
-        Current_date.day += INCREASE_DAY_BY_ONE;
-        if (Current_date.day > 28) {
-            switch (Current_date.month) {
-            case JANUARY:
-            case MARCH:
-            case MAY:
-            case JULY:
-            case AUGUST:
-            case OCTOBER:
-            case DECEMBER:
-                Current_date.day = (Current_date.day > DAYS_IN_MONTH_31) ? 0 : Current_date.day;
-                break;
-            case FEBRUARY:
-                if (IS_LEAP_YEAR(Current_date.year)) {
-                    Current_date.day = (Current_date.day > DAYS_IN_FEBRUARY_LEAP) ? 0 : Current_date.day;
-                } else {
-                    Current_date.day = (Current_date.day > DAYS_IN_FEBRUARY_NON_LEAP) ? 0 : Current_date.day;
-                }
-                break;
-            default:
-                Current_date.day = (Current_date.day > DAYS_IN_MONTH_30) ? 0 : Current_date.day;
-                break;
+    Current_date.day += INCREASE_DAY_BY_ONE;
+    if (Current_date.day > 28) {
+        switch (Current_date.month) {
+        case JANUARY:
+        case MARCH:
+        case MAY:
+        case JULY:
+        case AUGUST:
+        case OCTOBER:
+        case DECEMBER:
+            Current_date.day = (Current_date.day > DAYS_IN_MONTH_31) ? 0 : Current_date.day;
+            break;
+        case FEBRUARY:
+            if (IS_LEAP_YEAR(Current_date.year)) {
+                Current_date.day = (Current_date.day > DAYS_IN_FEBRUARY_LEAP) ? 0 : Current_date.day;
+            } else {
+                Current_date.day = (Current_date.day > DAYS_IN_FEBRUARY_NON_LEAP) ? 0 : Current_date.day;
             }
-            Current_date.month += ((Current_date.day == 0) ? ++Current_date.day : 0);
-            Current_date.month %= 13;
-            Current_date.year += ((Current_date.month == 0) ? ++Current_date.month : 0);
+            break;
+        default:
+            Current_date.day = (Current_date.day > DAYS_IN_MONTH_30) ? 0 : Current_date.day;
+            break;
         }
-        millisCounter = 0;
+        Current_date.month += ((Current_date.day == 0) ? ++Current_date.day : 0);
+        Current_date.month %= 13;
+        Current_date.year += ((Current_date.month == 0) ? ++Current_date.month : 0);
     }
+
 }
