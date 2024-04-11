@@ -74,6 +74,10 @@ typedef struct
     uint32_t day;
     uint32_t month;
     uint32_t year; 
+    uint32_t StopWatchMilli;
+    uint32_t StopWatchSeconds;
+    uint32_t StopWatchHour;
+    uint32_t StopWatchMinute;
 } CLCD_info_t;
 
 typedef struct 

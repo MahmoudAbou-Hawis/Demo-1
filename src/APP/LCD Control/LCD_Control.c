@@ -123,7 +123,7 @@ void convertNumberToString(uint8_t * ptr , uint32_t len , uint32_t number)
     }
 }
 
-void showDataInNormalMode(void)
+void showDateAndTimeInNormalMode(void)
 {
     convertNumberToString(date,4,infos->year);
     convertNumberToString(date+5,2,infos->month);
@@ -154,7 +154,7 @@ void CLCD_Write(CLCD_info_t * info)
     switch (info->state)
     {
     case NORMAL:
-        showDataInNormalMode();
+        showDateAndTimeInNormalMode();
         LastInfo.day = info->day;
         LastInfo.month = info->month;
         LastInfo.year = info->year;
@@ -162,7 +162,11 @@ void CLCD_Write(CLCD_info_t * info)
         LastInfo.minute = info->minute;
         LastInfo.hour = info->hour;
         break;
-    
+    case STOPWATCH:
+        break;
+
+    case EDIT:
+        break;
     default:
         break;
     }
