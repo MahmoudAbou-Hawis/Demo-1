@@ -10,6 +10,7 @@
 };
 
 void STOPWATCH_Reset(void){
+    current_time.milli = DEFAULT;
     current_time.second = DEFAULT;
     current_time.minute = DEFAULT;
     current_time.hour = DEFAULT;
