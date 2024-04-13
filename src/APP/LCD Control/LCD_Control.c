@@ -211,7 +211,7 @@ void CLCD_Write(CLCD_info_t * info)
         LastInfo.StopWatchMinute=info->StopWatchMinute;
         LastInfo.StopWatchSeconds=info->StopWatchSeconds;
         LastInfo.StopWatchMilli=info->StopWatchMilli;   
-
+        //done
         break;
 
     case EDIT:
