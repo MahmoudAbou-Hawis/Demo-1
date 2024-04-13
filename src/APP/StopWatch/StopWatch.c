@@ -55,9 +55,10 @@ StopWatch_Error STOPWATCH_GetTime(StopWatchTime_t *time)
     if(!time){
         ReturnError = StopWatch_NullPointer;
     }else{
+        time->milli  = current_time.milli;
         time->second =current_time.second;
         time->minute =current_time.minute;
-        time->hour =current_time.hour;
+        time->hour   =current_time.hour;
 
     }
     return ReturnError;
