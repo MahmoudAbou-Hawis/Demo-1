@@ -68,6 +68,7 @@ static CLCD_info_t * infos = {0};
 static CLCD_info_t LastInfo = {0};
 uint8_t date[11] = {0};
 uint8_t time[9]  = {0};
+uint8_t stopwatch[13]={0};
 /******************************************************************************/
 
 /******************************************************************************/
@@ -113,6 +114,23 @@ void PrintTime(void)
 {
     LCD_writeStringAsync(time,8,SetCursorDate);
 }
+void PrintStopWatchMilli (void)
+{
+    LCD_writeStringAsync(stopwatch+9,3,call);
+}
+void PrintStopWatchSecond (void)
+{
+    LCD_writeStringAsync(stopwatch+6,2,call);
+}
+void PrintStopWatchMinute (void)
+{
+    LCD_writeStringAsync(stopwatch+3,2,call);
+}
+void PrintStopWatchHour (void)
+{
+    LCD_writeStringAsync(stopwatch,2,call);
+}
+
 
 void convertNumberToString(uint8_t * ptr , uint32_t len , uint32_t number)
 {
@@ -134,6 +152,26 @@ void showDateAndTimeInNormalMode(void)
     if(LastInfo.second != infos->second)
         LCD_setCursorPosAsync(FIRST_LINE,2,PrintTime);
 }
+void showTimeinStopWatchMode(void)
+{
+    
+    convertNumberToString(stopwatch,2,infos->StopWatchHour);
+    convertNumberToString(stopwatch+3,2,infos->StopWatchMinute);
+    convertNumberToString(stopwatch+6,2,infos->StopWatchSeconds);
+    convertNumberToString(stopwatch+9,3,infos->StopWatchMilli);
+    if(LastInfo.StopWatchHour != infos->StopWatchHour)
+        LCD_setCursorPosAsync(FIRST_LINE,1,PrintStopWatchHour);
+    else if (LastInfo.StopWatchMinute != infos->StopWatchMinute)
+        LCD_setCursorPosAsync(FIRST_LINE,4,PrintStopWatchMinute);  
+    else if(LastInfo.StopWatchSeconds != infos->StopWatchSeconds)
+        LCD_setCursorPosAsync(FIRST_LINE,7,PrintStopWatchSecond);
+    else if (LastInfo.StopWatchMilli != infos->StopWatchMilli)
+        LCD_setCursorPosAsync(FIRST_LINE,10,PrintStopWatchMilli);
+    
+    
+         
+}
+
 
 
 /******************************************************************************/
@@ -146,6 +184,10 @@ void CLCD_Init(void)
     date[7] = '/';
     time[2] = ':';
     time[5] = ':';
+    stopwatch[2]=':';
+    stopwatch[5]=':';
+    stopwatch[8]=':';
+
     LCD_initAsync(call);
 }
 void CLCD_Write(CLCD_info_t * info)
@@ -163,6 +205,12 @@ void CLCD_Write(CLCD_info_t * info)
         LastInfo.hour = info->hour;
         break;
     case STOPWATCH:
+        showTimeinStopWatchMode();
+        LastInfo.StopWatchHour=info->StopWatchHour;
+        LastInfo.StopWatchMinute=info->StopWatchMinute;
+        LastInfo.StopWatchSeconds=info->StopWatchSeconds;
+        LastInfo.StopWatchMilli=info->StopWatchMilli;   
+
         break;
 
     case EDIT:
@@ -175,4 +223,5 @@ void CLCD_GetUpdates(CLCD_Updates_t * updates)
 {
 
 }
+
 /******************************************************************************/
