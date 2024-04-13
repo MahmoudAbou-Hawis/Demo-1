@@ -3,6 +3,7 @@
 
 #include<stdio.h>
  StopWatchTime_t current_time={
+    .milli  = DEFAULT ,
     .second = DEFAULT,
     .minute = DEFAULT,
     .hour   = DEFAULT
