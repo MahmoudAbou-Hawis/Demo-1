@@ -148,14 +148,17 @@ void MainApp(void)
 
     Date_GetDate(&date);
     STOPWATCH_GetTime(&stopWatch);
-    ScreenInfo.day           = date.day;
-    ScreenInfo.year          = date.year;
-    ScreenInfo.month         = date.month;
-    ScreenInfo.second        = time.second;
-    ScreenInfo.minute        = time.minute;
-    ScreenInfo.hour          = time.hour;
-    ScreenInfo.pressedButton = screenState.button;
-    ScreenInfo.state         = screenState.state;
+    ScreenInfo.day              = date.day;
+    ScreenInfo.year             = date.year;
+    ScreenInfo.month            = date.month;
+    ScreenInfo.second           = time.second;
+    ScreenInfo.minute           = time.minute;
+    ScreenInfo.hour             = time.hour;
+    ScreenInfo.pressedButton    = screenState.button;
+    ScreenInfo.state            = screenState.state;
+    ScreenInfo.StopWatchHour    = stopWatch.hour;
+    ScreenInfo.StopWatchMinute  = stopWatch.minute;
+    ScreenInfo.StopWatchSeconds = stopWatch.second;
     CLCD_Write(&ScreenInfo);
 }
 /******************************************************************************/

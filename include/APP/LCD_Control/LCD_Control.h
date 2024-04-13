@@ -68,16 +68,16 @@ typedef struct
 {
     CSWITCH_States_t        state;
     CSWITCH_PressedButton_t pressedButton;
-    uint8_t second;
-    uint8_t minute;
-    uint8_t hour;
-    uint32_t day;
-    uint32_t month;
-    uint32_t year; 
-    uint32_t StopWatchMilli;
-    uint32_t StopWatchSeconds;
-    uint32_t StopWatchHour;
-    uint32_t StopWatchMinute;
+    uint8_t                 second;
+    uint8_t                 minute;
+    uint8_t                 hour;
+    uint32_t                day;
+    uint32_t                month;
+    uint32_t                year; 
+    uint32_t                StopWatchMilli;
+    uint32_t                StopWatchSeconds;
+    uint32_t                StopWatchHour;
+    uint32_t                StopWatchMinute;
 } CLCD_info_t;
 
 typedef struct 
