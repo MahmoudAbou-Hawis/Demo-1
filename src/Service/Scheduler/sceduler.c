@@ -86,12 +86,6 @@ void Sched_MainFunc(void){
             /*Reassign remain time with periodicity*/
             rinfo[index].remainTime = rinfo[index].runnable.periodicity;
         }
-<<<<<<< HEAD
         rinfo[index].remainTime -= TICK_TIME;
-=======
-             rinfo[index].remainTime -= TICK_TIME;
-       
-        
->>>>>>> aa7d511236dd3a54b9239bbcebe6087b92e6fd69
     }
 }
