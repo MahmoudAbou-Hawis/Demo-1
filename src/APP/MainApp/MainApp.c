@@ -130,7 +130,7 @@ void MainApp(void)
     if(time.hour == 0 && time.minute == 0 &&time.second == 0)
     {
         if(count == 0)
-             Date_UpdateDate();
+            Date_UpdateDate();
         count++;
     }
     else 
@@ -159,6 +159,7 @@ void MainApp(void)
     ScreenInfo.StopWatchHour    = stopWatch.hour;
     ScreenInfo.StopWatchMinute  = stopWatch.minute;
     ScreenInfo.StopWatchSeconds = stopWatch.second;
+    ScreenInfo.StopWatchMilli   = stopWatch.milli;
     CLCD_Write(&ScreenInfo);
 }
 /******************************************************************************/

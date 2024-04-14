@@ -4,7 +4,7 @@
 #include "CSwitch.h"
 #include "Sched.h"
 #include "LCD_Control.h"
-
+#include "ControlProtocol.h"
 
 int main()
 {

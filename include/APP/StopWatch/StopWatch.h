@@ -15,10 +15,10 @@
 
 typedef struct 
 {
-   uint8_t milli;
-   uint8_t second;
-   uint8_t minute;
-   uint8_t hour; 
+   uint16_t milli;
+   uint16_t second;
+   uint16_t minute;
+   uint16_t hour; 
 
 }StopWatchTime_t;
 
