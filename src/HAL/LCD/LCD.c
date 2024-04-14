@@ -254,7 +254,7 @@ static void initStateMachine(void){
 
     case Dispay_setting:
         /*Action*/
-        LCD_sendCommand(LCD_DISPLAY_ON_CURSOR_ON_BLINK_ON);
+        LCD_sendCommand(LCD_DISPLAY_ON_CURSOR_OFF_BLINK_OFF);
         if((enable_State == Enable_Low)&&(counter>DISPLAY_TO_ENTRY_MODE)){
             /*Transition*/
              initState = Dispay_clear;

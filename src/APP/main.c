@@ -1,10 +1,6 @@
-#include "Demo1_LCD.h"
-#include "RCC.h"
-#include "HSW.h"
 #include "CSwitch.h"
 #include "Sched.h"
 #include "LCD_Control.h"
-#include "ControlProtocol.h"
 
 int main()
 {
