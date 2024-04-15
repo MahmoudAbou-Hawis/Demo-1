@@ -71,7 +71,7 @@ uint8_t time[9]  = {0};
 uint8_t stopwatch[13]={0};
 static uint8_t Last = 0;
 bool print  = false;
-static uint8_t Second = 0;
+static uint32_t Second = 0;
 static char cursor=26;
 static uint8_t currentLine = SECOND_LINE;
 static CLCD_info_t temp_info={0} ;
@@ -80,7 +80,7 @@ static uint8_t updateTime =0;
 static uint8_t updateDate =0;
 static  uint8_t edit;
 extern CSWITCH_States_t MyState;
-
+static uint32_t count = 0; 
 typedef enum{
     Psecond,
     Pminute,
@@ -295,7 +295,12 @@ void CLCD_Write(CLCD_info_t * info)
 
     case EDIT:
         /*Display and Save Current Data before Editing*/
-       
+       count += 100;
+       if(count == 1000)
+       {
+        Second++;
+        count = 0;
+       } 
         showDateAndTimeInEditMode();
         if(Last != 2 ){
             temp_info.day = info->day;
@@ -306,7 +311,8 @@ void CLCD_Write(CLCD_info_t * info)
             temp_info.hour = info->hour;
             cursor=2;
             currentLine= SECOND_LINE;
-          
+            Second = 0;
+            count = 0;
             Last =2;
             cursor = 1 ;
             currentLine = FIRST_LINE;
@@ -438,13 +444,14 @@ void CLCD_Write(CLCD_info_t * info)
             info->month = temp_info.month;
             info->day = temp_info.day;
             info->second  =Second %60;
-
-            
+            info->hour = temp_info.hour;
+            info->minute = temp_info.minute;
             info->minute = temp_info.minute + Second/60;
             if(info->minute >=60){
                
                 info->hour +=  info->minute/60;
                  info->minute %=60;
+                 info->hour%=24;
             }
 
             MyState =NORMAL;
