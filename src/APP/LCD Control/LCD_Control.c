@@ -280,7 +280,6 @@ void CLCD_Write(CLCD_info_t * info)
 
         LCD_setCursorPosAsync(currentLine,(cursor%16)+1,call);
         info->pressedButton = NO_PRESSED;
-
         break;
     default:
         break;
