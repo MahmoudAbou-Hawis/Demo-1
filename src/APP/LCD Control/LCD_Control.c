@@ -79,6 +79,7 @@ extern CSWITCH_PressedButton_t MyPbutton;
 static uint8_t updateTime =0;
 static uint8_t updateDate =0;
 static  uint8_t edit;
+extern CSWITCH_States_t MyState;
 
 typedef enum{
     Psecond,
@@ -88,14 +89,7 @@ typedef enum{
     Pmonth,
     Pyear,
 }Edit_Mode;
-/*
-2-3 hou
-5-6 min
-yEAR 16 17 18 19
-MO   22 21
-day 24-25
 
-*/
 Edit_Mode EditMode_Position(void){
     Edit_Mode Return =255;
     //Detect Second
@@ -453,11 +447,11 @@ void CLCD_Write(CLCD_info_t * info)
                  info->minute %=60;
             }
 
-            info->state =NORMAL;
+            MyState =NORMAL;
             MyPbutton = NO_PRESSED;
             break;
         case OK:
-            info->state = NORMAL;
+            MyState = NORMAL;
              MyPbutton = NO_PRESSED;
             break;    
         default:
