@@ -76,6 +76,50 @@ static char cursor=1;
 static uint8_t currentLine = FIRST_LINE;
 static CLCD_info_t temp_info={0} ;
 extern CSWITCH_PressedButton_t MyPbutton;
+static uint8_t update =0;
+
+
+typedef enum{
+    Psecond,
+    Pminute,
+    Phour,
+    Pday,
+    Pmonth,
+    Pyear,
+}Edit_Mode;
+/*
+2-3 hou
+5-6 min
+yEAR 16 17 18 19
+MO   22 21
+day 24-25
+
+*/
+Edit_Mode EditMode_Position(void){
+    Edit_Mode Return =255;
+    //Detect Second
+    if((cursor == 9)||(cursor == 10) ){
+        Return =Psecond;
+        /*Detect Hours*/    
+    }else if((cursor == 2)||(cursor == 3)){
+        Return = Phour;
+        /*Detect Minutes*/ 
+    }else if((cursor == 5)||(cursor == 6)){
+        Return = Pminute;
+        /*Detect Year*/
+    }else if((cursor == 16)||(cursor == 17)||(cursor == 18)||(cursor == 19)){
+        Return = Pyear;
+        /*Detect Month*/
+    }else if((cursor == 22)||(cursor == 21)){
+        Return = Pmonth;
+        /*Detect Day*/
+    }else if((cursor == 24)||(cursor == 25)){
+        Return = Pday;
+    }
+
+
+    return Return;
+}
 /******************************************************************************/
 
 /******************************************************************************/
@@ -148,7 +192,17 @@ void convertNumberToString(uint8_t * ptr , uint32_t len , uint32_t number)
         number /= 10;
     }
 }
-
+void showDateAndTimeInEditMode(void)
+{
+    convertNumberToString(date,4,infos->year);
+    convertNumberToString(date+5,2,infos->month);
+    convertNumberToString(date+8,2,infos->day);
+    convertNumberToString(time,2,infos->hour);
+    convertNumberToString(time+3,2,infos->minute);
+    convertNumberToString(time+6,2,infos->second);
+    if(LastInfo.second != infos->second)
+        LCD_setCursorPosAsync(FIRST_LINE,2,PrintTime);
+}
 void showDateAndTimeInNormalMode(void)
 {
     if(Last != 0)
@@ -236,7 +290,8 @@ void CLCD_Write(CLCD_info_t * info)
 
     case EDIT:
         /*Display and Save Current Data before Editing*/
-        
+        uint8_t edit;
+        showDateAndTimeInEditMode();
         if(Last != 2 ){
             temp_info.day = info->day;
             temp_info.month = info->month;
@@ -271,7 +326,18 @@ void CLCD_Write(CLCD_info_t * info)
             MyPbutton = NO_PRESSED;
             break;
         case UP:
+            edit = EditMode_Position();
+            switch (edit)
+            {
+            case Psecond:
 
+                break;
+            case Pminute:
+                break;    
+            case Phour:
+            default:
+                break;
+            }
             MyPbutton = NO_PRESSED;
             break;
         case DOWN:
