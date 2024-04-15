@@ -99,22 +99,22 @@ day 24-25
 Edit_Mode EditMode_Position(void){
     Edit_Mode Return =255;
     //Detect Second
-    if((cursor == 9)||(cursor == 10) ){
+    if((cursor == 8)||(cursor == 9) ){
         Return =Psecond;
         /*Detect Hours*/    
-    }else if((cursor == 2)||(cursor == 3)){
+    }else if((cursor == 1)||(cursor == 2)){
         Return = Phour;
         /*Detect Minutes*/ 
-    }else if((cursor == 5)||(cursor == 6)){
+    }else if((cursor == 4)||(cursor == 5)){
         Return = Pminute;
         /*Detect Year*/
-    }else if((cursor == 16)||(cursor == 17)||(cursor == 18)||(cursor == 19)){
+    }else if((cursor == 15)||(cursor == 17)||(cursor == 18)||(cursor == 16)){
         Return = Pyear;
         /*Detect Month*/
-    }else if((cursor == 22)||(cursor == 21)){
+    }else if((cursor == 20)||(cursor == 21)){
         Return = Pmonth;
         /*Detect Day*/
-    }else if((cursor == 24)||(cursor == 25)){
+    }else if((cursor == 24)||(cursor == 23)){
         Return = Pday;
     }
 
