@@ -111,17 +111,17 @@ void MainApp(void)
     CLCD_GetUpdates(&Update);
     if(Update.isTimeUpdate == true)
     {
-        time.hour   = Update.hour;
-        time.minute = Update.minute;
-        time.second = Update.second; 
+        time.hour   = ScreenInfo.hour;
+        time.minute = ScreenInfo.minute;
+        time.second = ScreenInfo.second; 
         set_time(&time);
         Update.isTimeUpdate = false;
     }
     if(Update.isDateUpdate == true)
     {
-        date.day   = Update.day;
-        date.month = Update.month;
-        date.year  = Update.year; 
+        date.day   = ScreenInfo.day;
+        date.month = ScreenInfo.month;
+        date.year  = ScreenInfo.year; 
         Date_SetDate(&date);
         Update.isDateUpdate = false;
     }

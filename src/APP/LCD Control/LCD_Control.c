@@ -72,8 +72,8 @@ uint8_t stopwatch[13]={0};
 static uint8_t Last = 0;
 bool print  = false;
 static uint8_t Second = 0;
-static char cursor=1;
-static uint8_t currentLine = FIRST_LINE;
+static char cursor=26;
+static uint8_t currentLine = SECOND_LINE;
 static CLCD_info_t temp_info={0} ;
 extern CSWITCH_PressedButton_t MyPbutton;
 static uint8_t update =0;
@@ -220,6 +220,7 @@ void showDateAndTimeInNormalMode(void)
         currentLine= SECOND_LINE;
         return;
     }
+
     convertNumberToString(date,4,infos->year);
     convertNumberToString(date+5,2,infos->month);
     convertNumberToString(date+8,2,infos->day);
@@ -307,6 +308,8 @@ void CLCD_Write(CLCD_info_t * info)
             temp_info.year = info->year;
             Second = info->second;
             temp_info.minute = info->minute;
+            cursor=2;
+            currentLine= SECOND_LINE;
             temp_info.hour = info->hour;
             Last =2;
             cursor = 1 ;
