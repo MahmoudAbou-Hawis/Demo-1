@@ -42,7 +42,7 @@
 static CSWITCH_States_t state = NORMAL;
 
 /** the clock state of the  system */
-static CSWITCH_States_t MyState = NORMAL;
+CSWITCH_States_t MyState = NORMAL;
 
 /** Carry the button which pressed */
 CSWITCH_PressedButton_t MyPbutton = NO_PRESSED;
