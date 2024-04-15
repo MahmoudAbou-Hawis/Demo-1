@@ -251,6 +251,7 @@ void CLCD_Write(CLCD_info_t * info)
         
         switch (info->pressedButton)
         {
+            
 
         case RIGHT:
             cursor++;
@@ -274,10 +275,11 @@ void CLCD_Write(CLCD_info_t * info)
             break;
         default:
             break;
+
         }
 
         LCD_setCursorPosAsync(currentLine,(cursor%16)+1,call);
-
+        info->pressedButton = NO_PRESSED;
 
         break;
     default:
