@@ -76,7 +76,8 @@ static char cursor=1;
 static uint8_t currentLine = FIRST_LINE;
 static CLCD_info_t temp_info={0} ;
 extern CSWITCH_PressedButton_t MyPbutton;
-static uint8_t update =0;
+static uint8_t updateTime =0;
+static uint8_t updateDate =0;
 static  uint8_t edit;
 
 typedef enum{
@@ -335,15 +336,49 @@ void CLCD_Write(CLCD_info_t * info)
             MyPbutton = NO_PRESSED;
             break;
         case UP:
+
             edit = EditMode_Position();
             switch (edit)
             {
             case Psecond:
-
+                updateTime++;
+                info->second++;
+                if(info->second == 60){
+                    info->second =0;       
+                }
                 break;
             case Pminute:
+                updateTime++;
+                info->minute++;
+                if(info->minute==60){
+                    info->minute =0;
+                }
                 break;    
             case Phour:
+                updateTime++;
+                info->hour++;
+                if(info->hour==12){
+                    info->hour =0;
+                }
+                break;
+            case Pday :
+                updateDate++;
+                info->day++;
+                if(info->day ==30){
+                    info->day =0;
+                }
+                break;
+            case Pmonth:
+                updateDate++;
+                info->month++;
+                if(info->month ==12){
+                    info->month =0;
+                }
+                break;
+            case Pyear:
+                updateDate++;
+                info->year++;
+                break;        
             default:
                 break;
             }
@@ -367,6 +402,14 @@ void CLCD_Write(CLCD_info_t * info)
 }
 void CLCD_GetUpdates(CLCD_Updates_t * updates)
 {
+    if(updateTime!=0){
+        updates->isTimeUpdate= true;
+        updateTime =0;
+    }
+    if(updateDate!=0){
+        updates->isDateUpdate =true;
+        updateDate =0;
+    }
 
 
 }
