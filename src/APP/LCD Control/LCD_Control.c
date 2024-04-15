@@ -235,7 +235,7 @@ void CLCD_Write(CLCD_info_t * info)
         break;
 
     case EDIT:
-        /Display and Save Current Data before Editing/
+        /*Display and Save Current Data before Editing*/
         
         if(Last != 2 ){
             temp_info.day = info->day;
