@@ -45,7 +45,7 @@ static CSWITCH_States_t state = NORMAL;
 static CSWITCH_States_t MyState = NORMAL;
 
 /** Carry the button which pressed */
-static CSWITCH_PressedButton_t MyPbutton = NO_PRESSED;
+CSWITCH_PressedButton_t MyPbutton = NO_PRESSED;
 
 /** Message used to receive the commends from the another system*/
 static Message_t Mymsg;
