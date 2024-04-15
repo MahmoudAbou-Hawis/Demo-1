@@ -184,5 +184,6 @@ LCD_enuErrorStatus LCD_setCursorPosAsync(u8 PosX, u8 PosY,ReqCallBack_t CB);
 *@return: Error state
 */
 LCD_enuErrorStatus  LCD_getState(u8 * Addu8_value);
+ void LCD_sendCommand(u8 Command);
 
 #endif // LCD_H_

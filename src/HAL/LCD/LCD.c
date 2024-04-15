@@ -34,7 +34,6 @@ extern LCD_Pins_Confg ArrayOfPins[NUM_PINS];
 /*****************************************Static Functions Prototype*************************************/
 /********************************************************************************************************/
 static void initStateMachine(void);
-static void LCD_sendCommand(u8 Command);
 static void LCD_WriteData(u8 Data);
 static u8   GET_BIT(u8 Register,u8 BitNum);
 static void LCD_InitPins(void);
@@ -348,7 +347,7 @@ static void LCD_setPosition_Proc(void){
 *@param  : ASCII code that represents the command or instruction that needs to be executed
 *@return : void
 */
-static void LCD_sendCommand(u8 Command){
+ void LCD_sendCommand(u8 Command){
 
     /*Set Register Select Pin*/
     GPIO_SetPinValue(ArrayOfPins[RS].port,ArrayOfPins[RS].pin,LOGIC_LOW);

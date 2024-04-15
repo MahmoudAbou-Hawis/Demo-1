@@ -71,6 +71,10 @@ uint8_t time[9]  = {0};
 uint8_t stopwatch[13]={0};
 static uint8_t Last = 0;
 bool print  = false;
+static uint8_t Second = 0;
+static char cursor=1;
+static uint8_t currentLine = FIRST_LINE;
+static CLCD_info_t temp_info={0} ;
 /******************************************************************************/
 
 /******************************************************************************/
@@ -230,6 +234,51 @@ void CLCD_Write(CLCD_info_t * info)
         break;
 
     case EDIT:
+        /*Display and Save Current Data before Editing*/
+        
+        if(Last != 2 ){
+            temp_info.day = info->day;
+            temp_info.month = info->month;
+            temp_info.year = info->year;
+            Second = info->second;
+            temp_info.minute = info->minute;
+            temp_info.hour = info->hour;
+            Last =2;
+            cursor = 1 ;
+            currentLine = FIRST_LINE;
+            LCD_setCursorPosAsync(currentLine, cursor,call);
+        }
+        
+        switch (info->pressedButton)
+        {
+
+        case RIGHT:
+            cursor++;
+            if(cursor>=16){
+                currentLine = SECOND_LINE;
+            }
+            break;
+
+        case LEFT:
+            cursor--;
+            if(cursor<=0){
+                cursor =1;
+            }
+            if((currentLine==SECOND_LINE)&&(cursor<=16)){
+                currentLine =FIRST_LINE;
+            }
+            break;
+        case UP:
+            break;
+        case DOWN:
+            break;
+        default:
+            break;
+        }
+
+        LCD_setCursorPosAsync(currentLine,(cursor%16)+1,call);
+
+
         break;
     default:
         break;
@@ -237,6 +286,7 @@ void CLCD_Write(CLCD_info_t * info)
 }
 void CLCD_GetUpdates(CLCD_Updates_t * updates)
 {
+
 
 }
 
