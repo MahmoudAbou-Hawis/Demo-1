@@ -75,6 +75,7 @@ static uint8_t Second = 0;
 static char cursor=1;
 static uint8_t currentLine = FIRST_LINE;
 static CLCD_info_t temp_info={0} ;
+extern CSWITCH_PressedButton_t MyPbutton;
 /******************************************************************************/
 
 /******************************************************************************/
@@ -251,27 +252,31 @@ void CLCD_Write(CLCD_info_t * info)
         
         switch (info->pressedButton)
         {
-            
-
         case RIGHT:
             cursor++;
             if(cursor>=16){
                 currentLine = SECOND_LINE;
             }
+            MyPbutton = NO_PRESSED;
             break;
-
         case LEFT:
             cursor--;
             if(cursor<=0){
                 cursor =1;
             }
-            if((currentLine==SECOND_LINE)&&(cursor<=16)){
+            if((currentLine==SECOND_LINE)&&(cursor<16)){
                 currentLine =FIRST_LINE;
+                cursor = 15;
             }
+            MyPbutton = NO_PRESSED;
             break;
         case UP:
+
+            MyPbutton = NO_PRESSED;
             break;
         case DOWN:
+
+            MyPbutton = NO_PRESSED;
             break;
         default:
             break;
@@ -280,7 +285,7 @@ void CLCD_Write(CLCD_info_t * info)
 
         LCD_setCursorPosAsync(currentLine,(cursor%16)+1,call);
         /*Not pressed*/
-        info->pressedButton = NO_PRESSED;
+
         break;
     default:
         break;
