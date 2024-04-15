@@ -77,7 +77,7 @@ static uint8_t currentLine = FIRST_LINE;
 static CLCD_info_t temp_info={0} ;
 extern CSWITCH_PressedButton_t MyPbutton;
 static uint8_t update =0;
-
+static  uint8_t edit;
 
 typedef enum{
     Psecond,
@@ -139,6 +139,8 @@ Edit_Mode EditMode_Position(void){
 /******************************************************************************/
 void showDataInNormalMode(void);
 void convertNumberToString(uint8_t * ptr , uint32_t len , uint32_t number);
+void SetCursorInUserPosition(void);
+
 /******************************************************************************/
 
 /******************************************************************************/
@@ -154,7 +156,7 @@ void call()
 
 void printDate(void)
 {
-    LCD_writeStringAsync(date,10,call);
+    LCD_writeStringAsync(date,10,SetCursorInUserPosition);
 }
 
 void SetCursorDate(void)
@@ -203,12 +205,19 @@ void showDateAndTimeInEditMode(void)
     if(LastInfo.second != infos->second)
         LCD_setCursorPosAsync(FIRST_LINE,2,PrintTime);
 }
+
+void SetCursorInUserPosition(void){
+        LCD_setCursorPosAsync(currentLine,(cursor%16)+1,call);
+
+}
 void showDateAndTimeInNormalMode(void)
 {
     if(Last != 0)
     {
         LCD_clearScreenAsync(call);
         Last = 0;
+        cursor=26;
+        currentLine= SECOND_LINE;
         return;
     }
     convertNumberToString(date,4,infos->year);
@@ -290,7 +299,7 @@ void CLCD_Write(CLCD_info_t * info)
 
     case EDIT:
         /*Display and Save Current Data before Editing*/
-        uint8_t edit;
+       
         showDateAndTimeInEditMode();
         if(Last != 2 ){
             temp_info.day = info->day;
@@ -349,7 +358,6 @@ void CLCD_Write(CLCD_info_t * info)
 
         }
 
-        LCD_setCursorPosAsync(currentLine,(cursor%16)+1,call);
         /*Not pressed*/
 
         break;
