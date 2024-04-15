@@ -360,7 +360,7 @@ void CLCD_Write(CLCD_info_t * info)
             case Phour:
                 updateTime++;
                 info->hour++;
-                if(info->hour==12){
+                if(info->hour==24){
                     info->hour =0;
                 }
                 break;
@@ -388,7 +388,51 @@ void CLCD_Write(CLCD_info_t * info)
             MyPbutton = NO_PRESSED;
             break;
         case DOWN:
-
+            edit = EditMode_Position();
+            switch (edit)
+            {
+            case Psecond:
+                updateTime++;
+                info->second--;
+                if(info->second == 255){
+                    info->second =59;       
+                }
+                break;
+            case Pminute:
+                updateTime++;
+                info->minute--;
+                if(info->minute==255){
+                    info->minute =59;
+                }
+                break;    
+            case Phour:
+                updateTime++;
+                info->hour--;
+                if(info->hour==255){
+                    info->hour =23;
+                }
+                break;
+            case Pday :
+                updateDate++;
+                info->day--;
+                if(info->day ==255){
+                    info->day =30;
+                }
+                break;
+            case Pmonth:
+                updateDate++;
+                info->month--;
+                if(info->month ==255){
+                    info->month =12;
+                }
+                break;
+            case Pyear:
+                updateDate++;
+                info->year--;
+                break;        
+            default:
+                break;
+            }
             MyPbutton = NO_PRESSED;
             break;
         default:

@@ -84,12 +84,6 @@ typedef struct
 {
     bool isDateUpdate;
     bool isTimeUpdate;
-    uint8_t second;
-    uint8_t minute;
-    uint8_t hour;
-    uint32_t day;
-    uint32_t month;
-    uint32_t year; 
 } CLCD_Updates_t;
 
 
