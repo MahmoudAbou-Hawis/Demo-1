@@ -309,9 +309,10 @@ void CLCD_Write(CLCD_info_t * info)
             temp_info.year = info->year;
             Second = info->second;
             temp_info.minute = info->minute;
+            temp_info.hour = info->hour;
             cursor=2;
             currentLine= SECOND_LINE;
-            temp_info.hour = info->hour;
+          
             Last =2;
             cursor = 1 ;
             currentLine = FIRST_LINE;
@@ -435,6 +436,30 @@ void CLCD_Write(CLCD_info_t * info)
             }
             MyPbutton = NO_PRESSED;
             break;
+        case CANCEL:
+            updateTime =1;
+            updateDate =1;
+
+            info->year = temp_info.year;
+            info->month = temp_info.month;
+            info->day = temp_info.day;
+            info->second  =Second %60;
+
+            
+            info->minute = temp_info.minute + Second/60;
+            if(info->minute >=60){
+               
+                info->hour +=  info->minute/60;
+                 info->minute %=60;
+            }
+
+            info->state =NORMAL;
+            MyPbutton = NO_PRESSED;
+            break;
+        case OK:
+            info->state = NORMAL;
+             MyPbutton = NO_PRESSED;
+            break;    
         default:
             break;
 
