@@ -99,7 +99,7 @@ day 24-25
 Edit_Mode EditMode_Position(void){
     Edit_Mode Return =255;
     //Detect Second
-    if((cursor == 8)||(cursor == 9) ){
+    if((cursor == 8)||(cursor == 7) ){
         Return =Psecond;
         /*Detect Hours*/    
     }else if((cursor == 1)||(cursor == 2)){
