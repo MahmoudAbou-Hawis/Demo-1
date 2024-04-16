@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['set_5ftime_0',['set_time',['../_t_i_m_e_8h.html#a2073fdb9d4cdead7d36ee5fb5439781a',1,'TIME.c']]],
-  ['stopwatch_5fgettime_1',['STOPWATCH_GetTime',['../_stop_watch_8h.html#a34e060c55e0cd649479ac417a845d50d',1,'StopWatch.h']]],
-  ['stopwatch_5freset_2',['STOPWATCH_Reset',['../_stop_watch_8h.html#acb157c661ba2e1b18bbb0e745262349c',1,'StopWatch.h']]],
-  ['stopwatch_5fupdate_3',['STOPWATCH_Update',['../_stop_watch_8h.html#a628d5a2d80bcca8a55734d4ddfa71a0a',1,'StopWatch.h']]]
+  ['protocol_5finit_0',['Protocol_Init',['../_control_protocol_8h.html#a83f44d3bb489a9b30d955b4c4dd0d6ca',1,'ControlProtocol.c']]],
+  ['protocol_5freceiveasync_1',['Protocol_ReceiveAsync',['../_control_protocol_8h.html#ac42ac6fe7141766318e9d857b01501a9',1,'ControlProtocol.c']]],
+  ['protocol_5fsendasync_2',['Protocol_SendAsync',['../_control_protocol_8h.html#af1f220e1a69956e7e58493dc947cee44',1,'ControlProtocol.c']]]
 ];
