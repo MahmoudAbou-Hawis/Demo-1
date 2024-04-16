@@ -1,0 +1,61 @@
+\doxysection{sched.\+h}
+\hypertarget{sched_8h_source}{}\label{sched_8h_source}\index{include/Service/sched.h@{include/Service/sched.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*File:\ Sched.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*Author:\ \ Fatma\ Ezzat}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*Created:\ 19/3/2024}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*Target:\ \ STM32F401cc}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ SCHEDULAR\_SCHED\_H\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SCHEDULAR\_SCHED\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{/************************************************Includes************************************************/}}
+\DoxyCodeLine{00011\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}SYSTICK.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}STD\_TYPES.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}Sched\_Confg.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00016\ \textcolor{comment}{/************************************************Defines*************************************************/}}
+\DoxyCodeLine{00017\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00022\ \textcolor{comment}{/************************************************Types***************************************************/}}
+\DoxyCodeLine{00023\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ void\ (*Runnable\_cb)(void);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{/*Runnables\ Information*/}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{char}*\ name;}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ periodicity;}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ firstDelay;}
+\DoxyCodeLine{00033\ \ \ \ \ Runnable\_cb\ cb;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \}\mbox{\hyperlink{struct_user___r_info}{User\_RInfo}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00040\ \textcolor{comment}{/************************************************APIs****************************************************/}}
+\DoxyCodeLine{00041\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00042\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00043\ \textcolor{comment}{*@brief\ :\ Function\ to\ }}
+\DoxyCodeLine{00044\ \textcolor{comment}{*@parameter:}}
+\DoxyCodeLine{00045\ \textcolor{comment}{*@return:}}
+\DoxyCodeLine{00046\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}\ Sched\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ Sched\_Start(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ Sched\_MainFunc(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCHEDULAR\_SCHED\_H\_}}
+
+\end{DoxyCode}

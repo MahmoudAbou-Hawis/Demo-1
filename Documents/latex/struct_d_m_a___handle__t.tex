@@ -1,0 +1,44 @@
+\doxysection{DMA\+\_\+\+Handle\+\_\+t Struct Reference}
+\hypertarget{struct_d_m_a___handle__t}{}\label{struct_d_m_a___handle__t}\index{DMA\_Handle\_t@{DMA\_Handle\_t}}
+
+
+DMA channel handle structure.  
+
+
+
+
+{\ttfamily \#include $<$DMA.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{struct_d_m_a___handle__t_aaeee90a98016c6695bd17bec5f1f8666}\label{struct_d_m_a___handle__t_aaeee90a98016c6695bd17bec5f1f8666} 
+void \texorpdfstring{$\ast$}{*} {\bfseries Instance}
+\begin{DoxyCompactList}\small\item\em Pointer to the DMA controller instance. \doxylink{group___d_m_a___i_n_s_t_a_n_c_e_s}{DMA Instances}. \end{DoxyCompactList}\item 
+\Hypertarget{struct_d_m_a___handle__t_ac3273a5e5002bdf2990684c13727557b}\label{struct_d_m_a___handle__t_ac3273a5e5002bdf2990684c13727557b} 
+uint32\+\_\+t {\bfseries Stream}
+\begin{DoxyCompactList}\small\item\em DMA stream number within the controller. \doxylink{group___d_m_a___s_t_r_e_a_m_s}{DMA Available streams ~\newline
+}. \end{DoxyCompactList}\item 
+\Hypertarget{struct_d_m_a___handle__t_a7e8c01bc34e1e96d724c8f2be0999723}\label{struct_d_m_a___handle__t_a7e8c01bc34e1e96d724c8f2be0999723} 
+\mbox{\hyperlink{struct_d_m_a___init__t}{DMA\+\_\+\+Init\+\_\+t}} {\bfseries Initialization}
+\begin{DoxyCompactList}\small\item\em DMA initialization configuration. \end{DoxyCompactList}\item 
+\Hypertarget{struct_d_m_a___handle__t_ae61a90a5f3b58ea640c37d180381283a}\label{struct_d_m_a___handle__t_ae61a90a5f3b58ea640c37d180381283a} 
+\mbox{\hyperlink{_d_m_a_8h_adfcf4066466e059fc8b6e3d619f3bdd7}{DMA\+\_\+\+States\+\_\+t}} {\bfseries State}
+\begin{DoxyCompactList}\small\item\em DMA Stream state. \end{DoxyCompactList}\item 
+\Hypertarget{struct_d_m_a___handle__t_a6a23e508f1185327271f15c947a0a03f}\label{struct_d_m_a___handle__t_a6a23e508f1185327271f15c947a0a03f} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries Half\+Transfer\+Call\+Back} )(void)
+\begin{DoxyCompactList}\small\item\em Callback function for half transfer completion. \end{DoxyCompactList}\item 
+\Hypertarget{struct_d_m_a___handle__t_a4c49d1c1138307521cdb6b8ead69a85e}\label{struct_d_m_a___handle__t_a4c49d1c1138307521cdb6b8ead69a85e} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries Complete\+Transfer\+Call\+Back} )(void)
+\begin{DoxyCompactList}\small\item\em Callback function for complete transfer. \end{DoxyCompactList}\item 
+\Hypertarget{struct_d_m_a___handle__t_a678649c5b6bad052c05278f6e17eca3d}\label{struct_d_m_a___handle__t_a678649c5b6bad052c05278f6e17eca3d} 
+void(\texorpdfstring{$\ast$}{*} {\bfseries Error\+Transfer\+Call\+Back} )(void)
+\begin{DoxyCompactList}\small\item\em Callback function for transfer error. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+DMA channel handle structure. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+MCAL/\mbox{\hyperlink{_d_m_a_8h}{DMA.\+h}}\end{DoxyCompactItemize}

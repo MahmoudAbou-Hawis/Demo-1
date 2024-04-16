@@ -1,0 +1,117 @@
+\doxysection{LCD\+\_\+\+Control.\+h}
+\hypertarget{_l_c_d___control_8h_source}{}\label{_l_c_d___control_8h_source}\index{include/APP/LCD\_Control/LCD\_Control.h@{include/APP/LCD\_Control/LCD\_Control.h}}
+\mbox{\hyperlink{_l_c_d___control_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*******************************************************************************/}}
+\DoxyCodeLine{00020\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{/*\ MULTIPLE\ INCLUSION\ GUARD\ */}}
+\DoxyCodeLine{00022\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifndef\ LCD\_CONTROL\_H\_}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ LCD\_CONTROL\_H\_}}
+\DoxyCodeLine{00025\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00028\ \textcolor{comment}{/*\ C++\ Style\ GUARD\ */}}
+\DoxyCodeLine{00029\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00031\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00032\ \{}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00034\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00037\ \textcolor{comment}{/*\ INCLUDES\ */}}
+\DoxyCodeLine{00038\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}CSwitch.h"{}}\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00046\ \textcolor{comment}{/*\ PUBLIC\ DEFINES\ */}}
+\DoxyCodeLine{00047\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00053\ \textcolor{comment}{/*\ PUBLIC\ MACROS\ */}}
+\DoxyCodeLine{00054\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00059\ \textcolor{comment}{/*\ PUBLIC\ ENUMS\ */}}
+\DoxyCodeLine{00060\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00065\ \textcolor{comment}{/*\ PUBLIC\ TYPES\ */}}
+\DoxyCodeLine{00066\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00071\ \{}
+\DoxyCodeLine{00072\ \ \ \ \ CSWITCH\_States\_t\ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_acb22c394ca06d0ff991cf2f675d215c6}{state}};\ }
+\DoxyCodeLine{00073\ \ \ \ \ CSWITCH\_PressedButton\_t\ \mbox{\hyperlink{struct_c_l_c_d__info__t_a54b26f2873d2e969823caf1ecfdf1853}{pressedButton}};\ }
+\DoxyCodeLine{00074\ \ \ \ \ uint8\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_a8e0716e5f415ff693526c8ca0c816729}{second}};\ }
+\DoxyCodeLine{00075\ \ \ \ \ uint8\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_a84799d0c542b0ce98d1c06cc183bc2f1}{minute}};\ }
+\DoxyCodeLine{00076\ \ \ \ \ uint8\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_a2cc2d67b53bda6e874e6a4e61647b739}{hour}};\ }
+\DoxyCodeLine{00077\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_a90e971df515b0dfd5abd9e973d78b351}{day}};\ }
+\DoxyCodeLine{00078\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_ad447ec9bccb9c7b15fdc577136d31ae5}{month}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_abb0a2d736f8c2142b7e26c546d5ceef5}{year}};\ }
+\DoxyCodeLine{00080\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_ae746550ce8eaf7898910ecd3504e3522}{StopWatchMilli}};\ }
+\DoxyCodeLine{00081\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_a5e08377a657ce3bd8812ea2a264b1ecb}{StopWatchSeconds}};\ }
+\DoxyCodeLine{00082\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_a3a84a869ec0a8e60615712127ce6a839}{StopWatchHour}};\ }
+\DoxyCodeLine{00083\ \ \ \ \ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_c_l_c_d__info__t_ace06e1e1560557e2b2808f523a02d96f}{StopWatchMinute}};\ }
+\DoxyCodeLine{00084\ \}\ \mbox{\hyperlink{struct_c_l_c_d__info__t}{CLCD\_info\_t}};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_c_l_c_d___updates__t_a2d5f698a9934fc6fe5c2acaa098dce31}{isDateUpdate}};\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{struct_c_l_c_d___updates__t_ad59649b7e9d2e355ded7a584761c00ae}{isTimeUpdate}};\ }
+\DoxyCodeLine{00093\ \}\ \mbox{\hyperlink{struct_c_l_c_d___updates__t}{CLCD\_Updates\_t}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00099\ \textcolor{comment}{/*\ PUBLIC\ CONSTANT\ DECLARATIONS\ */}}
+\DoxyCodeLine{00100\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00105\ \textcolor{comment}{/*\ PUBLIC\ VARIABLE\ DECLARATIONS\ */}}
+\DoxyCodeLine{00106\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00112\ \textcolor{comment}{/*\ PUBLIC\ FUNCTION\ PROTOTYPES\ */}}
+\DoxyCodeLine{00113\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00118\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___control_8h_a7db5a09f6770a703ab38cff1da821aba}{CLCD\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___control_8h_a22f943029f19f9424ea5f1b079f4f7d4}{CLCD\_Write}}(\mbox{\hyperlink{struct_c_l_c_d__info__t}{CLCD\_info\_t}}\ *info);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00132\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_l_c_d___control_8h_a556ed4164f7c8fa4a0d141c189595cff}{CLCD\_GetUpdates}}(\mbox{\hyperlink{struct_c_l_c_d___updates__t}{CLCD\_Updates\_t}}\ *updates);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00137\ \textcolor{comment}{/*\ C++\ Style\ GUARD\ */}}
+\DoxyCodeLine{00138\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00140\ \}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00142\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00145\ \textcolor{comment}{/*\ MULTIPLE\ INCLUSION\ GUARD\ */}}
+\DoxyCodeLine{00146\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ LCD\_CONTROL\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00148\ \textcolor{comment}{/******************************************************************************/}}
+
+\end{DoxyCode}

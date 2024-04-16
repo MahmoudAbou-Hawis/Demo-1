@@ -1,0 +1,195 @@
+\doxysection{Demo1\+\_\+\+LCD.\+h}
+\hypertarget{_demo1___l_c_d_8h_source}{}\label{_demo1___l_c_d_8h_source}\index{include/HAL/LCD/Demo1\_LCD.h@{include/HAL/LCD/Demo1\_LCD.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*File:\ \ Header\ File\ of\ LCD}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*Author:\ \ Fatma\ Ezzat}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*Created:\ 3/25/2024}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*Target:\ \ STM32F401cc}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ LCD\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ LCD\_H\_}}
+\DoxyCodeLine{00010\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00011\ \textcolor{comment}{/************************************************Includes************************************************/}}
+\DoxyCodeLine{00012\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}GPIO.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}STD\_TYPES.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}LCD\_Confg.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00018\ \textcolor{comment}{/************************************************Defines*************************************************/}}
+\DoxyCodeLine{00019\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00020\ \textcolor{comment}{/************************************************************************/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{/*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ LCD\ COMMANDS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{00022\ \textcolor{comment}{/************************************************************************/}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ LCD\_CLEAR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ LCD\_RETURN\_HOME\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ LCD\_ENTRY\_MODE\_SET\_DEC\_SHIFT\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ LCD\_ENTRY\_MODE\_SET\_INC\_SHIFT\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x06}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ LCD\_ENTRY\_MODE\_SET\_DEC\_SHIFT\_ON\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x05}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ LCD\_ENTRY\_MODE\_SET\_DEC\_SHIFT\_ON\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x05}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ LCD\_ENTRY\_MODE\_SET\_INC\_SHIFT\_ON\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x07}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAY\_OFF\_CURSOR\_OFF\_BLINK\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAY\_ON\_CURSOR\_OFF\_BLINK\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0C}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAY\_ON\_CURSOR\_ON\_BLINK\_OFF\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0E}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAY\_ON\_CURSOR\_ON\_BLINK\_ON\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0F}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ LCD\_DISPLAY\_ON\_CURSOR\_OFF\_BLINK\_ON\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x0D}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ LCD\_SHIFT\_CURSOR\_LEFT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ LCD\_SHIFT\_CURSOR\_RIGHT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x14}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ LCD\_SHIFT\_DISPLAY\_LEFT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x18}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ LCD\_SHIFT\_DISPLAY\_RIGHT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x1C}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ LCD\_FUNCTION\_SET\_8BIT\_2LINES\_5x7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x38\ \ \ \ }}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ LCD\_FUNCTION\_SET\_4BIT\_2LINES\_5x8\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x28\ \ \ \ }}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ LCD\_CGRAM\_ADDRESS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ LCD\_DDRAM\_ADDRESS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80\ \ \ \ }}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ LCD\_SECOND\_LINE\_START\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00047\ \textcolor{comment}{/************************************************Types***************************************************/}}
+\DoxyCodeLine{00048\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00049\ \textcolor{keyword}{typedef}\ void\ (*ReqCallBack\_t)(void);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{comment}{/*LCD\ Pins\ Configuration*/}}
+\DoxyCodeLine{00052\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \#if\ LCD\_MODE\ ==\ LCD\_8BITS\_MODE}}
+\DoxyCodeLine{00054\ \ \ \ \ D0,}
+\DoxyCodeLine{00055\ \ \ \ \ D1,}
+\DoxyCodeLine{00056\ \ \ \ \ D2,}
+\DoxyCodeLine{00057\ \ \ \ \ D3,}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00059\ \ \ \ \ D4,}
+\DoxyCodeLine{00060\ \ \ \ \ D5,}
+\DoxyCodeLine{00061\ \ \ \ \ D6,}
+\DoxyCodeLine{00062\ \ \ \ \ D7,}
+\DoxyCodeLine{00063\ \ \ \ \ EN,}
+\DoxyCodeLine{00064\ \ \ \ \ RS}
+\DoxyCodeLine{00065\ \}Data\_Pins;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00069\ \textcolor{comment}{\ *@brief\ :\ The\ Error\ List\ Type\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00070\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00071\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ \ \ *@brief\ :\ Everything\ Ok,\ Function\ had\ Performed\ Correctly.}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00075\ \ \ \ \ LCD\_enumOk,}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \ \ \ *@brief\ :\ Everything\ NOT\ Ok,\ Function\ had\ Performed\ InCorrectly.}}
+\DoxyCodeLine{00078\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00079\ \ \ \ \ LCD\_enumNOk,\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ \ \ *@brief\ :\ Select\ Wrong\ pin\ Configuration}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ \ \ */}\ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ LCD\_enumWrongcConfiguration,\ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ \ \ *@brief\ :\ Select\ Position\ Not\ exist\ !\ .}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00087\ \ \ \ \ LCD\_enumWrongPosition,}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ \ \ *@brief\ :\ Send\ Null\ Pointer}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00091\ \ \ \ \ LCD\_enumNullPointer,\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ \ \ *@brief\ :\ Send\ string\ length\ that\ exceeds\ 16\ characters}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{00095\ \ \ \ \ LCD\_enumWrongStringLength}
+\DoxyCodeLine{00096\ \}LCD\_enuErrorStatus;}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{comment}{/*LCD\ Operation\ Modes*/}}
+\DoxyCodeLine{00099\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ OFF\_State,}
+\DoxyCodeLine{00102\ \ \ \ \ Init\_State,}
+\DoxyCodeLine{00103\ \ \ \ \ Operational\_State}
+\DoxyCodeLine{00104\ \}LCD\_States;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{comment}{/*User\ Requests*/}}
+\DoxyCodeLine{00107\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ LCD\_Req\_write,}
+\DoxyCodeLine{00110\ \ \ \ \ LCD\_Req\_ClearScreen,}
+\DoxyCodeLine{00111\ \ \ \ \ LCD\_Req\_SetPos}
+\DoxyCodeLine{00112\ \}LCD\_Operations;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ Ready,}
+\DoxyCodeLine{00118\ \ \ \ \ Busy}
+\DoxyCodeLine{00119\ \}RequestState;}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{comment}{/*Operations\ of\ initialization\ stage*/}}
+\DoxyCodeLine{00122\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00123\ \ \ \ \ Power\_On,}
+\DoxyCodeLine{00124\ \ \ \ \ Function\_Set,}
+\DoxyCodeLine{00125\ \ \ \ \ Entry\_Mode,}
+\DoxyCodeLine{00126\ \ \ \ \ Dispay\_setting,}
+\DoxyCodeLine{00127\ \ \ \ \ Dispay\_clear,}
+\DoxyCodeLine{00128\ \ \ \ \ End\_init}
+\DoxyCodeLine{00129\ \}LCD\_init\_Operations;}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00133\ \{}
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *\ string;}
+\DoxyCodeLine{00135\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \ stringLength;}
+\DoxyCodeLine{00136\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ \ state;}
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ type;}
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ posx;}
+\DoxyCodeLine{00139\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ posy;}
+\DoxyCodeLine{00140\ \ \ \ \ ReqCallBack\_t\ cb;}
+\DoxyCodeLine{00141\ \}\mbox{\hyperlink{struct_user_req}{UserReq}};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00145\ \ \ \ \ Enable\_Low,}
+\DoxyCodeLine{00146\ \ \ \ \ Enable\_High}
+\DoxyCodeLine{00147\ \}Enable\_State;}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{comment}{/*Screen\ of\ LCD*/}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ FIRST\_LINE\ \ \ 1}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ SECOND\_LINE\ \ 2}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00155\ \textcolor{comment}{/************************************************APIs****************************************************/}}
+\DoxyCodeLine{00156\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00157\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00158\ \textcolor{comment}{*@brief\ :\ Function\ to\ initialize\ LCD}}
+\DoxyCodeLine{00159\ \textcolor{comment}{*@parameter:\ Pointer\ to\ function\ }}
+\DoxyCodeLine{00160\ \textcolor{comment}{*@return:\ Error\ state}}
+\DoxyCodeLine{00161\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00162\ LCD\_enuErrorStatus\ LCD\_initAsync(ReqCallBack\_t\ CB);}
+\DoxyCodeLine{00163\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00164\ \textcolor{comment}{*@brief\ :\ Function\ to\ clear\ screen\ \ of\ LCD}}
+\DoxyCodeLine{00165\ \textcolor{comment}{*@parameter:\ Pointer\ to\ function}}
+\DoxyCodeLine{00166\ \textcolor{comment}{*@return:\ Error\ state}}
+\DoxyCodeLine{00167\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00168\ LCD\_enuErrorStatus\ LCD\_clearScreenAsync(ReqCallBack\_t\ CB);}
+\DoxyCodeLine{00169\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00170\ \textcolor{comment}{*@brief\ \ :\ Function\ to\ display\ a\ string\ on\ the\ LCD\ screen}}
+\DoxyCodeLine{00171\ \textcolor{comment}{*@param\ \ :\ String,\ its\ length\ and\ Pointer\ to\ function\ }}
+\DoxyCodeLine{00172\ \textcolor{comment}{*@return\ :\ Error\ state}}
+\DoxyCodeLine{00173\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00174\ LCD\_enuErrorStatus\ LCD\_writeStringAsync(\textcolor{keyword}{const}\ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *s,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ length,ReqCallBack\_t\ CB);}
+\DoxyCodeLine{00175\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00176\ \textcolor{comment}{*@brief\ \ :\ Function\ to\ jump\ on\ a\ specific\ location\ on\ DDRAM\ (On\ the\ LCD\ screen)}}
+\DoxyCodeLine{00177\ \textcolor{comment}{*@param\ \ :\ The\ position\ of\ the\ desired\ location\ on\ the\ LCD\ (X:Row\ \&\ Y:Columns)\ }}
+\DoxyCodeLine{00178\ \textcolor{comment}{*@return\ :\ Error\ state}}
+\DoxyCodeLine{00179\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00180\ LCD\_enuErrorStatus\ LCD\_setCursorPosAsync(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ PosX,\ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ PosY,ReqCallBack\_t\ CB);}
+\DoxyCodeLine{00181\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00182\ \textcolor{comment}{*@brief\ :\ Function\ to\ get\ the\ status\ of\ the\ LCD}}
+\DoxyCodeLine{00183\ \textcolor{comment}{*@parameter:\ Pointer\ to\ function\ }}
+\DoxyCodeLine{00184\ \textcolor{comment}{*@return:\ Error\ state}}
+\DoxyCodeLine{00185\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00186\ LCD\_enuErrorStatus\ \ LCD\_getState(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *\ Addu8\_value);}
+\DoxyCodeLine{00187\ \ \textcolor{keywordtype}{void}\ LCD\_sendCommand(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ Command);}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ LCD\_H\_}}
+
+\end{DoxyCode}

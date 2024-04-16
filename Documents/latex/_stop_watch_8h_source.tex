@@ -1,0 +1,38 @@
+\doxysection{Stop\+Watch.\+h}
+\hypertarget{_stop_watch_8h_source}{}\label{_stop_watch_8h_source}\index{include/APP/StopWatch/StopWatch.h@{include/APP/StopWatch/StopWatch.h}}
+\mbox{\hyperlink{_stop_watch_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ STOPWATCH\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ STOPWATCH\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}\ \ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}StopWatch\_Confg.h"{}}\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ STOP\_TIME\_ONE\_SECOND\ 1000\ \ \ \ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ NUM\_OF\_SECONDS\ \ \ \ \ \ \ 60\ \ \ \ \ \ }}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ NUM\_OF\_MINUTES\ \ \ \ \ \ \ 60\ \ \ \ \ \ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ NUM\_OF\_HOURS\ \ \ \ \ \ \ \ \ 24\ \ \ \ \ \ }}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ DEFAULT\ \ \ \ \ \ \ \ \ \ \ \ \ \ 0\ \ \ \ \ \ \ }}
+\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_stop_watch_time__t_a503f7b932afbd0aa43d0b788ec6e207d}{milli}};\ }
+\DoxyCodeLine{00027\ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_stop_watch_time__t_a4efa9b2bce972acc7212b0b2d3e341cf}{second}};\ }
+\DoxyCodeLine{00028\ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_stop_watch_time__t_ab392135a2b5cc4fd9a11ae63b81ae067}{minute}};\ }
+\DoxyCodeLine{00029\ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_stop_watch_time__t_a799e5fc3674d6f152537b04ce8c444cd}{hour}};\ }
+\DoxyCodeLine{00030\ \}\ \mbox{\hyperlink{struct_stop_watch_time__t}{StopWatchTime\_t}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322a8d878f83b4134ea2da6498f39f709f0d}{StopWatch\_enumOk}},\ }
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322aa664a498006ef221cd452282027060e4}{StopWatch\_NullPointer}},\ }
+\DoxyCodeLine{00038\ \}\ \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322}{StopWatch\_Error}};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_stop_watch_8h_acb157c661ba2e1b18bbb0e745262349c}{STOPWATCH\_Reset}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_stop_watch_8h_a628d5a2d80bcca8a55734d4ddfa71a0a}{STOPWATCH\_Update}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322}{StopWatch\_Error}}\ \mbox{\hyperlink{_stop_watch_8h_a34e060c55e0cd649479ac417a845d50d}{STOPWATCH\_GetTime}}(\mbox{\hyperlink{struct_stop_watch_time__t}{StopWatchTime\_t}}\ *time);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif\ \ \ }\textcolor{comment}{/*\ STOPWATCH\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

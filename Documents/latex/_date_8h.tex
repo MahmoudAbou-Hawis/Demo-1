@@ -1,0 +1,187 @@
+\doxysection{include/\+APP/\+DATE/\+Date.h File Reference}
+\hypertarget{_date_8h}{}\label{_date_8h}\index{include/APP/DATE/Date.h@{include/APP/DATE/Date.h}}
+
+
+This file contains structures and functions related to date operations.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_date}{Date}}
+\begin{DoxyCompactList}\small\item\em Structure to represent a date. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_date_8h_aa9142b3f315f611613b38e000a4b427f}\label{_date_8h_aa9142b3f315f611613b38e000a4b427f} 
+typedef enum \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bb}{Operation}} {\bfseries Operation\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Enumerated type for date operations (increase or decrease). \end{DoxyCompactList}\item 
+\Hypertarget{_date_8h_a2e96001ba159305b438955a2487fb1f9}\label{_date_8h_a2e96001ba159305b438955a2487fb1f9} 
+typedef enum \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227f}{Date\+Type}} {\bfseries Date\+Type\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Enumerated type for the type of date component to modify. \end{DoxyCompactList}\item 
+\Hypertarget{_date_8h_aa81b4ae66e59b4776d1dd54434684783}\label{_date_8h_aa81b4ae66e59b4776d1dd54434684783} 
+typedef enum \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25}{Date\+Error}} {\bfseries Date\+Error\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Enumerated type for error status during date operations. \end{DoxyCompactList}\item 
+\Hypertarget{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}\label{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b} 
+typedef struct \mbox{\hyperlink{struct_date}{Date}} {\bfseries Date\+\_\+t}
+\begin{DoxyCompactList}\small\item\em Structure to represent a date. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bb}{Operation}} \{ \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba6149767a813d18f7ba04338157768a1a}{INCREASE}}
+, \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba84c12b653ab78833f763cf33f66db984}{DECREASE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerated type for date operations (increase or decrease). \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227f}{Date\+Type}} \{ \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa8e85ce474d6e6c5ef5b03a415dee454a}{DAY}}
+, \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa959a3fc667edf9cb70980483c949103a}{MONTH}}
+, \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fad327b6aedde7e5aa6a122dd9e2154f45}{YEAR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerated type for the type of date component to modify. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25}{Date\+Error}} \{ \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25a01504c20c89f02b5c707a1a50a45d8ba}{DATE\+\_\+\+NULL\+\_\+\+PTR\+\_\+\+PASSED}} = -\/1
+, \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25a07a233d95c761f9ec41d4cc3a6939c33}{DATE\+\_\+\+OK}} = 0
+, \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25a21a210dcd4560e6b684c3663e1485d73}{DATE\+\_\+\+INVALID\+\_\+\+VALUE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerated type for error status during date operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} \mbox{\hyperlink{_date_8h_a3f629b440ad2d486071f76905c35b37e}{Date\+\_\+\+Set\+Date}} (\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{struct_date}{Date}})
+\begin{DoxyCompactList}\small\item\em Sets the date value based on the specified operation and type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} \mbox{\hyperlink{_date_8h_ac28a86958860b1b60069d1f7fdeb88c5}{Date\+\_\+\+Get\+Date}} (\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}date)
+\begin{DoxyCompactList}\small\item\em Retrieves the current date value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_date_8h_aedc3cb00f0d936fcc9eaaeab2cf6ef67}{Date\+\_\+\+Update\+Date}} (void)
+\begin{DoxyCompactList}\small\item\em Updates the date. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains structures and functions related to date operations. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_date_8h_a417a939b5b63b2248b03e903391a0d25}\label{_date_8h_a417a939b5b63b2248b03e903391a0d25} 
+\index{Date.h@{Date.h}!DateError@{DateError}}
+\index{DateError@{DateError}!Date.h@{Date.h}}
+\doxysubsubsection{\texorpdfstring{DateError}{DateError}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25}{Date\+Error}}}
+
+
+
+Enumerated type for error status during date operations. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATE\_NULL\_PTR\_PASSED@{DATE\_NULL\_PTR\_PASSED}!Date.h@{Date.h}}\index{Date.h@{Date.h}!DATE\_NULL\_PTR\_PASSED@{DATE\_NULL\_PTR\_PASSED}}}\Hypertarget{_date_8h_a417a939b5b63b2248b03e903391a0d25a01504c20c89f02b5c707a1a50a45d8ba}\label{_date_8h_a417a939b5b63b2248b03e903391a0d25a01504c20c89f02b5c707a1a50a45d8ba} 
+DATE\+\_\+\+NULL\+\_\+\+PTR\+\_\+\+PASSED&Indicate error with negative value \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATE\_OK@{DATE\_OK}!Date.h@{Date.h}}\index{Date.h@{Date.h}!DATE\_OK@{DATE\_OK}}}\Hypertarget{_date_8h_a417a939b5b63b2248b03e903391a0d25a07a233d95c761f9ec41d4cc3a6939c33}\label{_date_8h_a417a939b5b63b2248b03e903391a0d25a07a233d95c761f9ec41d4cc3a6939c33} 
+DATE\+\_\+\+OK&Success status \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATE\_INVALID\_VALUE@{DATE\_INVALID\_VALUE}!Date.h@{Date.h}}\index{Date.h@{Date.h}!DATE\_INVALID\_VALUE@{DATE\_INVALID\_VALUE}}}\Hypertarget{_date_8h_a417a939b5b63b2248b03e903391a0d25a21a210dcd4560e6b684c3663e1485d73}\label{_date_8h_a417a939b5b63b2248b03e903391a0d25a21a210dcd4560e6b684c3663e1485d73} 
+DATE\+\_\+\+INVALID\+\_\+\+VALUE&More specific error for invalid date values (not implemented yet) \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_date_8h_affd3c068a55928d139fbd5278fee227f}\label{_date_8h_affd3c068a55928d139fbd5278fee227f} 
+\index{Date.h@{Date.h}!DateType@{DateType}}
+\index{DateType@{DateType}!Date.h@{Date.h}}
+\doxysubsubsection{\texorpdfstring{DateType}{DateType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227f}{Date\+Type}}}
+
+
+
+Enumerated type for the type of date component to modify. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DAY@{DAY}!Date.h@{Date.h}}\index{Date.h@{Date.h}!DAY@{DAY}}}\Hypertarget{_date_8h_affd3c068a55928d139fbd5278fee227fa8e85ce474d6e6c5ef5b03a415dee454a}\label{_date_8h_affd3c068a55928d139fbd5278fee227fa8e85ce474d6e6c5ef5b03a415dee454a} 
+DAY&Day component \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MONTH@{MONTH}!Date.h@{Date.h}}\index{Date.h@{Date.h}!MONTH@{MONTH}}}\Hypertarget{_date_8h_affd3c068a55928d139fbd5278fee227fa959a3fc667edf9cb70980483c949103a}\label{_date_8h_affd3c068a55928d139fbd5278fee227fa959a3fc667edf9cb70980483c949103a} 
+MONTH&Month component \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{YEAR@{YEAR}!Date.h@{Date.h}}\index{Date.h@{Date.h}!YEAR@{YEAR}}}\Hypertarget{_date_8h_affd3c068a55928d139fbd5278fee227fad327b6aedde7e5aa6a122dd9e2154f45}\label{_date_8h_affd3c068a55928d139fbd5278fee227fad327b6aedde7e5aa6a122dd9e2154f45} 
+YEAR&Year component \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_date_8h_aa8f137f19095e0bdcf4f521e901f88bb}\label{_date_8h_aa8f137f19095e0bdcf4f521e901f88bb} 
+\index{Date.h@{Date.h}!Operation@{Operation}}
+\index{Operation@{Operation}!Date.h@{Date.h}}
+\doxysubsubsection{\texorpdfstring{Operation}{Operation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bb}{Operation}}}
+
+
+
+Enumerated type for date operations (increase or decrease). 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INCREASE@{INCREASE}!Date.h@{Date.h}}\index{Date.h@{Date.h}!INCREASE@{INCREASE}}}\Hypertarget{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba6149767a813d18f7ba04338157768a1a}\label{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba6149767a813d18f7ba04338157768a1a} 
+INCREASE&Increase operation \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DECREASE@{DECREASE}!Date.h@{Date.h}}\index{Date.h@{Date.h}!DECREASE@{DECREASE}}}\Hypertarget{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba84c12b653ab78833f763cf33f66db984}\label{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba84c12b653ab78833f763cf33f66db984} 
+DECREASE&Decrease operation \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_date_8h_ac28a86958860b1b60069d1f7fdeb88c5}\label{_date_8h_ac28a86958860b1b60069d1f7fdeb88c5} 
+\index{Date.h@{Date.h}!Date\_GetDate@{Date\_GetDate}}
+\index{Date\_GetDate@{Date\_GetDate}!Date.h@{Date.h}}
+\doxysubsubsection{\texorpdfstring{Date\_GetDate()}{Date\_GetDate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} Date\+\_\+\+Get\+Date (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{date }\end{DoxyParamCaption})}
+
+
+
+Retrieves the current date value. 
+
+This function retrieves the current date value and stores it in the provided \doxylink{struct_date}{Date} structure.
+
+
+\begin{DoxyParams}{Parameters}
+{\em date} & A pointer to a \doxylink{struct_date}{Date} structure to store the retrieved date. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an error code (DATE\+\_\+\+NULL\+\_\+\+PTR\+\_\+\+PASSED) on failure, or DATE\+\_\+\+OK on success.
+\end{DoxyReturn}
+Retrieves the current date value. \Hypertarget{_date_8h_a3f629b440ad2d486071f76905c35b37e}\label{_date_8h_a3f629b440ad2d486071f76905c35b37e} 
+\index{Date.h@{Date.h}!Date\_SetDate@{Date\_SetDate}}
+\index{Date\_SetDate@{Date\_SetDate}!Date.h@{Date.h}}
+\doxysubsubsection{\texorpdfstring{Date\_SetDate()}{Date\_SetDate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} Date\+\_\+\+Set\+Date (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Date }\end{DoxyParamCaption})}
+
+
+
+Sets the date value based on the specified operation and type. 
+
+This function modifies the date value based on the specified operation and type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em \doxylink{struct_date}{Date}} & A pointer to the \doxylink{struct_date}{Date} structure to modify. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an error code (DATE\+\_\+\+NULL\+\_\+\+PTR\+\_\+\+PASSED or DATE\+\_\+\+INVALID\+\_\+\+VALUE) on failure, or DATE\+\_\+\+OK on success.
+\end{DoxyReturn}
+Sets the date value based on the specified operation and type. \Hypertarget{_date_8h_aedc3cb00f0d936fcc9eaaeab2cf6ef67}\label{_date_8h_aedc3cb00f0d936fcc9eaaeab2cf6ef67} 
+\index{Date.h@{Date.h}!Date\_UpdateDate@{Date\_UpdateDate}}
+\index{Date\_UpdateDate@{Date\_UpdateDate}!Date.h@{Date.h}}
+\doxysubsubsection{\texorpdfstring{Date\_UpdateDate()}{Date\_UpdateDate()}}
+{\footnotesize\ttfamily void Date\+\_\+\+Update\+Date (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Updates the date. 
+
+This function updates the current date.
+
+Updates the date. 

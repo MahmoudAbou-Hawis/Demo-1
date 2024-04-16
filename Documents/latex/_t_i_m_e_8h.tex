@@ -1,0 +1,218 @@
+\doxysection{include/\+APP/\+TIME/\+TIME.h File Reference}
+\hypertarget{_t_i_m_e_8h}{}\label{_t_i_m_e_8h}\index{include/APP/TIME/TIME.h@{include/APP/TIME/TIME.h}}
+
+
+Header file for time functionality.  
+
+
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structtime__t}{time\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure to represent time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_t_i_m_e_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}\label{_t_i_m_e_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4} 
+\#define {\bfseries NULL}~((void \texorpdfstring{$\ast$}{*})0)
+\item 
+\#define \mbox{\hyperlink{_t_i_m_e_8h_a0ed44145d69ee63c35eafac62bc3777e}{TIME\+\_\+\+ONE\+\_\+\+SECOND}}~1000
+\item 
+\#define \mbox{\hyperlink{_t_i_m_e_8h_a77147a13a9b4928b036eadeb97f7bb14}{NUM\+\_\+\+OF\+\_\+\+SECONDS}}~60
+\item 
+\#define \mbox{\hyperlink{_t_i_m_e_8h_a77e4f758219d5cfd80315e3857e8eaf1}{NUM\+\_\+\+OF\+\_\+\+MINUTES}}~60
+\item 
+\#define \mbox{\hyperlink{_t_i_m_e_8h_a3c386057887f2f8885b901f0f7f51669}{NUM\+\_\+\+OF\+\_\+\+HOURS}}~24
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef unsigned char \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}
+\item 
+typedef unsigned short \mbox{\hyperlink{_t_i_m_e_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}
+\item 
+typedef unsigned int \mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}} \{ \mbox{\hyperlink{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248a5d249e853c4031947f979fe903390dfb}{INCREMENT}}
+, \mbox{\hyperlink{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248acd27a3a13d233019cec19a2423d65a84}{DECREMENT}}
+ \}
+\item 
+enum \mbox{\hyperlink{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t}} \{ \mbox{\hyperlink{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a7cb36ff0a80f238d5b987d9250d369e3}{SECOND}}
+, \mbox{\hyperlink{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a26f8ff0cdd909ee179a0ed06adfc4a0b}{MINUTE}}
+, \mbox{\hyperlink{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a79aab2da0ce6d416b78895cf20661b35}{HOUR}}
+ \}
+\item 
+enum \mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6}{Ret\+Time\+Error}} \{ \mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6a2ad88a8c6a80f477267adaf1b4476a64}{time\+\_\+ok}}
+, \mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6ac4cca54c8cf16d22f61f1c304fa55230}{invalid\+\_\+input}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6}{Ret\+Time\+Error}} \mbox{\hyperlink{_t_i_m_e_8h_a2073fdb9d4cdead7d36ee5fb5439781a}{set\+\_\+time}} (\mbox{\hyperlink{structtime__t}{time\+\_\+t}} \texorpdfstring{$\ast$}{*}time)
+\begin{DoxyCompactList}\small\item\em Sets the time value based on the specified operation and type. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6}{Ret\+Time\+Error}} \mbox{\hyperlink{_t_i_m_e_8h_a2cc4965f65a373e0b58e0430f029e3dd}{get\+\_\+time}} (\mbox{\hyperlink{structtime__t}{time\+\_\+t}} \texorpdfstring{$\ast$}{*}time)
+\begin{DoxyCompactList}\small\item\em Retrieves the current time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_t_i_m_e_8h_a7d532dfce0d187682aa00f00ba551eee}{update\+\_\+time}} (void)
+\begin{DoxyCompactList}\small\item\em Updates the current time based on the elapsed time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for time functionality. 
+
+This file contains declarations for functions and structures related to time management. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_t_i_m_e_8h_a3c386057887f2f8885b901f0f7f51669}\label{_t_i_m_e_8h_a3c386057887f2f8885b901f0f7f51669} 
+\index{TIME.h@{TIME.h}!NUM\_OF\_HOURS@{NUM\_OF\_HOURS}}
+\index{NUM\_OF\_HOURS@{NUM\_OF\_HOURS}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_OF\_HOURS}{NUM\_OF\_HOURS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+OF\+\_\+\+HOURS~24}
+
+Number of hours in a day \Hypertarget{_t_i_m_e_8h_a77e4f758219d5cfd80315e3857e8eaf1}\label{_t_i_m_e_8h_a77e4f758219d5cfd80315e3857e8eaf1} 
+\index{TIME.h@{TIME.h}!NUM\_OF\_MINUTES@{NUM\_OF\_MINUTES}}
+\index{NUM\_OF\_MINUTES@{NUM\_OF\_MINUTES}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_OF\_MINUTES}{NUM\_OF\_MINUTES}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+OF\+\_\+\+MINUTES~60}
+
+Number of minutes in an hour \Hypertarget{_t_i_m_e_8h_a77147a13a9b4928b036eadeb97f7bb14}\label{_t_i_m_e_8h_a77147a13a9b4928b036eadeb97f7bb14} 
+\index{TIME.h@{TIME.h}!NUM\_OF\_SECONDS@{NUM\_OF\_SECONDS}}
+\index{NUM\_OF\_SECONDS@{NUM\_OF\_SECONDS}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_OF\_SECONDS}{NUM\_OF\_SECONDS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+OF\+\_\+\+SECONDS~60}
+
+Number of seconds in a minute \Hypertarget{_t_i_m_e_8h_a0ed44145d69ee63c35eafac62bc3777e}\label{_t_i_m_e_8h_a0ed44145d69ee63c35eafac62bc3777e} 
+\index{TIME.h@{TIME.h}!TIME\_ONE\_SECOND@{TIME\_ONE\_SECOND}}
+\index{TIME\_ONE\_SECOND@{TIME\_ONE\_SECOND}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{TIME\_ONE\_SECOND}{TIME\_ONE\_SECOND}}
+{\footnotesize\ttfamily \#define TIME\+\_\+\+ONE\+\_\+\+SECOND~1000}
+
+One second in milliseconds 
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_t_i_m_e_8h_a9e6c91d77e24643b888dbd1a1a590054}\label{_t_i_m_e_8h_a9e6c91d77e24643b888dbd1a1a590054} 
+\index{TIME.h@{TIME.h}!u16@{u16}}
+\index{u16@{u16}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{u16}{u16}}
+{\footnotesize\ttfamily typedef unsigned short \mbox{\hyperlink{_t_i_m_e_8h_a9e6c91d77e24643b888dbd1a1a590054}{u16}}}
+
+16-\/bit unsigned integer \Hypertarget{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}\label{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049} 
+\index{TIME.h@{TIME.h}!u32@{u32}}
+\index{u32@{u32}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{u32}{u32}}
+{\footnotesize\ttfamily typedef unsigned int \mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}}
+
+32-\/bit unsigned integer \Hypertarget{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}\label{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de} 
+\index{TIME.h@{TIME.h}!u8@{u8}}
+\index{u8@{u8}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{u8}{u8}}
+{\footnotesize\ttfamily typedef unsigned char \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}}
+
+8-\/bit unsigned integer 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6}\label{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6} 
+\index{TIME.h@{TIME.h}!RetTimeError@{RetTimeError}}
+\index{RetTimeError@{RetTimeError}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{RetTimeError}{RetTimeError}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6}{Ret\+Time\+Error}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{time\_ok@{time\_ok}!TIME.h@{TIME.h}}\index{TIME.h@{TIME.h}!time\_ok@{time\_ok}}}\Hypertarget{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6a2ad88a8c6a80f477267adaf1b4476a64}\label{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6a2ad88a8c6a80f477267adaf1b4476a64} 
+time\+\_\+ok&No error \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{invalid\_input@{invalid\_input}!TIME.h@{TIME.h}}\index{TIME.h@{TIME.h}!invalid\_input@{invalid\_input}}}\Hypertarget{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6ac4cca54c8cf16d22f61f1c304fa55230}\label{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6ac4cca54c8cf16d22f61f1c304fa55230} 
+invalid\+\_\+input&Invalid input error \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248}\label{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248} 
+\index{TIME.h@{TIME.h}!state\_t@{state\_t}}
+\index{state\_t@{state\_t}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{state\_t}{state\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248}{state\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INCREMENT@{INCREMENT}!TIME.h@{TIME.h}}\index{TIME.h@{TIME.h}!INCREMENT@{INCREMENT}}}\Hypertarget{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248a5d249e853c4031947f979fe903390dfb}\label{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248a5d249e853c4031947f979fe903390dfb} 
+INCREMENT&Increment state \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DECREMENT@{DECREMENT}!TIME.h@{TIME.h}}\index{TIME.h@{TIME.h}!DECREMENT@{DECREMENT}}}\Hypertarget{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248acd27a3a13d233019cec19a2423d65a84}\label{_t_i_m_e_8h_aa0aafed44fec19806d8f9ad834be1248acd27a3a13d233019cec19a2423d65a84} 
+DECREMENT&Decrement state \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124}\label{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124} 
+\index{TIME.h@{TIME.h}!type\_t@{type\_t}}
+\index{type\_t@{type\_t}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{type\_t}{type\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SECOND@{SECOND}!TIME.h@{TIME.h}}\index{TIME.h@{TIME.h}!SECOND@{SECOND}}}\Hypertarget{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a7cb36ff0a80f238d5b987d9250d369e3}\label{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a7cb36ff0a80f238d5b987d9250d369e3} 
+SECOND&Second type \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MINUTE@{MINUTE}!TIME.h@{TIME.h}}\index{TIME.h@{TIME.h}!MINUTE@{MINUTE}}}\Hypertarget{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a26f8ff0cdd909ee179a0ed06adfc4a0b}\label{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a26f8ff0cdd909ee179a0ed06adfc4a0b} 
+MINUTE&Minute type \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOUR@{HOUR}!TIME.h@{TIME.h}}\index{TIME.h@{TIME.h}!HOUR@{HOUR}}}\Hypertarget{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a79aab2da0ce6d416b78895cf20661b35}\label{_t_i_m_e_8h_adee610a3c7375031538811d29f6a4124a79aab2da0ce6d416b78895cf20661b35} 
+HOUR&Hour type \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_t_i_m_e_8h_a2cc4965f65a373e0b58e0430f029e3dd}\label{_t_i_m_e_8h_a2cc4965f65a373e0b58e0430f029e3dd} 
+\index{TIME.h@{TIME.h}!get\_time@{get\_time}}
+\index{get\_time@{get\_time}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{get\_time()}{get\_time()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6}{Ret\+Time\+Error}} get\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtime__t}{time\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{time }\end{DoxyParamCaption})}
+
+
+
+Retrieves the current time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Pointer to a \doxylink{structtime__t}{time\+\_\+t} structure to store the retrieved time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an error code (time\+\_\+ok or invalid\+\_\+input) on failure. 
+\end{DoxyReturn}
+\Hypertarget{_t_i_m_e_8h_a2073fdb9d4cdead7d36ee5fb5439781a}\label{_t_i_m_e_8h_a2073fdb9d4cdead7d36ee5fb5439781a} 
+\index{TIME.h@{TIME.h}!set\_time@{set\_time}}
+\index{set\_time@{set\_time}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{set\_time()}{set\_time()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_t_i_m_e_8h_a494c6852ff2d10c0e4e7786777dc24e6}{Ret\+Time\+Error}} set\+\_\+time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structtime__t}{time\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{time }\end{DoxyParamCaption})}
+
+
+
+Sets the time value based on the specified operation and type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Pointer to the new time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an error code (time\+\_\+ok or invalid\+\_\+input) on failure. 
+\end{DoxyReturn}
+\Hypertarget{_t_i_m_e_8h_a7d532dfce0d187682aa00f00ba551eee}\label{_t_i_m_e_8h_a7d532dfce0d187682aa00f00ba551eee} 
+\index{TIME.h@{TIME.h}!update\_time@{update\_time}}
+\index{update\_time@{update\_time}!TIME.h@{TIME.h}}
+\doxysubsubsection{\texorpdfstring{update\_time()}{update\_time()}}
+{\footnotesize\ttfamily void update\+\_\+time (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Updates the current time based on the elapsed time. 
+
+This function should be called periodically to update the time. It increments the seconds and adjusts minutes and hours accordingly. 

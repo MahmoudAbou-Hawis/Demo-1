@@ -1,0 +1,121 @@
+\doxysection{Control\+Protocol.\+h}
+\hypertarget{_control_protocol_8h_source}{}\label{_control_protocol_8h_source}\index{include/HAL/Control\_Protocol/ControlProtocol.h@{include/HAL/Control\_Protocol/ControlProtocol.h}}
+\mbox{\hyperlink{_control_protocol_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*******************************************************************************/}}
+\DoxyCodeLine{00022\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00023\ \textcolor{comment}{/*\ MULTIPLE\ INCLUSION\ GUARD\ */}}
+\DoxyCodeLine{00024\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ CONTROL\_PROTOCOL\_H\_}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ CONTROL\_PROTOCOL\_H\_}}
+\DoxyCodeLine{00027\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00030\ \textcolor{comment}{/*\ C++\ Style\ GUARD\ */}}
+\DoxyCodeLine{00031\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00036\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00039\ \textcolor{comment}{/*\ INCLUDES\ */}}
+\DoxyCodeLine{00040\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00044\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00047\ \textcolor{comment}{/*\ PUBLIC\ DEFINES\ */}}
+\DoxyCodeLine{00048\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ NUMBER\_OF\_DATA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (8U)}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00055\ \textcolor{comment}{/*\ PUBLIC\ MACROS\ */}}
+\DoxyCodeLine{00056\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00061\ \textcolor{comment}{/*\ PUBLIC\ ENUMS\ */}}
+\DoxyCodeLine{00062\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00065\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ PROTOCOL\_OK,}
+\DoxyCodeLine{00067\ \ \ \ \ PROTOCOL\_ERROR}
+\DoxyCodeLine{00068\ \}\ PROTOCOL\_ErrorStatus\_t;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{/*\ Enum\ defining\ the\ type\ of\ message\ */}}
+\DoxyCodeLine{00072\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00073\ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172ae680fa7eb860abe7832f792cc18a44b4}{COMMAND}},\ \ \ \ }
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172a9d7d6f31868d66330397c967c4afd2d2}{DATA}}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00076\ \}\ \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172}{MsgType\_t}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00082\ \textcolor{comment}{/*\ PUBLIC\ TYPES\ */}}
+\DoxyCodeLine{00083\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{comment}{/*\ Callback\ function\ type\ */}}
+\DoxyCodeLine{00086\ \textcolor{keyword}{typedef}\ void\ (*Protocol\_CallBack)(void);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \textcolor{comment}{/*\ Struct\ defining\ a\ \ message\ */}}
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172}{MsgType\_t}}\ \mbox{\hyperlink{struct_message__t_a753e76067d3cc4061e08e031eb4f3217}{MessageType}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{char}\ \ pMessage[NUMBER\_OF\_DATA];\ }
+\DoxyCodeLine{00093\ \ \ \ \ uint16\_t\ \mbox{\hyperlink{struct_message__t_a8e29392de815518f3034e0efea2c174f}{len}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ Protocol\_CallBack\ \mbox{\hyperlink{struct_message__t_a877d6d2710bceb82b1c576c69c9fb935}{CallBack}};\ \ \ \ \ }
+\DoxyCodeLine{00095\ \}\ \mbox{\hyperlink{struct_message__t}{Message\_t}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00100\ \textcolor{comment}{/*\ PUBLIC\ CONSTANT\ DECLARATIONS\ */}}
+\DoxyCodeLine{00101\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00106\ \textcolor{comment}{/*\ PUBLIC\ VARIABLE\ DECLARATIONS\ */}}
+\DoxyCodeLine{00107\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00113\ \textcolor{comment}{/*\ PUBLIC\ FUNCTION\ PROTOTYPES\ */}}
+\DoxyCodeLine{00114\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00119\ PROTOCOL\_ErrorStatus\_t\ \mbox{\hyperlink{_control_protocol_8h_a83f44d3bb489a9b30d955b4c4dd0d6ca}{Protocol\_Init}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00125\ PROTOCOL\_ErrorStatus\_t\ \mbox{\hyperlink{_control_protocol_8h_af1f220e1a69956e7e58493dc947cee44}{Protocol\_SendAsync}}(\mbox{\hyperlink{struct_message__t}{Message\_t}}\ *\ msg);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00131\ PROTOCOL\_ErrorStatus\_t\ \mbox{\hyperlink{_control_protocol_8h_ac42ac6fe7141766318e9d857b01501a9}{Protocol\_ReceiveAsync}}(\mbox{\hyperlink{struct_message__t}{Message\_t}}*\ msg);}
+\DoxyCodeLine{00132\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00135\ \textcolor{comment}{/*\ C++\ Style\ GUARD\ */}}
+\DoxyCodeLine{00136\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00138\ \}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00140\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00143\ \textcolor{comment}{/*\ MULTIPLE\ INCLUSION\ GUARD\ */}}
+\DoxyCodeLine{00144\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CONTROL\_PROTOCOL\_H\_\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00146\ \textcolor{comment}{/******************************************************************************/}}
+
+\end{DoxyCode}

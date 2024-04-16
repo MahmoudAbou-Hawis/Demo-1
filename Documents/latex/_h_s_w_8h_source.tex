@@ -1,0 +1,57 @@
+\doxysection{HSW.\+h}
+\hypertarget{_h_s_w_8h_source}{}\label{_h_s_w_8h_source}\index{include/HAL/HSW/HSW.h@{include/HAL/HSW/HSW.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/************************************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ File\ Name:\ SW.h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Layer\ \ \ \ :\ HAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Module\ \ \ :\ SWITCH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Version\ \ :\ V\ 0.0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Created\ \ :\ 18/2/2023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Author\ \ \ :\ Fatma\ Ezzat\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *************************Brief:\ This\ Header\ file\ defines\ functions\ for\ Switch\ driver**********************}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ ************************************************************************************************************/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ HAL\_1\_SW\_SW\_H\_}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ HAL\_1\_SW\_SW\_H\_}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}STD\_TYPES.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}HSW\_confg.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00023\ \ \ \ \ SW\_enumOK=0,}
+\DoxyCodeLine{00027\ \ \ \ \ SW\_enumNOK,}
+\DoxyCodeLine{00031\ \ \ \ \ SW\_enumWrongPortNumber,}
+\DoxyCodeLine{00035\ \ \ \ \ SW\_enumWrongPinNumber,}
+\DoxyCodeLine{00039\ \ \ \ \ Sw\_enumNullPointer}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \}SW\_ErrorState;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ PRESSED\ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ NOTPRESSED\ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{comment}{/*Switch\ Parameters*/}}
+\DoxyCodeLine{00047\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ port;}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ pin;}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ connection;}
+\DoxyCodeLine{00051\ \}\mbox{\hyperlink{struct_s_w___c_o_n_f_g__t}{SW\_CONFG\_t}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ *\ @brief:\ A\ Function\ to\ initialize\ a\ switch}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ *\ @parameter:\ void}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ *\ @return\ :Error\ State}}
+\DoxyCodeLine{00057\ \textcolor{comment}{\ *\ */}}
+\DoxyCodeLine{00058\ SW\_ErrorState\ SW\_init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00061\ \textcolor{comment}{\ *\ @brief:\ A\ Function\ to\ get\ the\ state\ of\ switch\ -\/-\/>\ Pressed\ or\ Not\ Pressed}}
+\DoxyCodeLine{00062\ \textcolor{comment}{\ *\ @parameter:\ The\ pin\ number\ of\ switch\ within\ a\ specific\ port}}
+\DoxyCodeLine{00063\ \textcolor{comment}{\ *\ @return\ :Error\ State}}
+\DoxyCodeLine{00064\ \textcolor{comment}{\ *\ */}}
+\DoxyCodeLine{00065\ SW\_ErrorState\ SWITCH\_enuGetStatus(SWs\_t\ switchName,\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}*\ switchState);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ HAL\_1\_SW\_SW\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

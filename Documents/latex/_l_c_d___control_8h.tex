@@ -1,0 +1,78 @@
+\doxysection{include/\+APP/\+LCD\+\_\+\+Control/\+LCD\+\_\+\+Control.h File Reference}
+\hypertarget{_l_c_d___control_8h}{}\label{_l_c_d___control_8h}\index{include/APP/LCD\_Control/LCD\_Control.h@{include/APP/LCD\_Control/LCD\_Control.h}}
+
+
+Header file for LCD control functionality.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include \"{}CSwitch.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_c_l_c_d__info__t}{CLCD\+\_\+info\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure to represent LCD information. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_c_l_c_d___updates__t}{CLCD\+\_\+\+Updates\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure to represent LCD updates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_l_c_d___control_8h_a7db5a09f6770a703ab38cff1da821aba}\label{_l_c_d___control_8h_a7db5a09f6770a703ab38cff1da821aba} 
+void {\bfseries CLCD\+\_\+\+Init} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the LCD. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_l_c_d___control_8h_a22f943029f19f9424ea5f1b079f4f7d4}{CLCD\+\_\+\+Write}} (\mbox{\hyperlink{struct_c_l_c_d__info__t}{CLCD\+\_\+info\+\_\+t}} \texorpdfstring{$\ast$}{*}info)
+\begin{DoxyCompactList}\small\item\em Writes LCD information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_l_c_d___control_8h_a556ed4164f7c8fa4a0d141c189595cff}{CLCD\+\_\+\+Get\+Updates}} (\mbox{\hyperlink{struct_c_l_c_d___updates__t}{CLCD\+\_\+\+Updates\+\_\+t}} \texorpdfstring{$\ast$}{*}updates)
+\begin{DoxyCompactList}\small\item\em Retrieves updates from the LCD. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for LCD control functionality. 
+
+\begin{DoxyParagraph}{Project Name}
+
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Code Language}
+C
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Description}
+This file contains declarations for functions and structures related to LCD control.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Author}
+Mahmoud Abou-\/\+Hawis 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_l_c_d___control_8h_a556ed4164f7c8fa4a0d141c189595cff}\label{_l_c_d___control_8h_a556ed4164f7c8fa4a0d141c189595cff} 
+\index{LCD\_Control.h@{LCD\_Control.h}!CLCD\_GetUpdates@{CLCD\_GetUpdates}}
+\index{CLCD\_GetUpdates@{CLCD\_GetUpdates}!LCD\_Control.h@{LCD\_Control.h}}
+\doxysubsubsection{\texorpdfstring{CLCD\_GetUpdates()}{CLCD\_GetUpdates()}}
+{\footnotesize\ttfamily void CLCD\+\_\+\+Get\+Updates (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_c_l_c_d___updates__t}{CLCD\+\_\+\+Updates\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{updates }\end{DoxyParamCaption})}
+
+
+
+Retrieves updates from the LCD. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em updates} & Pointer to the LCD updates structure. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_l_c_d___control_8h_a22f943029f19f9424ea5f1b079f4f7d4}\label{_l_c_d___control_8h_a22f943029f19f9424ea5f1b079f4f7d4} 
+\index{LCD\_Control.h@{LCD\_Control.h}!CLCD\_Write@{CLCD\_Write}}
+\index{CLCD\_Write@{CLCD\_Write}!LCD\_Control.h@{LCD\_Control.h}}
+\doxysubsubsection{\texorpdfstring{CLCD\_Write()}{CLCD\_Write()}}
+{\footnotesize\ttfamily void CLCD\+\_\+\+Write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_c_l_c_d__info__t}{CLCD\+\_\+info\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{info }\end{DoxyParamCaption})}
+
+
+
+Writes LCD information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info} & Pointer to the LCD information structure. \\
+\hline
+\end{DoxyParams}

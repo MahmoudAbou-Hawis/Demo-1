@@ -1,0 +1,79 @@
+\doxysection{systick.\+h}
+\hypertarget{systick_8h_source}{}\label{systick_8h_source}\index{include/MCAL/systick.h@{include/MCAL/systick.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00002\ \textcolor{comment}{*\ File:\ \ \ \ SYSTICK.h}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*\ Author:\ \ Fatma\ Ezzat}}
+\DoxyCodeLine{00004\ \textcolor{comment}{*\ Created:\ 18/3/2024}}
+\DoxyCodeLine{00005\ \textcolor{comment}{*\ Brief:\ \ \ SYSTICK\ Driver}}
+\DoxyCodeLine{00006\ \textcolor{comment}{*\ Target:\ \ STM32F401cc}}
+\DoxyCodeLine{00007\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ MCAL\_SYSTICK\_SYSTICK\_H\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ MCAL\_SYSTICK\_SYSTICK\_H\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00013\ \textcolor{comment}{/************************************************Includes************************************************/}}
+\DoxyCodeLine{00014\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}STD\_TYPES.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}SYSTICK\_Confg.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00019\ \textcolor{comment}{/************************************************Defines*************************************************/}}
+\DoxyCodeLine{00020\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00025\ \textcolor{comment}{/************************************************Types***************************************************/}}
+\DoxyCodeLine{00026\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00027\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{/*@brief:Everything\ Ok,\ Function\ had\ Performed\ Correctly.*/}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ SYSTICK\_enumOK,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \textcolor{comment}{/*@brief:Everything\ Not\ Ok,\ Function\ had\ Performed\ Incorrectly.*/}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ SYSTICK\_enumNOK,}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \textcolor{comment}{/*@brief:Send\ Null\ Pointer.*/}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ SYSTICK\_enumNullPointer,}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \}SYSTICK\_ErrorState;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{comment}{/*@brief\ :\ Pointer\ to\ fuction*/}}
+\DoxyCodeLine{00041\ \textcolor{keyword}{typedef}\ void\ (*SYSTICK\_CALLBACK)(void);\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00044\ \textcolor{comment}{/************************************************APIs****************************************************/}}
+\DoxyCodeLine{00045\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00046\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00047\ \textcolor{comment}{*@brief\ :\ Function\ to\ start\ Systick\ Timer}}
+\DoxyCodeLine{00048\ \textcolor{comment}{*@parameter:\ Timer\ Periodicity}}
+\DoxyCodeLine{00049\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00050\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00051\ SYSTICK\_ErrorState\ SYSTICK\_Start(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ Periodicity);}
+\DoxyCodeLine{00052\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00053\ \textcolor{comment}{*@brief\ :\ Function\ to\ stop\ Systick\ Timer}}
+\DoxyCodeLine{00054\ \textcolor{comment}{*@parameter:void}}
+\DoxyCodeLine{00055\ \textcolor{comment}{*@return:\ void}}
+\DoxyCodeLine{00056\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ SYSTICK\_Stop(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00058\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00059\ \textcolor{comment}{*@brief\ :\ Function\ to\ Set\ Time\ in\ timer\ }}
+\DoxyCodeLine{00060\ \textcolor{comment}{*@parameter:\ Required\ time}}
+\DoxyCodeLine{00061\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00062\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00063\ SYSTICK\_ErrorState\ SYSTICK\_SetTimeMS(\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ time);}
+\DoxyCodeLine{00064\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00065\ \textcolor{comment}{*@brief\ :\ Function\ to\ take\ the\ function\ from\ application\ layer}}
+\DoxyCodeLine{00066\ \textcolor{comment}{*@parameter:\ pointer\ to\ funtion\ }}
+\DoxyCodeLine{00067\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00068\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00069\ SYSTICK\_ErrorState\ SYSTICK\_CallBack(SYSTICK\_CALLBACK\ cbf);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{keywordtype}{void}\ SysTick\_Handler(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MCAL\_SYSTICK\_SYSTICK\_H\_}}
+
+\end{DoxyCode}

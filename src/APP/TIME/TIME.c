@@ -60,7 +60,7 @@ void update_time(void)
     if(counter == TIME_ONE_SECOND)
     {
         current_time.second++;
-        current_time.second %= NUM_OF_SCONDS;
+        current_time.second %= NUM_OF_SECONDS;
         current_time.minute += ((current_time.second == 0)?INC_MINUTE:0);
         current_time.hour   += ((current_time.minute == NUM_OF_MINUTES)?INC_HOUR:0);
         current_time.minute %= (NUM_OF_MINUTES);

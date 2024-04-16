@@ -1,0 +1,42 @@
+\doxysection{Date.\+h}
+\hypertarget{_date_8h_source}{}\label{_date_8h_source}\index{include/APP/DATE/Date.h@{include/APP/DATE/Date.h}}
+\mbox{\hyperlink{_date_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DATE\_H\ }}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DATE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}\ \ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stddef.h>}\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bb}{Operation}}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba6149767a813d18f7ba04338157768a1a}{INCREASE}},\ }
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba84c12b653ab78833f763cf33f66db984}{DECREASE}}\ }
+\DoxyCodeLine{00016\ \}\ \mbox{\hyperlink{_date_8h_aa9142b3f315f611613b38e000a4b427f}{Operation\_t}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227f}{DateType}}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa8e85ce474d6e6c5ef5b03a415dee454a}{DAY}},\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa959a3fc667edf9cb70980483c949103a}{MONTH}},\ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fad327b6aedde7e5aa6a122dd9e2154f45}{YEAR}}\ }
+\DoxyCodeLine{00023\ \}\ \mbox{\hyperlink{_date_8h_a2e96001ba159305b438955a2487fb1f9}{DateType\_t}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25}{DateError}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25a01504c20c89f02b5c707a1a50a45d8ba}{DATE\_NULL\_PTR\_PASSED}}\ =\ -\/1,\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25a07a233d95c761f9ec41d4cc3a6939c33}{DATE\_OK}}\ =\ 0,\ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{_date_8h_a417a939b5b63b2248b03e903391a0d25a21a210dcd4560e6b684c3663e1485d73}{DATE\_INVALID\_VALUE}}\ }
+\DoxyCodeLine{00030\ \}\ \mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{DateError\_t}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_date}{Date}}\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_date_ab435b6ac408b48a2edc5838cdc8aa914}{day}};\ }
+\DoxyCodeLine{00035\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_date_a1e4a668a8dbc9252b42fb794e0b706a6}{month}};\ }
+\DoxyCodeLine{00036\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_date_ab93e42ad6d3774e717d79c3f197817fa}{year}};\ }
+\DoxyCodeLine{00037\ \}\ \mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\_t}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00047\ \mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{DateError\_t}}\ \mbox{\hyperlink{_date_8h_a3f629b440ad2d486071f76905c35b37e}{Date\_SetDate}}(\mbox{\hyperlink{struct_date}{Date\_t}}\ *\mbox{\hyperlink{struct_date}{Date}});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00057\ \mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{DateError\_t}}\ \mbox{\hyperlink{_date_8h_ac28a86958860b1b60069d1f7fdeb88c5}{Date\_GetDate}}(\mbox{\hyperlink{struct_date}{Date\_t}}\ *date);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_date_8h_aedc3cb00f0d936fcc9eaaeab2cf6ef67}{Date\_UpdateDate}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

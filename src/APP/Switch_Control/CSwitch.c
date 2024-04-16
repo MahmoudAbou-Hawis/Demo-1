@@ -1,4 +1,3 @@
-/******************************************************************************/
 /**
  * @file switches_control.c
  * @brief Switch Control Module with Clock State Information
@@ -23,7 +22,6 @@
  * Mahmoud Abou-Hawis
  *
  */
-/******************************************************************************/
 
 /******************************************************************************/
 /* INCLUDES */
@@ -144,6 +142,9 @@ static void ReceiveCallBack(void);
 /* PRIVATE FUNCTION DEFINITIONS */
 /******************************************************************************/
 /******************************************************************************/
+/**
+ * @brief Used to control switches in the normal mode.
+ */
 static void CheckButtonsInNormalState(void)
 {
     uint32_t ButtonRead;
@@ -168,6 +169,9 @@ static void CheckButtonsInNormalState(void)
     }
 }
 
+/**
+ * @brief Used to control switches in the StopWatch mode.
+ */
 static void CheckButtonsInStopWatchState(void)
 {
     uint32_t ButtonRead;
@@ -214,7 +218,9 @@ static void CheckButtonsInStopWatchState(void)
     }
 }
 
-
+/**
+ * @brief Used to control switches in the Edit mode.
+ */
 static void CheckButtonsInEditState(void)
 {
     uint32_t ButtonRead;
@@ -239,15 +245,15 @@ static void CheckButtonsInEditState(void)
             return;
         }
         /** Accept the edition*/
-    	else if(UPNumberOfPressed >= 6)
-		{
+        else if(UPNumberOfPressed >= 6)
+        {
             msg.pMessage[0] = 'N';
             msg.pMessage[1] = 'K';
             Protocol_SendAsync(&msg);
             state = NORMAL;
             UPNumberOfPressed = 0;
             return;
-		}
+        }
     }
     SWITCH_enuGetStatus(DOWN_SWITCH,&ButtonRead);
     if(ButtonRead == PRESSED) DownNumberOfPressed++;
@@ -261,16 +267,16 @@ static void CheckButtonsInEditState(void)
             DownNumberOfPressed = 0;
             return;
         }
-    	else if(DownNumberOfPressed >= 6)
-		{
-            /**Quit the the edition and cancel it*/
+        /**Quit the the edition and cancel it*/
+        else if(DownNumberOfPressed >= 6)
+        {
             msg.pMessage[1] = 'Q';
             msg.pMessage[0] = 'N';
             state = NORMAL;
             DownNumberOfPressed = 0;
             Protocol_SendAsync(&msg);
             return;
-		}
+        }
         DownNumberOfPressed  = 0;
         DOWNCounts = 0;
     }
@@ -285,14 +291,17 @@ static void CheckButtonsInEditState(void)
     SWITCH_enuGetStatus(LEFT_SWITCH,&ButtonRead);
     if(ButtonRead == PRESSED)
     {
-     /** go with the cursor left */
+        /** go with the cursor left */
         msg.pMessage[1] = 'L';
         Protocol_SendAsync(&msg);
         return;
     }
 }
 
-void ReceiveCallBack(void)
+/**
+ * @brief used by control protocol when it received new command.
+ */
+static void ReceiveCallBack(void)
 {
     /** go to the Normal mode */
     if(Mymsg.pMessage[0] == 'N')
@@ -365,14 +374,21 @@ void ReceiveCallBack(void)
 /******************************************************************************/
 /* PUBLIC FUNCTION DEFINITIONS */
 /******************************************************************************/
+
+/**
+ * @brief Initialize the switches module.
+ */
 void CSWITCH_Init(void)
 {
     Protocol_Init();
-	SW_init();
+    SW_init();
     Mymsg.CallBack = ReceiveCallBack;
     Protocol_ReceiveAsync(&Mymsg);
 }
 
+/**
+ * @brief Send update over UART.
+ */
 void CSWITCH_SendUpdate(void)
 {
     switch (state)
@@ -391,6 +407,12 @@ void CSWITCH_SendUpdate(void)
     }
 }
 
+/**
+ * @brief Receive update over UART.
+ * 
+ * @param Updates Pointer to structure to hold received updates.
+ * @return CSWITCH_ErrorStatus_t Error status of the operation.
+ */
 CSWITCH_ErrorStatus_t CSWITCH_ReceivedUpdate(CSWITCH_ScreenState_t * Updates)
 {
     CSWITCH_ErrorStatus_t RET_ErrorStatus = CSWITCH_OK;
@@ -408,3 +430,4 @@ CSWITCH_ErrorStatus_t CSWITCH_ReceivedUpdate(CSWITCH_ScreenState_t * Updates)
 }
 
 /******************************************************************************/
+

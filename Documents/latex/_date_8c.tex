@@ -1,0 +1,262 @@
+\doxysection{src/\+APP/\+Date/\+Date.c File Reference}
+\hypertarget{_date_8c}{}\label{_date_8c}\index{src/APP/Date/Date.c@{src/APP/Date/Date.c}}
+
+
+Implementation file for date manipulation functions.  
+
+
+{\ttfamily \#include \"{}Date.\+h\"{}}\newline
+{\ttfamily \#include \"{}Date\+\_\+\+CFG.\+h\"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_date_8c_a77a8ef304de9fb2ed28128f886c39e76}{INCREASE\+\_\+\+DAY\+\_\+\+BY\+\_\+\+ONE}}~1
+\begin{DoxyCompactList}\small\item\em Definitions of constants for date manipulation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_date_8c_a9b9bba7d7de80df11ebe90ab579737bb}{DECREASE\+\_\+\+DAY\+\_\+\+BY\+\_\+\+ONE}}~-\/1
+\item 
+\#define \mbox{\hyperlink{_date_8c_a1c8dde11db7ad1696f12dfb87b2ae7fb}{INCREASE\+\_\+\+MONTH\+\_\+\+BY\+\_\+\+ONE}}~1
+\item 
+\#define \mbox{\hyperlink{_date_8c_a47525a631a4102d98ed67ea7733cc1e5}{DECREASE\+\_\+\+MONTH\+\_\+\+BY\+\_\+\+ONE}}~-\/1
+\item 
+\#define \mbox{\hyperlink{_date_8c_a6ee3c0ed77a88a5537e35948b8e453da}{INCREASE\+\_\+\+YEAR\+\_\+\+BY\+\_\+\+ONE}}~1
+\item 
+\#define \mbox{\hyperlink{_date_8c_a9251a75f9722e4384959e814499d4b10}{DECREASE\+\_\+\+YEAR\+\_\+\+BY\+\_\+\+ONE}}~-\/1
+\item 
+\#define \mbox{\hyperlink{_date_8c_a7a67a258517970f9028ab642ee796d10}{DAYS\+\_\+\+IN\+\_\+\+MONTH\+\_\+31}}~31
+\item 
+\#define \mbox{\hyperlink{_date_8c_a5109735849bade4201b1ef88f97f3a00}{DAYS\+\_\+\+IN\+\_\+\+MONTH\+\_\+30}}~30
+\item 
+\#define \mbox{\hyperlink{_date_8c_a6271a71795b7e1cbe5927d6af9b1235a}{DAYS\+\_\+\+IN\+\_\+\+FEBRUARY\+\_\+\+LEAP}}~29
+\item 
+\#define \mbox{\hyperlink{_date_8c_a63c81a1228a1708581193d0c87e2e422}{DAYS\+\_\+\+IN\+\_\+\+FEBRUARY\+\_\+\+NON\+\_\+\+LEAP}}~28
+\item 
+\#define \mbox{\hyperlink{_date_8c_a6e3330690c95509464875a29d635c71a}{IS\+\_\+\+VALID\+\_\+\+OPERATION}}(\+\_\+\+Operation)~((\+\_\+\+Operation == \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba6149767a813d18f7ba04338157768a1a}{INCREASE}}) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (\+\_\+\+Operation == \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba84c12b653ab78833f763cf33f66db984}{DECREASE}}))
+\item 
+\#define \mbox{\hyperlink{_date_8c_a3c3ed0c0b09b85f86d91323fd5728f03}{IS\+\_\+\+VALID\+\_\+\+TYPE}}(\+\_\+\+TYPE)~((\+\_\+\+TYPE == \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa8e85ce474d6e6c5ef5b03a415dee454a}{DAY}}) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (\+\_\+\+TYPE == \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa959a3fc667edf9cb70980483c949103a}{MONTH}}) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (\+\_\+\+TYPE == \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fad327b6aedde7e5aa6a122dd9e2154f45}{YEAR}}))
+\item 
+\#define \mbox{\hyperlink{_date_8c_a3df6105f2aec0afac32f157e993fe059}{IS\+\_\+\+NOT\+\_\+\+NULL\+\_\+\+PTR}}(\+\_\+\+PTR)~((\+\_\+\+PTR != NULL))
+\item 
+\#define \mbox{\hyperlink{_date_8c_a2e9e3f0230de087bdabd2246a59ba1d1}{IS\+\_\+\+LEAP\+\_\+\+YEAR}}(year)~((year \% 4 == 0 \&\& year \% 100 != 0) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (year \% 400 == 0))
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3}{Days\+In\+Month}} \{ \newline
+\mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3a43703591e183da695848e33443f41405}{JANUARY}} = 1
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3a27becd82fbf6f9322019f0ac15e5d2f8}{FEBRUARY}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3a9643d50b680531fd28efd57d52e86d41}{MARCH}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3aecd9e52062ac25b7b4653ce5553531c6}{APRIL}}
+, \newline
+\mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3ab6c4cee5488c943c81d62122822830e4}{MAY}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3a945a352d55e34c81e027654c0209f509}{JUNE}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3ad645b2396112d5d9a33ec2acc0d23519}{JULY}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3ab40cf84788c0a5a41375e30063586b7f}{AUGUST}}
+, \newline
+\mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3ad3da1ebcdb93dbc04b8cd63b7e1bc84b}{SEPTEMBER}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3a554aba97586ee43f0ca51b0089eed03c}{OCTOBER}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3a3356ccc34e34421d48e6c4b1e68515fe}{NOVEMBER}}
+, \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3a823acaf8f57efe16924d4233a9547c03}{DECEMBER}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum for months. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} \mbox{\hyperlink{_date_8c_a3f629b440ad2d486071f76905c35b37e}{Date\+\_\+\+Set\+Date}} (\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{struct_date}{Date}})
+\begin{DoxyCompactList}\small\item\em Function to set date. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} \mbox{\hyperlink{_date_8c_ac28a86958860b1b60069d1f7fdeb88c5}{Date\+\_\+\+Get\+Date}} (\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}date)
+\begin{DoxyCompactList}\small\item\em Function to get date. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_date_8c_aedc3cb00f0d936fcc9eaaeab2cf6ef67}{Date\+\_\+\+Update\+Date}} (void)
+\begin{DoxyCompactList}\small\item\em Function to update date. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation file for date manipulation functions. 
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_date_8c_a6271a71795b7e1cbe5927d6af9b1235a}\label{_date_8c_a6271a71795b7e1cbe5927d6af9b1235a} 
+\index{Date.c@{Date.c}!DAYS\_IN\_FEBRUARY\_LEAP@{DAYS\_IN\_FEBRUARY\_LEAP}}
+\index{DAYS\_IN\_FEBRUARY\_LEAP@{DAYS\_IN\_FEBRUARY\_LEAP}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DAYS\_IN\_FEBRUARY\_LEAP}{DAYS\_IN\_FEBRUARY\_LEAP}}
+{\footnotesize\ttfamily \#define DAYS\+\_\+\+IN\+\_\+\+FEBRUARY\+\_\+\+LEAP~29}
+
+Number of days in February during a leap year \Hypertarget{_date_8c_a63c81a1228a1708581193d0c87e2e422}\label{_date_8c_a63c81a1228a1708581193d0c87e2e422} 
+\index{Date.c@{Date.c}!DAYS\_IN\_FEBRUARY\_NON\_LEAP@{DAYS\_IN\_FEBRUARY\_NON\_LEAP}}
+\index{DAYS\_IN\_FEBRUARY\_NON\_LEAP@{DAYS\_IN\_FEBRUARY\_NON\_LEAP}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DAYS\_IN\_FEBRUARY\_NON\_LEAP}{DAYS\_IN\_FEBRUARY\_NON\_LEAP}}
+{\footnotesize\ttfamily \#define DAYS\+\_\+\+IN\+\_\+\+FEBRUARY\+\_\+\+NON\+\_\+\+LEAP~28}
+
+Number of days in February during a non-\/leap year \Hypertarget{_date_8c_a5109735849bade4201b1ef88f97f3a00}\label{_date_8c_a5109735849bade4201b1ef88f97f3a00} 
+\index{Date.c@{Date.c}!DAYS\_IN\_MONTH\_30@{DAYS\_IN\_MONTH\_30}}
+\index{DAYS\_IN\_MONTH\_30@{DAYS\_IN\_MONTH\_30}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DAYS\_IN\_MONTH\_30}{DAYS\_IN\_MONTH\_30}}
+{\footnotesize\ttfamily \#define DAYS\+\_\+\+IN\+\_\+\+MONTH\+\_\+30~30}
+
+Number of days in a month with 30 days \Hypertarget{_date_8c_a7a67a258517970f9028ab642ee796d10}\label{_date_8c_a7a67a258517970f9028ab642ee796d10} 
+\index{Date.c@{Date.c}!DAYS\_IN\_MONTH\_31@{DAYS\_IN\_MONTH\_31}}
+\index{DAYS\_IN\_MONTH\_31@{DAYS\_IN\_MONTH\_31}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DAYS\_IN\_MONTH\_31}{DAYS\_IN\_MONTH\_31}}
+{\footnotesize\ttfamily \#define DAYS\+\_\+\+IN\+\_\+\+MONTH\+\_\+31~31}
+
+Number of days in a month with 31 days \Hypertarget{_date_8c_a9b9bba7d7de80df11ebe90ab579737bb}\label{_date_8c_a9b9bba7d7de80df11ebe90ab579737bb} 
+\index{Date.c@{Date.c}!DECREASE\_DAY\_BY\_ONE@{DECREASE\_DAY\_BY\_ONE}}
+\index{DECREASE\_DAY\_BY\_ONE@{DECREASE\_DAY\_BY\_ONE}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DECREASE\_DAY\_BY\_ONE}{DECREASE\_DAY\_BY\_ONE}}
+{\footnotesize\ttfamily \#define DECREASE\+\_\+\+DAY\+\_\+\+BY\+\_\+\+ONE~-\/1}
+
+Decrement day by one \Hypertarget{_date_8c_a47525a631a4102d98ed67ea7733cc1e5}\label{_date_8c_a47525a631a4102d98ed67ea7733cc1e5} 
+\index{Date.c@{Date.c}!DECREASE\_MONTH\_BY\_ONE@{DECREASE\_MONTH\_BY\_ONE}}
+\index{DECREASE\_MONTH\_BY\_ONE@{DECREASE\_MONTH\_BY\_ONE}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DECREASE\_MONTH\_BY\_ONE}{DECREASE\_MONTH\_BY\_ONE}}
+{\footnotesize\ttfamily \#define DECREASE\+\_\+\+MONTH\+\_\+\+BY\+\_\+\+ONE~-\/1}
+
+Decrement month by one \Hypertarget{_date_8c_a9251a75f9722e4384959e814499d4b10}\label{_date_8c_a9251a75f9722e4384959e814499d4b10} 
+\index{Date.c@{Date.c}!DECREASE\_YEAR\_BY\_ONE@{DECREASE\_YEAR\_BY\_ONE}}
+\index{DECREASE\_YEAR\_BY\_ONE@{DECREASE\_YEAR\_BY\_ONE}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DECREASE\_YEAR\_BY\_ONE}{DECREASE\_YEAR\_BY\_ONE}}
+{\footnotesize\ttfamily \#define DECREASE\+\_\+\+YEAR\+\_\+\+BY\+\_\+\+ONE~-\/1}
+
+Decrement year by one \Hypertarget{_date_8c_a77a8ef304de9fb2ed28128f886c39e76}\label{_date_8c_a77a8ef304de9fb2ed28128f886c39e76} 
+\index{Date.c@{Date.c}!INCREASE\_DAY\_BY\_ONE@{INCREASE\_DAY\_BY\_ONE}}
+\index{INCREASE\_DAY\_BY\_ONE@{INCREASE\_DAY\_BY\_ONE}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{INCREASE\_DAY\_BY\_ONE}{INCREASE\_DAY\_BY\_ONE}}
+{\footnotesize\ttfamily \#define INCREASE\+\_\+\+DAY\+\_\+\+BY\+\_\+\+ONE~1}
+
+
+
+Definitions of constants for date manipulation. 
+
+Increment day by one \Hypertarget{_date_8c_a1c8dde11db7ad1696f12dfb87b2ae7fb}\label{_date_8c_a1c8dde11db7ad1696f12dfb87b2ae7fb} 
+\index{Date.c@{Date.c}!INCREASE\_MONTH\_BY\_ONE@{INCREASE\_MONTH\_BY\_ONE}}
+\index{INCREASE\_MONTH\_BY\_ONE@{INCREASE\_MONTH\_BY\_ONE}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{INCREASE\_MONTH\_BY\_ONE}{INCREASE\_MONTH\_BY\_ONE}}
+{\footnotesize\ttfamily \#define INCREASE\+\_\+\+MONTH\+\_\+\+BY\+\_\+\+ONE~1}
+
+Increment month by one \Hypertarget{_date_8c_a6ee3c0ed77a88a5537e35948b8e453da}\label{_date_8c_a6ee3c0ed77a88a5537e35948b8e453da} 
+\index{Date.c@{Date.c}!INCREASE\_YEAR\_BY\_ONE@{INCREASE\_YEAR\_BY\_ONE}}
+\index{INCREASE\_YEAR\_BY\_ONE@{INCREASE\_YEAR\_BY\_ONE}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{INCREASE\_YEAR\_BY\_ONE}{INCREASE\_YEAR\_BY\_ONE}}
+{\footnotesize\ttfamily \#define INCREASE\+\_\+\+YEAR\+\_\+\+BY\+\_\+\+ONE~1}
+
+Increment year by one \Hypertarget{_date_8c_a2e9e3f0230de087bdabd2246a59ba1d1}\label{_date_8c_a2e9e3f0230de087bdabd2246a59ba1d1} 
+\index{Date.c@{Date.c}!IS\_LEAP\_YEAR@{IS\_LEAP\_YEAR}}
+\index{IS\_LEAP\_YEAR@{IS\_LEAP\_YEAR}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{IS\_LEAP\_YEAR}{IS\_LEAP\_YEAR}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+LEAP\+\_\+\+YEAR(\begin{DoxyParamCaption}\item[{}]{year }\end{DoxyParamCaption})~((year \% 4 == 0 \&\& year \% 100 != 0) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (year \% 400 == 0))}
+
+Check if year is a leap year \Hypertarget{_date_8c_a3df6105f2aec0afac32f157e993fe059}\label{_date_8c_a3df6105f2aec0afac32f157e993fe059} 
+\index{Date.c@{Date.c}!IS\_NOT\_NULL\_PTR@{IS\_NOT\_NULL\_PTR}}
+\index{IS\_NOT\_NULL\_PTR@{IS\_NOT\_NULL\_PTR}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{IS\_NOT\_NULL\_PTR}{IS\_NOT\_NULL\_PTR}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+NOT\+\_\+\+NULL\+\_\+\+PTR(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PTR }\end{DoxyParamCaption})~((\+\_\+\+PTR != NULL))}
+
+Check if pointer is not null \Hypertarget{_date_8c_a6e3330690c95509464875a29d635c71a}\label{_date_8c_a6e3330690c95509464875a29d635c71a} 
+\index{Date.c@{Date.c}!IS\_VALID\_OPERATION@{IS\_VALID\_OPERATION}}
+\index{IS\_VALID\_OPERATION@{IS\_VALID\_OPERATION}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_OPERATION}{IS\_VALID\_OPERATION}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+OPERATION(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+Operation }\end{DoxyParamCaption})~((\+\_\+\+Operation == \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba6149767a813d18f7ba04338157768a1a}{INCREASE}}) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (\+\_\+\+Operation == \mbox{\hyperlink{_date_8h_aa8f137f19095e0bdcf4f521e901f88bba84c12b653ab78833f763cf33f66db984}{DECREASE}}))}
+
+Check if operation is valid \Hypertarget{_date_8c_a3c3ed0c0b09b85f86d91323fd5728f03}\label{_date_8c_a3c3ed0c0b09b85f86d91323fd5728f03} 
+\index{Date.c@{Date.c}!IS\_VALID\_TYPE@{IS\_VALID\_TYPE}}
+\index{IS\_VALID\_TYPE@{IS\_VALID\_TYPE}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_TYPE}{IS\_VALID\_TYPE}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+TYPE(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+TYPE }\end{DoxyParamCaption})~((\+\_\+\+TYPE == \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa8e85ce474d6e6c5ef5b03a415dee454a}{DAY}}) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (\+\_\+\+TYPE == \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fa959a3fc667edf9cb70980483c949103a}{MONTH}}) \texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|} (\+\_\+\+TYPE == \mbox{\hyperlink{_date_8h_affd3c068a55928d139fbd5278fee227fad327b6aedde7e5aa6a122dd9e2154f45}{YEAR}}))}
+
+Check if date type is valid 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3} 
+\index{Date.c@{Date.c}!DaysInMonth@{DaysInMonth}}
+\index{DaysInMonth@{DaysInMonth}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{DaysInMonth}{DaysInMonth}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_date_8c_a174f6debd226b8c0280e687d3920fbc3}{Days\+In\+Month}}}
+
+
+
+Enum for months. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JANUARY@{JANUARY}!Date.c@{Date.c}}\index{Date.c@{Date.c}!JANUARY@{JANUARY}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3a43703591e183da695848e33443f41405}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3a43703591e183da695848e33443f41405} 
+JANUARY&January \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FEBRUARY@{FEBRUARY}!Date.c@{Date.c}}\index{Date.c@{Date.c}!FEBRUARY@{FEBRUARY}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3a27becd82fbf6f9322019f0ac15e5d2f8}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3a27becd82fbf6f9322019f0ac15e5d2f8} 
+FEBRUARY&February \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MARCH@{MARCH}!Date.c@{Date.c}}\index{Date.c@{Date.c}!MARCH@{MARCH}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3a9643d50b680531fd28efd57d52e86d41}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3a9643d50b680531fd28efd57d52e86d41} 
+MARCH&March \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{APRIL@{APRIL}!Date.c@{Date.c}}\index{Date.c@{Date.c}!APRIL@{APRIL}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3aecd9e52062ac25b7b4653ce5553531c6}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3aecd9e52062ac25b7b4653ce5553531c6} 
+APRIL&April \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAY@{MAY}!Date.c@{Date.c}}\index{Date.c@{Date.c}!MAY@{MAY}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3ab6c4cee5488c943c81d62122822830e4}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3ab6c4cee5488c943c81d62122822830e4} 
+MAY&May \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JUNE@{JUNE}!Date.c@{Date.c}}\index{Date.c@{Date.c}!JUNE@{JUNE}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3a945a352d55e34c81e027654c0209f509}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3a945a352d55e34c81e027654c0209f509} 
+JUNE&June \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JULY@{JULY}!Date.c@{Date.c}}\index{Date.c@{Date.c}!JULY@{JULY}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3ad645b2396112d5d9a33ec2acc0d23519}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3ad645b2396112d5d9a33ec2acc0d23519} 
+JULY&July \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{AUGUST@{AUGUST}!Date.c@{Date.c}}\index{Date.c@{Date.c}!AUGUST@{AUGUST}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3ab40cf84788c0a5a41375e30063586b7f}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3ab40cf84788c0a5a41375e30063586b7f} 
+AUGUST&August \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SEPTEMBER@{SEPTEMBER}!Date.c@{Date.c}}\index{Date.c@{Date.c}!SEPTEMBER@{SEPTEMBER}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3ad3da1ebcdb93dbc04b8cd63b7e1bc84b}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3ad3da1ebcdb93dbc04b8cd63b7e1bc84b} 
+SEPTEMBER&September \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OCTOBER@{OCTOBER}!Date.c@{Date.c}}\index{Date.c@{Date.c}!OCTOBER@{OCTOBER}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3a554aba97586ee43f0ca51b0089eed03c}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3a554aba97586ee43f0ca51b0089eed03c} 
+OCTOBER&October \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOVEMBER@{NOVEMBER}!Date.c@{Date.c}}\index{Date.c@{Date.c}!NOVEMBER@{NOVEMBER}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3a3356ccc34e34421d48e6c4b1e68515fe}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3a3356ccc34e34421d48e6c4b1e68515fe} 
+NOVEMBER&November \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DECEMBER@{DECEMBER}!Date.c@{Date.c}}\index{Date.c@{Date.c}!DECEMBER@{DECEMBER}}}\Hypertarget{_date_8c_a174f6debd226b8c0280e687d3920fbc3a823acaf8f57efe16924d4233a9547c03}\label{_date_8c_a174f6debd226b8c0280e687d3920fbc3a823acaf8f57efe16924d4233a9547c03} 
+DECEMBER&December \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_date_8c_ac28a86958860b1b60069d1f7fdeb88c5}\label{_date_8c_ac28a86958860b1b60069d1f7fdeb88c5} 
+\index{Date.c@{Date.c}!Date\_GetDate@{Date\_GetDate}}
+\index{Date\_GetDate@{Date\_GetDate}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{Date\_GetDate()}{Date\_GetDate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} Date\+\_\+\+Get\+Date (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{date }\end{DoxyParamCaption})}
+
+
+
+Function to get date. 
+
+Retrieves the current date value. \Hypertarget{_date_8c_a3f629b440ad2d486071f76905c35b37e}\label{_date_8c_a3f629b440ad2d486071f76905c35b37e} 
+\index{Date.c@{Date.c}!Date\_SetDate@{Date\_SetDate}}
+\index{Date\_SetDate@{Date\_SetDate}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{Date\_SetDate()}{Date\_SetDate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_date_8h_aa81b4ae66e59b4776d1dd54434684783}{Date\+Error\+\_\+t}} Date\+\_\+\+Set\+Date (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_date_8h_a5fb8a6b93df3014c1f89ad88fc605b0b}{Date\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{Date }\end{DoxyParamCaption})}
+
+
+
+Function to set date. 
+
+Sets the date value based on the specified operation and type. \Hypertarget{_date_8c_aedc3cb00f0d936fcc9eaaeab2cf6ef67}\label{_date_8c_aedc3cb00f0d936fcc9eaaeab2cf6ef67} 
+\index{Date.c@{Date.c}!Date\_UpdateDate@{Date\_UpdateDate}}
+\index{Date\_UpdateDate@{Date\_UpdateDate}!Date.c@{Date.c}}
+\doxysubsubsection{\texorpdfstring{Date\_UpdateDate()}{Date\_UpdateDate()}}
+{\footnotesize\ttfamily void Date\+\_\+\+Update\+Date (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Function to update date. 
+
+Updates the date. 

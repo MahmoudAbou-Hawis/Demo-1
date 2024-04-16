@@ -1,0 +1,141 @@
+\doxysection{NVIC.\+h}
+\hypertarget{_n_v_i_c_8h_source}{}\label{_n_v_i_c_8h_source}\index{include/MCAL/NVIC.h@{include/MCAL/NVIC.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ MCAL\_NVIC\_NVIC\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ MCAL\_NVIC\_NVIC\_H\_}}
+\DoxyCodeLine{00003\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00004\ \textcolor{comment}{/************************************************Includes************************************************/}}
+\DoxyCodeLine{00005\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}STD\_TYPES.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00009\ \textcolor{comment}{/************************************************Defines*************************************************/}}
+\DoxyCodeLine{00010\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{/*Interrupt\ Types*/}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ NVIC\_WINDOW\_WATCHDOG\_TIMER\ \ \ \ \ \ 0}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ NIVC\_EXTERNAL\_LINE16\ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ NIVC\_EXTERNAL\_LINE21\ \ \ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ NIVC\_EXTERNAL\_LINE22\ \ \ \ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ NIVC\_FLASH\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ NVIC\_RCC\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ NVIC\_EXT0\_INTERRRUPT\ \ \ \ \ \ \ \ \ \ \ \ 6}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ NVIC\_EXT1\_INTERRRUPT\ \ \ \ \ \ \ \ \ \ \ \ 7}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ NVIC\_EXT2\_INTERRRUPT\ \ \ \ \ \ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ NVIC\_EXT3\_INTERRRUPT\ \ \ \ \ \ \ \ \ \ \ \ 9}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ NVIC\_EXT4\_INTERRRUPT\ \ \ \ \ \ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_STREAM0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 11}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_STREAM1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 12}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_STREAM2\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 13}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_STREAM3\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 14}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_STREAM4\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 15}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_STREAM5\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 16}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_STREAM6\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 17}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ NVIC\_ADC\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ 18}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ NVIC\_EXT9\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 23}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ NVIC\_TIM1\_BRK\_INTERRUPT\ \ \ \ \ \ \ \ \ 24}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ NVIC\_TIM1\_UP\_INTERRUPT\ \ \ \ \ \ \ \ \ \ 25}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ NVIC\_TIMI1\_TRG\_INTERRUPT\ \ \ \ \ \ \ \ 26}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ NVIC\_TIMI1\_CC\_INTERRUPT\ \ \ \ \ \ \ \ \ 27}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ NVIC\_TIMI2\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ 28}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ NVIC\_TIMI3\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ 29}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ NVIC\_TIMI4\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ 30}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ NVIC\_I2C1\_EV\_INTERRUPT\ \ \ \ \ \ \ \ \ \ 31}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ NVIC\_I2C1\_ER\_INTERRUPT\ \ \ \ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ NVIC\_I2C2\_EV\_INTERRUPT\ \ \ \ \ \ \ \ \ \ 33}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ NVIC\_I2C2\_ER\_INTERRUPT\ \ \ \ \ \ \ \ \ \ 34}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ NVIC\_SPI1\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 35}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ NVIC\_SPI2\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 36}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ NVIC\_USART1\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ 37}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ NVIC\_USART2\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ 38}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ NVIC\_EXTI15\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ 40}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ NVIC\_EXTI17\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ 41}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ NVIC\_EXTI18\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ 42}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ NVIC\_DMA1\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 47}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ NVIC\_SDIO\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 49}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ NVIC\_TIM5\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 50}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ NVIC\_SPI3\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 51}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM0\_INTERRUPT\ \ \ \ \ 56}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM1\_INTERRUPT\ \ \ \ \ 57}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM2\_INTERRUPT\ \ \ \ \ 58}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM3\_INTERRUPT\ \ \ \ \ 59}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM4\_INTERRUPT\ \ \ \ \ 60}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ NVIC\_OTG\_FS\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ 67}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM5\_INTERRUPT\ \ \ \ \ 68}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM6\_INTERRUPT\ \ \ \ \ 69}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ NVIC\_DMA2\_STREAM7\_INTERRUPT\ \ \ \ \ 70}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ NVIC\_USART6\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ 71}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ NVIC\_I2C3\_EV\_INTERRUPT\ \ \ \ \ \ \ \ \ \ 72}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ NVIC\_I2C3\_ER\_INTERRUPT\ \ \ \ \ \ \ \ \ \ 73}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ NVIC\_FPU\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ \ 81}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ NVIC\_SPI4\_INTERRUPT\ \ \ \ \ \ \ \ \ \ \ \ \ 84}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00072\ \textcolor{comment}{/************************************************Types***************************************************/}}
+\DoxyCodeLine{00073\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00074\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00078\ \ \ \ \ NVIC\_enumOK,}
+\DoxyCodeLine{00082\ \ \ \ \ NVIC\_enumNOK,}
+\DoxyCodeLine{00086\ \ \ \ \ NVIC\_enumWrongIntNum,}
+\DoxyCodeLine{00090\ \ \ \ \ NVIC\_enumNullPointer,}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \}NVIC\_ERROR\_t;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00096\ \textcolor{comment}{/************************************************APIs****************************************************/}}
+\DoxyCodeLine{00097\ \textcolor{comment}{/********************************************************************************************************/}}
+\DoxyCodeLine{00098\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00099\ \textcolor{comment}{*@brief:Function\ to\ Enable\ a\ specific\ interrupt}}
+\DoxyCodeLine{00100\ \textcolor{comment}{*@param:\ interrupt\ number}}
+\DoxyCodeLine{00101\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00102\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00103\ NVIC\_ERROR\_t\ NVIC\_EnableInterrupt(\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ intNum);}
+\DoxyCodeLine{00104\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00105\ \textcolor{comment}{*@brief:Function\ to\ Disable\ a\ specific\ interrupt}}
+\DoxyCodeLine{00106\ \textcolor{comment}{*@param:\ interrupt\ number}}
+\DoxyCodeLine{00107\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00108\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00109\ NVIC\_ERROR\_t\ NVIC\_DisableInterrupt(\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ intNum);}
+\DoxyCodeLine{00110\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00111\ \textcolor{comment}{*@brief:Function\ to\ Set\ Priority\ to\ a\ specific\ interrupt}}
+\DoxyCodeLine{00112\ \textcolor{comment}{*@param:\ interrupt\ number}}
+\DoxyCodeLine{00113\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00114\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00115\ NVIC\_ERROR\_t\ NVIC\_SetPriority(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ intNum,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ priority);}
+\DoxyCodeLine{00116\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00117\ \textcolor{comment}{*@brief:Function\ to\ Get\ Priority\ of\ a\ specific\ interrupt}}
+\DoxyCodeLine{00118\ \textcolor{comment}{*@param:\ interrupt\ number}}
+\DoxyCodeLine{00119\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00120\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00121\ NVIC\_ERROR\_t\ NVIC\_SetSubPriority(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ intNum,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ subGroup,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ Preemption,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ subGroupbits\ );}
+\DoxyCodeLine{00122\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00123\ \textcolor{comment}{*@brief:Function\ to\ Set\ Pinding\ bit\ of\ a\ specific\ interrupt}}
+\DoxyCodeLine{00124\ \textcolor{comment}{*@param:\ interrupt\ number}}
+\DoxyCodeLine{00125\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00126\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00127\ NVIC\_ERROR\_t\ NVIC\_SetPending(\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ intNum);}
+\DoxyCodeLine{00128\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00129\ \textcolor{comment}{*@brief:Function\ to\ Clear\ Pinding\ bit\ of\ a\ specific\ interrupt}}
+\DoxyCodeLine{00130\ \textcolor{comment}{*@param:\ interrupt\ number}}
+\DoxyCodeLine{00131\ \textcolor{comment}{*@return:\ Error\ State}}
+\DoxyCodeLine{00132\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00133\ NVIC\_ERROR\_t\ NVIC\_ClearPending(\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ intNum);}
+\DoxyCodeLine{00134\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00135\ \textcolor{comment}{*@brief:Function\ to\ Get\ the\ active\ state\ of\ a\ specific\ interrupt}}
+\DoxyCodeLine{00136\ \textcolor{comment}{*@param:\ interrupt\ number\ and\ Pointer\ to\ Variable\ that\ carries\ the\ value\ of\ state}}
+\DoxyCodeLine{00137\ \textcolor{comment}{*@return:Error\ State}}
+\DoxyCodeLine{00138\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00139\ NVIC\_ERROR\_t\ NVIC\_GetActiveStatus(\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ intNum,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}*\ Add\_ActiveState);}
+\DoxyCodeLine{00140\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00141\ \textcolor{comment}{*@brief:Function\ to\ Generate\ Software\ Interrupt}}
+\DoxyCodeLine{00142\ \textcolor{comment}{*@param:interrupt\ number}}
+\DoxyCodeLine{00143\ \textcolor{comment}{*@return:Error\ State}}
+\DoxyCodeLine{00144\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00145\ NVIC\_ERROR\_t\ NVIC\_GenerateSWInterrupt(\mbox{\hyperlink{_t_i_m_e_8h_a10e94b422ef0c20dcdec20d31a1f5049}{u32}}\ intNum);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MCAL\_NVIC\_NVIC\_H\_}}
+
+\end{DoxyCode}

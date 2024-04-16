@@ -1,0 +1,150 @@
+\doxysection{gpio.\+h}
+\hypertarget{gpio_8h_source}{}\label{gpio_8h_source}\index{include/MCAL/gpio.h@{include/MCAL/gpio.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/************************************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ File\ Name:\ GPIO.h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Layer\ \ \ \ :\ MCAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Module\ \ \ :\ GPIO\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Version\ \ :\ V\ 0.0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Created\ \ :\ 18/2/2023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Author\ \ \ :\ Fatma\ Ezzat\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *************************Brief:\ This\ Header\ file\ defines\ functions\ for\ GPIO\ driver************************.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ ************************************************************************************************************/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ MCAL\_GPIO\_GPIO\_H\_}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ MCAL\_GPIO\_GPIO\_H\_}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}STD\_TYPES.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{comment}{/**********************************\ 1-\/\ Defines\ **************************************/}}
+\DoxyCodeLine{00015\ \textcolor{comment}{/*1-\/\ General\ Purpose\ Pins*/}}
+\DoxyCodeLine{00016\ \textcolor{comment}{/*Output\ Pins*/}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ GPIO\_GP\_OUTPUT\_PUSHPULL\_PULL\_UP\ \ \ \ \ \ \ \ \ 0b01001}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ GPIO\_GP\_OUTPUT\_PUSHPULL\_PULL\_DOWN\ \ \ \ \ \ \ 0b01010}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ GPIO\_GP\_OUTPUT\_OPENDRAIN\_\_PULL\_UP\ \ \ \ \ \ \ 0b01101}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ GPIO\_GP\_OUTPUT\_OPENDRAIN\_\_PULL\_DOWN\ \ \ \ \ 0b01110}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{/*Input\ Pins*/}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ GPIO\_GP\_INPUT\_PULL\_UP\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0b00001}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ GPIO\_GP\_INPUT\_PULL\_DOWN\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0b00010}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ GPIO\_GP\_INPUT\_FLOATING\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0b00000}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/*2-\/\ Alternative\ Functions\ Pins*/}}
+\DoxyCodeLine{00029\ \textcolor{comment}{/*Output\ Pins*/}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ GPIO\_AF\_OUTPUT\_PUSHPULL\_PULL\_UP\ \ \ \ \ \ \ \ \ 0b10001}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ GPIO\_AF\_OUTPUT\_PUSHPULL\_PULL\_DOWN\ \ \ \ \ \ \ 0b10000}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ GPIO\_AF\_OUTPUT\_OPENDRAIN\_\_PULL\_UP\ \ \ \ \ \ \ 0b10101}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ GPIO\_AF\_OUTPUT\_OPENDRAIN\_\_PULL\_DOWN\ \ \ \ \ 0b10110}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ GPIO\_ALTERNATIVE\_FUNC\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0b10010}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{/*3-\/\ Analog\ Pins*/}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ GPIO\_ANALOG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0b11000}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{/*PORT\ Options*/}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ PORT\_A\ \ \ \ \ 0}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ PORT\_B\ \ \ \ \ 1}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ PORT\_C\ \ \ \ \ 2}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ PORT\_D\ \ \ \ \ 3}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ PORT\_E\ \ \ \ \ 4}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ PORT\_H\ \ \ \ \ 5}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{comment}{/*PIN\ Options*/}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ \ \ PIN\_0\ \ \ \ 0}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ \ \ PIN\_1\ \ \ \ 1}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ \ \ PIN\_2\ \ \ \ 2}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ \ \ PIN\_3\ \ \ \ 3}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ \ \ PIN\_4\ \ \ \ 4}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ \ \ PIN\_5\ \ \ \ 5}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ \ \ PIN\_6\ \ \ \ 6}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ \ \ PIN\_7\ \ \ \ 7}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ \ \ PIN\_8\ \ \ \ 8}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ \ \ PIN\_9\ \ \ \ 9}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ \ \ PIN\_10\ \ \ 10}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ \ \ PIN\_11\ \ \ 11}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ \ \ PIN\_12\ \ \ 12}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ \ \ PIN\_13\ \ \ 13}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ \ \ PIN\_14\ \ \ 14}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ \ \ PIN\_15\ \ \ 15}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{comment}{/*Speed\ Options*/}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ SPEED\_LOW\ \ \ \ \ \ \ \ \ 0b00}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ SPEED\_MEDIUM\ \ \ \ \ \ 0b01}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ SPEED\_HIGH\ \ \ \ \ \ \ \ 0b10}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ SPEED\_VERY\_HIGH\ \ \ 0b11}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ LOGIC\_LOW\ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ LOGIC\_HIGH\ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{comment}{/*-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ Alternative\ Functions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ GPIO\_AF00\ \ \ \ \ \ \ \ \ (0UL)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ GPIO\_AF01\ \ \ \ \ \ \ \ \ (1UL)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ GPIO\_AF02\ \ \ \ \ \ \ \ \ (2UL)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ GPIO\_AF03\ \ \ \ \ \ \ \ \ (3UL)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ GPIO\_AF04\ \ \ \ \ \ \ \ \ (4UL)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ GPIO\_AF05\ \ \ \ \ \ \ \ \ (5UL)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ GPIO\_AF06\ \ \ \ \ \ \ \ \ (6UL)}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ GPIO\_AF07\ \ \ \ \ \ \ \ \ (7UL)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ GPIO\_AF08\ \ \ \ \ \ \ \ \ (8UL)}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ GPIO\_AF09\ \ \ \ \ \ \ \ \ (9UL)}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ GPIO\_AF10\ \ \ \ \ \ \ \ \ (10UL)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ GPIO\_AF11\ \ \ \ \ \ \ \ \ (11UL)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ GPIO\_AF12\ \ \ \ \ \ \ \ \ (12UL)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ GPIO\_AF13\ \ \ \ \ \ \ \ \ (13UL)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ GPIO\_AF14\ \ \ \ \ \ \ \ \ (14UL)}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ GPIO\_AF15\ \ \ \ \ \ \ \ \ (15UL)}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{comment}{/**********************************\ 2-\/\ Types\ ****************************************/}}
+\DoxyCodeLine{00097\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ port;}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ pin;}
+\DoxyCodeLine{00101\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ speed;}
+\DoxyCodeLine{00102\ \ \ \ \ \mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ mode;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \}\mbox{\hyperlink{struct_g_p_i_o___p_i_n___c_o_n_f_g}{GPIO\_PIN\_CONFG}};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00107\ \ \ \ \ GPIO\_enumOK,}
+\DoxyCodeLine{00108\ \ \ \ \ GPIO\_enumNOK,}
+\DoxyCodeLine{00109\ \ \ \ \ GPIO\_enumNullPointer,}
+\DoxyCodeLine{00110\ \ \ \ \ GPIO\_enumWrongPort,}
+\DoxyCodeLine{00111\ \ \ \ \ GPIO\_enumWrongPin,}
+\DoxyCodeLine{00112\ \ \ \ \ GPIO\_enumWrongAF,}
+\DoxyCodeLine{00113\ \ \ \ \ GPIO\_enumWrongValue,}
+\DoxyCodeLine{00114\ \ \ \ \ GPIO\_enumWrongSpeed}
+\DoxyCodeLine{00115\ \}GPIO\_ErrorState;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{comment}{/******************************\ 3-\/\ Function\ Prototypes\ ******************************/}}
+\DoxyCodeLine{00118\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00119\ \textcolor{comment}{\ *\ @brief:Function\ to\ initialize\ \ a\ GPIO\ pin}}
+\DoxyCodeLine{00120\ \textcolor{comment}{\ *\ @parameter:\ Struct\ of\ Data\ of\ Pin}}
+\DoxyCodeLine{00121\ \textcolor{comment}{\ *\ @return:Error\ State}}
+\DoxyCodeLine{00122\ \textcolor{comment}{\ *\ */}}
+\DoxyCodeLine{00123\ GPIO\_ErrorState\ GPIO\_InitPin(\mbox{\hyperlink{struct_g_p_i_o___p_i_n___c_o_n_f_g}{GPIO\_PIN\_CONFG}}\ *DataOfPin);}
+\DoxyCodeLine{00124\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00125\ \textcolor{comment}{\ *\ @brief:Function\ to\ set\ the\ value\ of\ a\ GPIO\ pin}}
+\DoxyCodeLine{00126\ \textcolor{comment}{\ *\ @parameter:\ The\ pin\ number\ within\ a\ specific\ port\ and\ its\ value}}
+\DoxyCodeLine{00127\ \textcolor{comment}{\ *\ @return:Error\ State}}
+\DoxyCodeLine{00128\ \textcolor{comment}{\ *\ */}}
+\DoxyCodeLine{00129\ GPIO\_ErrorState\ GPIO\_SetPinValue(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ port,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ pin,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ value);}
+\DoxyCodeLine{00130\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00131\ \textcolor{comment}{\ *\ @brief:Function\ to\ get\ the\ value\ of\ a\ GPIO\ pin}}
+\DoxyCodeLine{00132\ \textcolor{comment}{\ *\ @parameter:\ The\ pin\ number\ within\ a\ specific\ port\ and\ pointer\ to\ carry\ the\ return\ value}}
+\DoxyCodeLine{00133\ \textcolor{comment}{\ *\ @return:Error\ State}}
+\DoxyCodeLine{00134\ \textcolor{comment}{\ *\ */}}
+\DoxyCodeLine{00135\ GPIO\_ErrorState\ GPIO\_GetPinValue(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ port,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ pin,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ *ptr);}
+\DoxyCodeLine{00136\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00137\ \textcolor{comment}{\ *\ @brief:Function\ to\ configure\ Alternative\ Function}}
+\DoxyCodeLine{00138\ \textcolor{comment}{\ *\ @parameter:\ The\ pin\ number\ within\ a\ specific\ port\ and\ pointer\ to\ carry\ the\ return\ value}}
+\DoxyCodeLine{00139\ \textcolor{comment}{\ *\ @return:Error\ State}}
+\DoxyCodeLine{00140\ \textcolor{comment}{\ *\ */}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ GPIO\_ErrorState\ GPIO\_CFG\_AlternativeFunction(\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ port,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ pin,\mbox{\hyperlink{_t_i_m_e_8h_aed742c436da53c1080638ce6ef7d13de}{u8}}\ Copy\_AFNumber)\ ;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ MCAL\_GPIO\_GPIO\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

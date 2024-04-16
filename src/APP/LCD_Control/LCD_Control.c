@@ -1,19 +1,27 @@
 /******************************************************************************/
 /**
- * @file FILE.c
- * @brief 
+ * @file LCD Control.c 
+ * @brief Time Display, Stopwatch, and Edit Functionality
+ *
+ * This file provides functionalities for a versatile time application
+ * offering three modes:
+ *  - Stop watch: Tracks elapsed time.
+ *  - Normal: Displays the current time and date.
+ *  - Edit: Allows modification of the displayed time and date (with security considerations).
  *
  * @par Project Name
- * 
+ *  Demo 1
  *
  * @par Code Language
  * C
  *
  * @par Description
- * 
- * 
- * @par Author
- * Mahmoud Abou-Hawis
+ * - Implements a basic stopwatch with start, stop, and reset functions.
+ * - Displays the current time and date in a user-friendly format (e.g., HH:MM:SS DD/MM/YYYY).
+ * - Provides an edit mode for adjusting the displayed time and date.
+ *
+ * @par Authors
+ * Mahmoud Abou-Hawis ,Farma Ezzat ,Amira mahmoud 
  *
  */
 /******************************************************************************/
@@ -40,7 +48,7 @@
 /* PRIVATE MACROS */
 /******************************************************************************/
 
-
+#define IS_LEAP_YEAR(year) ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 /******************************************************************************/
 /* PRIVATE ENUMS */
 /******************************************************************************/
@@ -81,6 +89,26 @@ static uint8_t updateDate =0;
 static  uint8_t edit;
 extern CSWITCH_States_t MyState;
 static uint32_t count = 0; 
+
+#include <stdint.h>
+
+uint8_t MonthsDays[13] = {
+    0,   /* No month 0, but added to align with month numbers (e.g., January is 1st month) */
+    31,  /* January has 31 days */
+    28,  /* February has 28 days in a non-leap year */
+    31,  /* March has 31 days */
+    30,  /* April has 30 days */
+    31,  /* May has 31 days */
+    30,  /* June has 30 days */
+    31,  /* July has 31 days */
+    31,  /* August has 31 days */
+    30,  /* September has 30 days */
+    31,  /* October has 31 days */
+    30,  /* November has 30 days */
+    31   /* December has 31 days */
+};
+
+
 typedef enum{
     Psecond,
     Pminute,
@@ -111,8 +139,6 @@ Edit_Mode EditMode_Position(void){
     }else if((cursor == 24)||(cursor == 23)){
         Return = Pday;
     }
-
-
     return Return;
 }
 /******************************************************************************/
@@ -366,19 +392,23 @@ void CLCD_Write(CLCD_info_t * info)
                 }
                 break;
             case Pday :
-                updateDate++;
-                info->day++;
-                if(info->day ==30){
-                    info->day =0;
+                if ((info->day + 1 <= MonthsDays[info->month]) || (info->month == 2 && IS_LEAP_YEAR(info->year) && info->day < 29))
+                {
+                    updateDate++;
+                    info->day++;
+                    if(info->day ==30){
+                        info->day = 1;
+                    }
                 }
                 break;
             case Pmonth:
                 updateDate++;
                 info->month++;
-                if(info->month ==12){
-                    info->month =0;
+                if(info->month ==13){
+                    info->month =1;
                 }
                 break;
+
             case Pyear:
                 updateDate++;
                 info->year++;
@@ -416,14 +446,18 @@ void CLCD_Write(CLCD_info_t * info)
             case Pday :
                 updateDate++;
                 info->day--;
-                if(info->day ==255){
-                    info->day =30;
+                if(info->day ==0){
+                    info->day = MonthsDays[info->month];
+                    if((IS_LEAP_YEAR(info->year)) && info->month == 2)
+                    {
+                        info->day  = 29;
+                    }
                 }
                 break;
             case Pmonth:
                 updateDate++;
                 info->month--;
-                if(info->month ==255){
+                if(info->month ==0){
                     info->month =12;
                 }
                 break;
@@ -439,7 +473,6 @@ void CLCD_Write(CLCD_info_t * info)
         case CANCEL:
             updateTime =1;
             updateDate =1;
-
             info->year = temp_info.year;
             info->month = temp_info.month;
             info->day = temp_info.day;
@@ -448,12 +481,10 @@ void CLCD_Write(CLCD_info_t * info)
             info->minute = temp_info.minute;
             info->minute = temp_info.minute + Second/60;
             if(info->minute >=60){
-               
                 info->hour +=  info->minute/60;
-                 info->minute %=60;
-                 info->hour%=24;
+                info->minute %=60;
+                info->hour%=24;
             }
-
             MyState =NORMAL;
             MyPbutton = NO_PRESSED;
             break;
@@ -465,9 +496,7 @@ void CLCD_Write(CLCD_info_t * info)
             break;
 
         }
-
         /*Not pressed*/
-
         break;
     default:
         break;
@@ -483,8 +512,6 @@ void CLCD_GetUpdates(CLCD_Updates_t * updates)
         updates->isDateUpdate =true;
         updateDate =0;
     }
-
-
 }
 
 /******************************************************************************/

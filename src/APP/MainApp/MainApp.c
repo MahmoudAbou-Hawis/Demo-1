@@ -1,22 +1,25 @@
 /******************************************************************************/
 /**
- * @file FILE.c
- * @brief 
+ * @file MainApp.c
+ * @brief Application for interacting with system date/time, button states, 
+ *        and LCD control.
  *
  * @par Project Name
- * 
+ * Demo 1
  *
  * @par Code Language
  * C
  *
  * @par Description
- * 
- * 
+ * This application retrieves the system date and time, reads the state of 
+ * buttons, and sends this information to an LCD control for display.
+ *
  * @par Author
  * Mahmoud Abou-Hawis
  *
  */
 /******************************************************************************/
+
 
 /******************************************************************************/
 /* INCLUDES */
@@ -93,6 +96,16 @@ static CLCD_Updates_t Update      = {0};
 /******************************************************************************/
 /* PRIVATE FUNCTION PROTOTYPES */
 /******************************************************************************/
+
+/**
+ * @brief Main application function called periodically by the scheduler every 100ms.
+ *
+ * This function gathers information from the date, time, and switches modules, 
+ * and updates the LCD with this information. It also retrieves any updates 
+ * from the LCD and updates the date and time accordingly.
+ */
+void MainApp(void);
+
 void MainApp(void);
 /******************************************************************************/
 

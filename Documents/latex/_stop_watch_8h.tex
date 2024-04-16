@@ -1,0 +1,147 @@
+\doxysection{include/\+APP/\+Stop\+Watch/\+Stop\+Watch.h File Reference}
+\hypertarget{_stop_watch_8h}{}\label{_stop_watch_8h}\index{include/APP/StopWatch/StopWatch.h@{include/APP/StopWatch/StopWatch.h}}
+
+
+Header file for stopwatch functionality.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include \"{}Stop\+Watch\+\_\+\+Confg.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_stop_watch_time__t}{Stop\+Watch\+Time\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Structure to represent stopwatch time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_stop_watch_8h_a2eefaf9cda5ff95faf98348f67a9ba79}{STOP\+\_\+\+TIME\+\_\+\+ONE\+\_\+\+SECOND}}~1000
+\item 
+\#define \mbox{\hyperlink{_stop_watch_8h_a77147a13a9b4928b036eadeb97f7bb14}{NUM\+\_\+\+OF\+\_\+\+SECONDS}}~60
+\item 
+\#define \mbox{\hyperlink{_stop_watch_8h_a77e4f758219d5cfd80315e3857e8eaf1}{NUM\+\_\+\+OF\+\_\+\+MINUTES}}~60
+\item 
+\#define \mbox{\hyperlink{_stop_watch_8h_a3c386057887f2f8885b901f0f7f51669}{NUM\+\_\+\+OF\+\_\+\+HOURS}}~24
+\item 
+\#define \mbox{\hyperlink{_stop_watch_8h_a3da44afeba217135a680a7477b5e3ce3}{DEFAULT}}~0
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322}{Stop\+Watch\+\_\+\+Error}} \{ \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322a8d878f83b4134ea2da6498f39f709f0d}{Stop\+Watch\+\_\+enum\+Ok}}
+, \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322aa664a498006ef221cd452282027060e4}{Stop\+Watch\+\_\+\+Null\+Pointer}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for stopwatch error codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_stop_watch_8h_acb157c661ba2e1b18bbb0e745262349c}{STOPWATCH\+\_\+\+Reset}} (void)
+\begin{DoxyCompactList}\small\item\em Reset the stopwatch. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_stop_watch_8h_a628d5a2d80bcca8a55734d4ddfa71a0a}{STOPWATCH\+\_\+\+Update}} (void)
+\begin{DoxyCompactList}\small\item\em Updates the stopwatch time based on the elapsed time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322}{Stop\+Watch\+\_\+\+Error}} \mbox{\hyperlink{_stop_watch_8h_a34e060c55e0cd649479ac417a845d50d}{STOPWATCH\+\_\+\+Get\+Time}} (\mbox{\hyperlink{struct_stop_watch_time__t}{Stop\+Watch\+Time\+\_\+t}} \texorpdfstring{$\ast$}{*}time)
+\begin{DoxyCompactList}\small\item\em Retrieves the current time of the stopwatch. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for stopwatch functionality. 
+
+This file contains declarations for functions and structures related to stopwatch control. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_stop_watch_8h_a3da44afeba217135a680a7477b5e3ce3}\label{_stop_watch_8h_a3da44afeba217135a680a7477b5e3ce3} 
+\index{StopWatch.h@{StopWatch.h}!DEFAULT@{DEFAULT}}
+\index{DEFAULT@{DEFAULT}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{DEFAULT}{DEFAULT}}
+{\footnotesize\ttfamily \#define DEFAULT~0}
+
+Default value \Hypertarget{_stop_watch_8h_a3c386057887f2f8885b901f0f7f51669}\label{_stop_watch_8h_a3c386057887f2f8885b901f0f7f51669} 
+\index{StopWatch.h@{StopWatch.h}!NUM\_OF\_HOURS@{NUM\_OF\_HOURS}}
+\index{NUM\_OF\_HOURS@{NUM\_OF\_HOURS}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_OF\_HOURS}{NUM\_OF\_HOURS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+OF\+\_\+\+HOURS~24}
+
+Number of hours in a day \Hypertarget{_stop_watch_8h_a77e4f758219d5cfd80315e3857e8eaf1}\label{_stop_watch_8h_a77e4f758219d5cfd80315e3857e8eaf1} 
+\index{StopWatch.h@{StopWatch.h}!NUM\_OF\_MINUTES@{NUM\_OF\_MINUTES}}
+\index{NUM\_OF\_MINUTES@{NUM\_OF\_MINUTES}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_OF\_MINUTES}{NUM\_OF\_MINUTES}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+OF\+\_\+\+MINUTES~60}
+
+Number of minutes in an hour \Hypertarget{_stop_watch_8h_a77147a13a9b4928b036eadeb97f7bb14}\label{_stop_watch_8h_a77147a13a9b4928b036eadeb97f7bb14} 
+\index{StopWatch.h@{StopWatch.h}!NUM\_OF\_SECONDS@{NUM\_OF\_SECONDS}}
+\index{NUM\_OF\_SECONDS@{NUM\_OF\_SECONDS}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_OF\_SECONDS}{NUM\_OF\_SECONDS}}
+{\footnotesize\ttfamily \#define NUM\+\_\+\+OF\+\_\+\+SECONDS~60}
+
+Number of seconds in a minute \Hypertarget{_stop_watch_8h_a2eefaf9cda5ff95faf98348f67a9ba79}\label{_stop_watch_8h_a2eefaf9cda5ff95faf98348f67a9ba79} 
+\index{StopWatch.h@{StopWatch.h}!STOP\_TIME\_ONE\_SECOND@{STOP\_TIME\_ONE\_SECOND}}
+\index{STOP\_TIME\_ONE\_SECOND@{STOP\_TIME\_ONE\_SECOND}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{STOP\_TIME\_ONE\_SECOND}{STOP\_TIME\_ONE\_SECOND}}
+{\footnotesize\ttfamily \#define STOP\+\_\+\+TIME\+\_\+\+ONE\+\_\+\+SECOND~1000}
+
+\texorpdfstring{$<$}{<} Assuming this is a custom header file for stopwatch configuration One second in milliseconds 
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322}\label{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322} 
+\index{StopWatch.h@{StopWatch.h}!StopWatch\_Error@{StopWatch\_Error}}
+\index{StopWatch\_Error@{StopWatch\_Error}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{StopWatch\_Error}{StopWatch\_Error}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322}{Stop\+Watch\+\_\+\+Error}}}
+
+
+
+Enumeration for stopwatch error codes. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StopWatch\_enumOk@{StopWatch\_enumOk}!StopWatch.h@{StopWatch.h}}\index{StopWatch.h@{StopWatch.h}!StopWatch\_enumOk@{StopWatch\_enumOk}}}\Hypertarget{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322a8d878f83b4134ea2da6498f39f709f0d}\label{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322a8d878f83b4134ea2da6498f39f709f0d} 
+Stop\+Watch\+\_\+enum\+Ok&No error \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StopWatch\_NullPointer@{StopWatch\_NullPointer}!StopWatch.h@{StopWatch.h}}\index{StopWatch.h@{StopWatch.h}!StopWatch\_NullPointer@{StopWatch\_NullPointer}}}\Hypertarget{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322aa664a498006ef221cd452282027060e4}\label{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322aa664a498006ef221cd452282027060e4} 
+Stop\+Watch\+\_\+\+Null\+Pointer&Null pointer error \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_stop_watch_8h_a34e060c55e0cd649479ac417a845d50d}\label{_stop_watch_8h_a34e060c55e0cd649479ac417a845d50d} 
+\index{StopWatch.h@{StopWatch.h}!STOPWATCH\_GetTime@{STOPWATCH\_GetTime}}
+\index{STOPWATCH\_GetTime@{STOPWATCH\_GetTime}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{STOPWATCH\_GetTime()}{STOPWATCH\_GetTime()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_stop_watch_8h_abdc0d24674602c72a3dc5b2fe91d7322}{Stop\+Watch\+\_\+\+Error}} STOPWATCH\+\_\+\+Get\+Time (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_stop_watch_time__t}{Stop\+Watch\+Time\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{time }\end{DoxyParamCaption})}
+
+
+
+Retrieves the current time of the stopwatch. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time} & Pointer to a \doxylink{struct_stop_watch_time__t}{Stop\+Watch\+Time\+\_\+t} structure to store the retrieved time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns an error code (Stop\+Watch\+\_\+enum\+Ok or Stop\+Watch\+\_\+\+Null\+Pointer) on failure. 
+\end{DoxyReturn}
+\Hypertarget{_stop_watch_8h_acb157c661ba2e1b18bbb0e745262349c}\label{_stop_watch_8h_acb157c661ba2e1b18bbb0e745262349c} 
+\index{StopWatch.h@{StopWatch.h}!STOPWATCH\_Reset@{STOPWATCH\_Reset}}
+\index{STOPWATCH\_Reset@{STOPWATCH\_Reset}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{STOPWATCH\_Reset()}{STOPWATCH\_Reset()}}
+{\footnotesize\ttfamily void STOPWATCH\+\_\+\+Reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Reset the stopwatch. 
+
+This function resets the stopwatch to its initial state. \Hypertarget{_stop_watch_8h_a628d5a2d80bcca8a55734d4ddfa71a0a}\label{_stop_watch_8h_a628d5a2d80bcca8a55734d4ddfa71a0a} 
+\index{StopWatch.h@{StopWatch.h}!STOPWATCH\_Update@{STOPWATCH\_Update}}
+\index{STOPWATCH\_Update@{STOPWATCH\_Update}!StopWatch.h@{StopWatch.h}}
+\doxysubsubsection{\texorpdfstring{STOPWATCH\_Update()}{STOPWATCH\_Update()}}
+{\footnotesize\ttfamily void STOPWATCH\+\_\+\+Update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Updates the stopwatch time based on the elapsed time. 
+
+This function should be called periodically to update the time of the stopwatch. It increments the seconds and adjusts minutes and hours accordingly. 

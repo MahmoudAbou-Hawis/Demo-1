@@ -1,0 +1,244 @@
+\doxysection{RCC.\+h}
+\hypertarget{_r_c_c_8h_source}{}\label{_r_c_c_8h_source}\index{include/MCAL/RCC.h@{include/MCAL/RCC.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*******************************************************************************/}}
+\DoxyCodeLine{00021\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00022\ \textcolor{comment}{/*\ MULTIPLE\ INCLUSION\ GUARD\ */}}
+\DoxyCodeLine{00023\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#ifndef\ \_\_STM32F4xx\_RCC\_H}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ \_\_STM32F4xx\_RCC\_H}}
+\DoxyCodeLine{00026\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00029\ \textcolor{comment}{/*\ C++\ Style\ GUARD\ */}}
+\DoxyCodeLine{00030\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00032\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{00033\ \{}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00035\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00038\ \textcolor{comment}{/*\ INCLUDES\ */}}
+\DoxyCodeLine{00039\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00042\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00045\ \textcolor{comment}{/*\ PUBLIC\ DEFINES\ */}}
+\DoxyCodeLine{00046\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ \ \ \ \ CLK\_PLL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x01000000)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ \ \ \ \ CLK\_HSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00010000)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ \ \ \ \ CLK\_HSI\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000001)}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ \ \ \ \ SYSCLK\_HSI\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000000)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ \ \ \ \ SYSCLK\_HSE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000001)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ \ \ \ \ SYSCLK\_PLL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000002)}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV1\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000070)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV2\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000080)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV4\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000090)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV8\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x000000A0)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV16\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x000000B0)}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV64\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x000000C0)}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV128\ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x000000D0)}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV256\ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x000000E0)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_AHB\_PRE\_DIV512\ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x000000F0)}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP2\_PRE\_DIV1\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00006000)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP2\_PRE\_DIV2\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00008000)}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP2\_PRE\_DIV4\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x0000A000)}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP2\_PRE\_DIV8\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x0000C000)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP2\_PRE\_DIV16\ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x0000E000)}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP1\_PRE\_DIV1\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000F00)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP1\_PRE\_DIV2\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00001000)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP1\_PRE\_DIV4\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00001400)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP1\_PRE\_DIV8\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00001800)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#define\ \ \ \ \ BUS\_ABP1\_PRE\_DIV16\ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00001C00)}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_GPIOA\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20000001)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_GPIOB\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20000002)}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_GPIOC\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20000004)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_GPIOD\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20000008)}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_GPIOE\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20000010)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_GPIOH\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20000080)}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_DMA1\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20200000)}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_DMA2\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x20400000)}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TIM2\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000001)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TIM3\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000002)}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TIM4\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000004)}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TM55\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000008)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_WWDG\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00000080)}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_SPI2\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00004000)}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_SPI3\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00004000)}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_USART2\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00020000)}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_I2C1\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00200000)}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_I2C2\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00400000)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_I2C3\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00800000)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_PWR\ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10000000)}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TIM1\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10000001)}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_USART1\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10000010)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_USART6\ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10000020)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_ADC1\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10000100)}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_SDIO\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10000800)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_SPI1\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10001000)}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_SPI4\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10002000)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_SYSCF\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10004000)}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TIM9\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10010000)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TIM10\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10020000)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ \ \ \ \ PERIPHERAL\_TIM11\ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x10040000)}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ \ \ \ \ HSE\_BY\_PASS\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0x00040000)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\#define\ \ \ \ \ HSE\_NOT\_BY\_PASS\ \ \ \ \ \ \ \ \ \ \ \ \ ((uint32\_t)0xFFFBFFFF)}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00154\ \textcolor{comment}{/*\ PUBLIC\ MACROS\ */}}
+\DoxyCodeLine{00155\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00160\ \textcolor{comment}{/*\ PUBLIC\ ENUMS\ */}}
+\DoxyCodeLine{00161\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00185\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00186\ \{}
+\DoxyCodeLine{00187\ \ \ \ \ RCC\_FUNC\_DONE,}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ RCC\_PLL\_IS\_WORKING,}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ RCC\_PLL\_WRONG\_CFG\ ,}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ RCC\_PLL\_IS\_DISABLED\ ,}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ RCC\_HSE\_ALREADY\_ON\ ,}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ RCC\_HSE\_IS\_WORKING\ ,}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ RCC\_HSE\_IS\_DISABLED,}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ RCC\_HSE\_SHOULD\_BE\_ON,}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ RCC\_HSE\_WRONG\_CFG,}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ RCC\_HSI\_IS\_DISABLED\ ,}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ RCC\_HSI\_IS\_WORKING,}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ RCC\_HSI\_SHOULD\_BE\_ON\ ,}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ RCC\_HSE\_MUST\_BE\_ENABLE\ ,}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ RCC\_TIMEOUT\_ERROR\ ,}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ RCC\_WRONG\_CLK,}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ RCC\_NULL\_PTR\_PASSED\ ,}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ RCC\_HSE\_NOT\_CONFIGURED\ ,}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ RCC\_PLL\_NOT\_CONFIGURED\ ,}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ RCC\_WRONG\_SYSCLK\ ,}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ RCC\_CLK\_CANNOT\_DISABLE\_IT\_IS\_SYSCLK\ ,}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ RCC\_WRONG\_BUS\_PRESCLER\ ,}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ RCC\_PERIPHERAL\_NOT\_FOUND}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \}\ RCC\_enuErrorStatus;}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00237\ \textcolor{comment}{/*\ PUBLIC\ TYPES\ */}}
+\DoxyCodeLine{00238\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00268\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00269\ \{}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a767e2d0377ece83806988cad16d26c00}{PLLSource}};\ }
+\DoxyCodeLine{00272\ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a47b2bad1bc5c4933850bf15a3ce2ae18}{PLLM}};\ \ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a121325796a829b278bf27082e04fa696}{PLLN}};\ \ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a11ad8561ce1c69980b6107784d450cdb}{PLLP}};\ \ \ \ \ \ }
+\DoxyCodeLine{00284\ \}\ \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t}{RCC\_stPLLconfig\_t}};}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00286\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00289\ \textcolor{comment}{/*\ PUBLIC\ CONSTANT\ DECLARATIONS\ */}}
+\DoxyCodeLine{00290\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00295\ \textcolor{comment}{/*\ PUBLIC\ VARIABLE\ DECLARATIONS\ */}}
+\DoxyCodeLine{00296\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00302\ \textcolor{comment}{/*\ PUBLIC\ FUNCTION\ PROTOTYPES\ */}}
+\DoxyCodeLine{00303\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00337\ RCC\_enuErrorStatus\ \ RCC\_enuConfigPLL(\mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t}{RCC\_stPLLconfig\_t}}\ *\ \textcolor{keyword}{const}\ RCC\_stConfig);}
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00363\ RCC\_enuErrorStatus\ \ RCC\_enuConfigHSE(uint32\_t\ HSE\ ,\ uint32\_t\ Freq);}
+\DoxyCodeLine{00364\ }
+\DoxyCodeLine{00390\ RCC\_enuErrorStatus\ \ RCC\_enuEnableClk(uint32\_t\ CLK);}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00418\ RCC\_enuErrorStatus\ \ RCC\_enuDisableClk(uint32\_t\ CLK);}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00441\ RCC\_enuErrorStatus\ \ RCC\_enuIsClkWorking(uint32\_t\ CLK);}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00466\ RCC\_enuErrorStatus\ \ RCC\_enuSetSysClk(uint32\_t\ SYSCLK);}
+\DoxyCodeLine{00467\ }
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00493\ uint32\_t\ \ \ \ \ \ \ \ \ \ \ \ RCC\_enuGetSysClk(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00522\ RCC\_enuErrorStatus\ \ RCC\_enuSetPrescaler(uint32\_t\ BUS);}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00549\ RCC\_enuErrorStatus\ \ RCC\_enuGetPrescaler(uint32\_t\ BUS,\ uint32\_t\ *\ BusPrescaler);}
+\DoxyCodeLine{00550\ }
+\DoxyCodeLine{00572\ RCC\_enuErrorStatus\ \ RCC\_enuEnablePeripheral(uint32\_t\ PERIPHERAL);}
+\DoxyCodeLine{00573\ }
+\DoxyCodeLine{00596\ RCC\_enuErrorStatus\ \ RCC\_enuDisablePeripheral(uint32\_t\ PERIPHERAL);}
+\DoxyCodeLine{00597\ }
+\DoxyCodeLine{00598\ }
+\DoxyCodeLine{00599\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00600\ }
+\DoxyCodeLine{00601\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00602\ \textcolor{comment}{/*\ C++\ Style\ GUARD\ */}}
+\DoxyCodeLine{00603\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00604\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00605\ \}}
+\DoxyCodeLine{00606\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_cplusplus\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00607\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00608\ }
+\DoxyCodeLine{00609\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00610\ \textcolor{comment}{/*\ MULTIPLE\ INCLUSION\ GUARD\ */}}
+\DoxyCodeLine{00611\ \textcolor{comment}{/******************************************************************************/}}
+\DoxyCodeLine{00612\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_\_STM32F4xx\_RCC\_H*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00613\ \textcolor{comment}{/******************************************************************************/}}
+
+\end{DoxyCode}

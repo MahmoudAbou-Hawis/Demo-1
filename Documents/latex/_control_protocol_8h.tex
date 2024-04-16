@@ -1,0 +1,136 @@
+\doxysection{include/\+HAL/\+Control\+\_\+\+Protocol/\+Control\+Protocol.h File Reference}
+\hypertarget{_control_protocol_8h}{}\label{_control_protocol_8h}\index{include/HAL/Control\_Protocol/ControlProtocol.h@{include/HAL/Control\_Protocol/ControlProtocol.h}}
+
+
+Header file for the control protocol.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_message__t}{Message\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_control_protocol_8h_a2c56269e7b9a2365014bb837d6041195}\label{_control_protocol_8h_a2c56269e7b9a2365014bb837d6041195} 
+\#define {\bfseries NUMBER\+\_\+\+OF\+\_\+\+DATA}~(8U)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_control_protocol_8h_a0888a85f4e103c001edeec203503b332}\label{_control_protocol_8h_a0888a85f4e103c001edeec203503b332} 
+typedef void(\texorpdfstring{$\ast$}{*} {\bfseries Protocol\+\_\+\+Call\+Back}) (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_control_protocol_8h_a1af1f34246a2edff71c0eb94caec8e06}\label{_control_protocol_8h_a1af1f34246a2edff71c0eb94caec8e06} 
+enum {\bfseries PROTOCOL\+\_\+\+Error\+Status\+\_\+t} \{ {\bfseries PROTOCOL\+\_\+\+OK}
+, {\bfseries PROTOCOL\+\_\+\+ERROR}
+ \}
+\item 
+enum \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172}{Msg\+Type\+\_\+t}} \{ \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172ae680fa7eb860abe7832f792cc18a44b4}{COMMAND}}
+, \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172a9d7d6f31868d66330397c967c4afd2d2}{DATA}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+PROTOCOL\+\_\+\+Error\+Status\+\_\+t \mbox{\hyperlink{_control_protocol_8h_a83f44d3bb489a9b30d955b4c4dd0d6ca}{Protocol\+\_\+\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes the control protocol. \end{DoxyCompactList}\item 
+PROTOCOL\+\_\+\+Error\+Status\+\_\+t \mbox{\hyperlink{_control_protocol_8h_af1f220e1a69956e7e58493dc947cee44}{Protocol\+\_\+\+Send\+Async}} (\mbox{\hyperlink{struct_message__t}{Message\+\_\+t}} \texorpdfstring{$\ast$}{*}msg)
+\begin{DoxyCompactList}\small\item\em Sends a message asynchronously. \end{DoxyCompactList}\item 
+PROTOCOL\+\_\+\+Error\+Status\+\_\+t \mbox{\hyperlink{_control_protocol_8h_ac42ac6fe7141766318e9d857b01501a9}{Protocol\+\_\+\+Receive\+Async}} (\mbox{\hyperlink{struct_message__t}{Message\+\_\+t}} \texorpdfstring{$\ast$}{*}msg)
+\begin{DoxyCompactList}\small\item\em Receives a message asynchronously. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for the control protocol. 
+
+\begin{DoxyParagraph}{Project Name}
+Control Protocol
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Code Language}
+C
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Description}
+This header file defines the functions and data structures used for communication between the micro-\/controllers. It provides a hardware-\/ independent interface for sending and receiving control messages.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Author}
+Mahmoud Abou-\/\+Hawis 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172}\label{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172} 
+\index{ControlProtocol.h@{ControlProtocol.h}!MsgType\_t@{MsgType\_t}}
+\index{MsgType\_t@{MsgType\_t}!ControlProtocol.h@{ControlProtocol.h}}
+\doxysubsubsection{\texorpdfstring{MsgType\_t}{MsgType\_t}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172}{Msg\+Type\+\_\+t}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COMMAND@{COMMAND}!ControlProtocol.h@{ControlProtocol.h}}\index{ControlProtocol.h@{ControlProtocol.h}!COMMAND@{COMMAND}}}\Hypertarget{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172ae680fa7eb860abe7832f792cc18a44b4}\label{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172ae680fa7eb860abe7832f792cc18a44b4} 
+COMMAND&Command message \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DATA@{DATA}!ControlProtocol.h@{ControlProtocol.h}}\index{ControlProtocol.h@{ControlProtocol.h}!DATA@{DATA}}}\Hypertarget{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172a9d7d6f31868d66330397c967c4afd2d2}\label{_control_protocol_8h_a0a1b23389fd01fb66217d05625366172a9d7d6f31868d66330397c967c4afd2d2} 
+DATA&Data message \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_control_protocol_8h_a83f44d3bb489a9b30d955b4c4dd0d6ca}\label{_control_protocol_8h_a83f44d3bb489a9b30d955b4c4dd0d6ca} 
+\index{ControlProtocol.h@{ControlProtocol.h}!Protocol\_Init@{Protocol\_Init}}
+\index{Protocol\_Init@{Protocol\_Init}!ControlProtocol.h@{ControlProtocol.h}}
+\doxysubsubsection{\texorpdfstring{Protocol\_Init()}{Protocol\_Init()}}
+{\footnotesize\ttfamily PROTOCOL\+\_\+\+Error\+Status\+\_\+t Protocol\+\_\+\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the control protocol. 
+
+\begin{DoxyReturn}{Returns}
+Error Status 
+\end{DoxyReturn}
+\Hypertarget{_control_protocol_8h_ac42ac6fe7141766318e9d857b01501a9}\label{_control_protocol_8h_ac42ac6fe7141766318e9d857b01501a9} 
+\index{ControlProtocol.h@{ControlProtocol.h}!Protocol\_ReceiveAsync@{Protocol\_ReceiveAsync}}
+\index{Protocol\_ReceiveAsync@{Protocol\_ReceiveAsync}!ControlProtocol.h@{ControlProtocol.h}}
+\doxysubsubsection{\texorpdfstring{Protocol\_ReceiveAsync()}{Protocol\_ReceiveAsync()}}
+{\footnotesize\ttfamily PROTOCOL\+\_\+\+Error\+Status\+\_\+t Protocol\+\_\+\+Receive\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_message__t}{Message\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{msg }\end{DoxyParamCaption})}
+
+
+
+Receives a message asynchronously. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in,out}}  & {\em Frame} & Pointer to store the received message \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error Status 
+\end{DoxyReturn}
+\Hypertarget{_control_protocol_8h_af1f220e1a69956e7e58493dc947cee44}\label{_control_protocol_8h_af1f220e1a69956e7e58493dc947cee44} 
+\index{ControlProtocol.h@{ControlProtocol.h}!Protocol\_SendAsync@{Protocol\_SendAsync}}
+\index{Protocol\_SendAsync@{Protocol\_SendAsync}!ControlProtocol.h@{ControlProtocol.h}}
+\doxysubsubsection{\texorpdfstring{Protocol\_SendAsync()}{Protocol\_SendAsync()}}
+{\footnotesize\ttfamily PROTOCOL\+\_\+\+Error\+Status\+\_\+t Protocol\+\_\+\+Send\+Async (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_message__t}{Message\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{msg }\end{DoxyParamCaption})}
+
+
+
+Sends a message asynchronously. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em msg} & Pointer to the message to be sent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error Status 
+\end{DoxyReturn}

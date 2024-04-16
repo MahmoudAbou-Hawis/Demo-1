@@ -1,0 +1,271 @@
+\doxysection{include/\+MCAL/\+UART.h File Reference}
+\hypertarget{_u_a_r_t_8h}{}\label{_u_a_r_t_8h}\index{include/MCAL/UART.h@{include/MCAL/UART.h}}
+
+
+UART (Universal Asynchronous Receiver/\+Transmitter) interface definitions for STM32\+F401\+CC microcontrollers.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_u_a_r_t___init__t}{UART\+\_\+\+Init\+\_\+t}}
+\item 
+struct \mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries UART\+\_\+\+WORDLENGTH\+\_\+8B}~0x00000000U
+\item 
+\#define {\bfseries UART\+\_\+\+WORDLENGTH\+\_\+9B}~0x00001000U
+\item 
+\#define {\bfseries UART\+\_\+\+OVERSAMPLING\+\_\+16}~0x00000000U
+\item 
+\#define {\bfseries UART\+\_\+\+OVERSAMPLING\+\_\+8}~0x00008000U
+\item 
+\#define {\bfseries UART\+\_\+\+PARITY\+\_\+\+NONE}~0x00000000U
+\item 
+\#define {\bfseries UART\+\_\+\+PARITY\+\_\+\+ODD}~0x00000200U
+\item 
+\#define {\bfseries UART\+\_\+\+PARITY\+\_\+\+EVEN}~0x00000000U
+\item 
+\#define {\bfseries UART\+\_\+\+STOP\+\_\+\+BITS\+\_\+\+ONE}~0x00000000U
+\item 
+\#define {\bfseries UART\+\_\+\+STOP\+\_\+\+BITS\+\_\+\+TWO}~0x00002000U
+\item 
+\#define {\bfseries UART\+\_\+\+MODE\+\_\+\+RX}~0x00000004U
+\item 
+\#define {\bfseries UART\+\_\+\+MODE\+\_\+\+TX}~0x00000008U
+\item 
+\#define {\bfseries UART\+\_\+\+MODE\+\_\+\+TX\+\_\+\+RX}~((uint32\+\_\+t)(UART\+\_\+\+MODE\+\_\+\+TX \texorpdfstring{$\vert$}{|} UART\+\_\+\+MODE\+\_\+\+RX))
+\item 
+\#define {\bfseries USART1}~((void\texorpdfstring{$\ast$}{*})0x40011000)
+\item 
+\#define {\bfseries USART2}~((void\texorpdfstring{$\ast$}{*})0x40004401)
+\item 
+\#define {\bfseries USART6}~((void\texorpdfstring{$\ast$}{*})0x40011402)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}}) (void)
+\begin{DoxyCompactList}\small\item\em Defines a function pointer type for UART callback functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}\label{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c} 
+enum \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \{ {\bfseries UART\+\_\+\+NULL\+\_\+\+PTR\+\_\+\+PASSED}
+, {\bfseries UART\+\_\+\+ERROR\+\_\+\+NONE}
+, {\bfseries UART\+\_\+\+ERROR}
+, {\bfseries UART\+\_\+\+PARAM\+\_\+\+ERROR}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerates the different UART error status codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8h_acd41ebe0214bd568789eaa47002b4d3f}{UART\+\_\+\+Init}} (const \mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const uart\+Handle)
+\begin{DoxyCompactList}\small\item\em Initializes a UART instance with the specified configuration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8h_aa6a31baa8fb93671c2042272bf8275a9}{UART\+\_\+\+Transmit\+Time\+Out}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, uint32\+\_\+t Timeout)
+\begin{DoxyCompactList}\small\item\em Transmits data over UART with a timeout mechanism. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8h_ae4acf8dd16f62654d168b29d2b788c6e}{UART\+\_\+\+Receive\+Time\+Out}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, uint32\+\_\+t Timeout)
+\begin{DoxyCompactList}\small\item\em Receives data over UART with a timeout mechanism. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8h_a920750f4a6071aa987540b4490c6616f}{UART\+\_\+\+Transmit\+Async\+Zero\+Copy}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, \mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}} CB)
+\begin{DoxyCompactList}\small\item\em Asynchronously transmits data over UART without data copying (zero-\/copy) and using a callback mechanism. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8h_a85375e33eb0a1063bf3bcdfba3525083}{UART\+\_\+\+Receive\+Async\+Zero\+Copy}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, \mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}} CB)
+\begin{DoxyCompactList}\small\item\em Asynchronously receives data over UART without data copying (zero-\/copy) and using a callback mechanism. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_a_r_t_8h_a0f47aef3050c2c8aa84bc256bd47f0be}{UART\+\_\+\+Transmit\+With\+DMA}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, \mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}} CB)
+\begin{DoxyCompactList}\small\item\em Transmits data using UART with DMA (Direct Memory Access). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_a_r_t_8h_a666a4c337ea1569116ebc62cc51b4cbe}{UART\+\_\+\+Receive\+With\+DMA}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle)
+\begin{DoxyCompactList}\small\item\em Receives data using UART with DMA (Direct Memory Access). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+UART (Universal Asynchronous Receiver/\+Transmitter) interface definitions for STM32\+F401\+CC microcontrollers. 
+
+\begin{DoxyParagraph}{Project Name}
+stm32f4xx drivers
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Code Language}
+C
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Description}
+This header file provides a generic interface for interacting with multiple UART peripherals on the STM32\+F401\+CC microcontroller (UART1,UART2 and UART6).
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Author}
+Mahmoud Abou-\/\+Hawis 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}\label{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526} 
+\index{UART.h@{UART.h}!Uart\_CallBack@{Uart\_CallBack}}
+\index{Uart\_CallBack@{Uart\_CallBack}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{Uart\_CallBack}{Uart\_CallBack}}
+{\footnotesize\ttfamily Uart\+\_\+\+Call\+Back}
+
+
+
+Defines a function pointer type for UART callback functions. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_u_a_r_t_8h_acd41ebe0214bd568789eaa47002b4d3f}\label{_u_a_r_t_8h_acd41ebe0214bd568789eaa47002b4d3f} 
+\index{UART.h@{UART.h}!UART\_Init@{UART\_Init}}
+\index{UART\_Init@{UART\_Init}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{UART\_Init()}{UART\_Init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{uart\+Handle }\end{DoxyParamCaption})}
+
+
+
+Initializes a UART instance with the specified configuration. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure containing the UART instance and configuration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of initialization.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+it is mandatory to call init function before utilizing other APIs. 
+\end{DoxyNote}
+\Hypertarget{_u_a_r_t_8h_a85375e33eb0a1063bf3bcdfba3525083}\label{_u_a_r_t_8h_a85375e33eb0a1063bf3bcdfba3525083} 
+\index{UART.h@{UART.h}!UART\_ReceiveAsyncZeroCopy@{UART\_ReceiveAsyncZeroCopy}}
+\index{UART\_ReceiveAsyncZeroCopy@{UART\_ReceiveAsyncZeroCopy}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveAsyncZeroCopy()}{UART\_ReceiveAsyncZeroCopy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Receive\+Async\+Zero\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{\mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}}}]{CB }\end{DoxyParamCaption})}
+
+
+
+Asynchronously receives data over UART without data copying (zero-\/copy) and using a callback mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the buffer where the received data will be stored. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Maximum size of data to be received in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em CB} & Callback function that will be invoked upon reception completion or errors.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of starting asynchronous reception. 
+\end{DoxyReturn}
+\Hypertarget{_u_a_r_t_8h_ae4acf8dd16f62654d168b29d2b788c6e}\label{_u_a_r_t_8h_ae4acf8dd16f62654d168b29d2b788c6e} 
+\index{UART.h@{UART.h}!UART\_ReceiveTimeOut@{UART\_ReceiveTimeOut}}
+\index{UART\_ReceiveTimeOut@{UART\_ReceiveTimeOut}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveTimeOut()}{UART\_ReceiveTimeOut()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Receive\+Time\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{uint32\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+
+Receives data over UART with a timeout mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the buffer where the received data will be stored. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Maximum size of data to be received in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Timeout} & Timeout value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of reception. 
+\end{DoxyReturn}
+No Thing\Hypertarget{_u_a_r_t_8h_a666a4c337ea1569116ebc62cc51b4cbe}\label{_u_a_r_t_8h_a666a4c337ea1569116ebc62cc51b4cbe} 
+\index{UART.h@{UART.h}!UART\_ReceiveWithDMA@{UART\_ReceiveWithDMA}}
+\index{UART\_ReceiveWithDMA@{UART\_ReceiveWithDMA}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveWithDMA()}{UART\_ReceiveWithDMA()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Receive\+With\+DMA (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle }\end{DoxyParamCaption})}
+
+
+
+Receives data using UART with DMA (Direct Memory Access). 
+
+This function receives data through the UART peripheral using Direct Memory Access (DMA). It returns the status of the reception, indicating success or an error.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_a_r_t_8h_a920750f4a6071aa987540b4490c6616f}\label{_u_a_r_t_8h_a920750f4a6071aa987540b4490c6616f} 
+\index{UART.h@{UART.h}!UART\_TransmitAsyncZeroCopy@{UART\_TransmitAsyncZeroCopy}}
+\index{UART\_TransmitAsyncZeroCopy@{UART\_TransmitAsyncZeroCopy}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{UART\_TransmitAsyncZeroCopy()}{UART\_TransmitAsyncZeroCopy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Transmit\+Async\+Zero\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{\mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}}}]{CB }\end{DoxyParamCaption})}
+
+
+
+Asynchronously transmits data over UART without data copying (zero-\/copy) and using a callback mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the data to be transmitted . \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Size of the data to be transmitted in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em CB} & Callback function that will be invoked upon transmission completion or errors.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of starting asynchronous transmission. 
+\end{DoxyReturn}
+\Hypertarget{_u_a_r_t_8h_aa6a31baa8fb93671c2042272bf8275a9}\label{_u_a_r_t_8h_aa6a31baa8fb93671c2042272bf8275a9} 
+\index{UART.h@{UART.h}!UART\_TransmitTimeOut@{UART\_TransmitTimeOut}}
+\index{UART\_TransmitTimeOut@{UART\_TransmitTimeOut}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{UART\_TransmitTimeOut()}{UART\_TransmitTimeOut()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Transmit\+Time\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{uint32\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+
+Transmits data over UART with a timeout mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the data to be transmitted. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Size of the data to be transmitted in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Timeout} & Timeout value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of transmission. 
+\end{DoxyReturn}
+No Thing\Hypertarget{_u_a_r_t_8h_a0f47aef3050c2c8aa84bc256bd47f0be}\label{_u_a_r_t_8h_a0f47aef3050c2c8aa84bc256bd47f0be} 
+\index{UART.h@{UART.h}!UART\_TransmitWithDMA@{UART\_TransmitWithDMA}}
+\index{UART\_TransmitWithDMA@{UART\_TransmitWithDMA}!UART.h@{UART.h}}
+\doxysubsubsection{\texorpdfstring{UART\_TransmitWithDMA()}{UART\_TransmitWithDMA()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Transmit\+With\+DMA (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{\mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}}}]{CB }\end{DoxyParamCaption})}
+
+
+
+Transmits data using UART with DMA (Direct Memory Access). 
+
+This function transmits data through the UART peripheral using Direct Memory Access (DMA). It returns the status of the transmission, indicating success or an error.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance.\\
+\hline
+\mbox{\texttt{ in}}  & {\em CB} & Callback function that will be invoked upon transmission completion. \\
+\hline
+\end{DoxyParams}

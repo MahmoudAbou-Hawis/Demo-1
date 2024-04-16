@@ -1,0 +1,36 @@
+\doxysection{HSW\+\_\+confg.\+h}
+\hypertarget{_h_s_w__confg_8h_source}{}\label{_h_s_w__confg_8h_source}\index{include/HAL/HSW/HSW\_confg.h@{include/HAL/HSW/HSW\_confg.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/************************************************************************************************************}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ File\ Name:\ SW\_confg.h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00003\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Layer\ \ \ \ :\ HAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00004\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Module\ \ \ :\ SWITCH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00005\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Version\ \ :\ V\ 0.0\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00006\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Created\ \ :\ 18/2/2023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ *************************\ \ \ \ \ \ \ \ \ \ \ \ Author\ \ \ :\ Fatma\ Ezzat\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ************************}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ *************************Brief:\ This\ Header\ file\ defines\ functions\ for\ Switch\ driver*******************.}}
+\DoxyCodeLine{00009\ \textcolor{comment}{\ ************************************************************************************************************/}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ HAL\_1\_SW\_SW\_CONFG\_H\_}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ HAL\_1\_SW\_SW\_CONFG\_H\_}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{/*Switch\ Names*/}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ UP\_SWITCH,}
+\DoxyCodeLine{00017\ \ \ \ \ DOWN\_SWITCH,}
+\DoxyCodeLine{00018\ \ \ \ \ RIGHT\_SWITCH,}
+\DoxyCodeLine{00019\ \ \ \ \ LEFT\_SWITCH,}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{/*Number\ of\ switches*/}}
+\DoxyCodeLine{00022\ \ \ \ \ \_SW\_NUM}
+\DoxyCodeLine{00023\ \}SWs\_t;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{/*Switch\ Connections*/}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ SW\_PULLUP\ \ \ \ \ \ 0x0001\ \ \ \ \ }\textcolor{comment}{/*GPIO\_GP\_INPUT\_PULL\_UP\ value*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ SW\_PULLDOWN\ \ \ \ 0x0002\ \ \ \ \ }\textcolor{comment}{/*GPIO\_GP\_INPUT\_PULL\_DOWN\ value*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ HAL\_1\_SW\_SW\_CONFG\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

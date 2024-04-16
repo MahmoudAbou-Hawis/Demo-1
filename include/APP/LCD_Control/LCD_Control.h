@@ -1,7 +1,7 @@
 /*******************************************************************************/
 /**
- * @file FILE.h
- * @brief 
+ * @file LCD_Control.h
+ * @brief Header file for LCD control functionality.
  *
  * @par Project Name
  * 
@@ -10,7 +10,7 @@
  * C
  *
  * @par Description
- * 
+ * This file contains declarations for functions and structures related to LCD control.
  *
  * @par Author
  * Mahmoud Abou-Hawis
@@ -39,7 +39,7 @@ extern "C"
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
-#include "CSwitch.h"
+#include "CSwitch.h" /**< Assuming this is a custom header file for switch functionality */
 /******************************************************************************/
 
 /******************************************************************************/
@@ -64,26 +64,32 @@ extern "C"
 /******************************************************************************/
 /* PUBLIC TYPES */
 /******************************************************************************/
+/**
+ * @brief Structure to represent LCD information.
+ */
 typedef struct 
 {
-    CSWITCH_States_t        state;
-    CSWITCH_PressedButton_t pressedButton;
-    uint8_t                 second;
-    uint8_t                 minute;
-    uint8_t                 hour;
-    uint32_t                day;
-    uint32_t                month;
-    uint32_t                year; 
-    uint32_t                StopWatchMilli;
-    uint32_t                StopWatchSeconds;
-    uint32_t                StopWatchHour;
-    uint32_t                StopWatchMinute;
+    CSWITCH_States_t        state; /**< State of the LCD */
+    CSWITCH_PressedButton_t pressedButton; /**< Pressed button */
+    uint8_t                 second; /**< Second value */
+    uint8_t                 minute; /**< Minute value */
+    uint8_t                 hour; /**< Hour value */
+    uint32_t                day; /**< Day value */
+    uint32_t                month; /**< Month value */
+    uint32_t                year; /**< Year value */ 
+    uint32_t                StopWatchMilli; /**< Milliseconds value for stopwatch */
+    uint32_t                StopWatchSeconds; /**< Seconds value for stopwatch */
+    uint32_t                StopWatchHour; /**< Hours value for stopwatch */
+    uint32_t                StopWatchMinute; /**< Minutes value for stopwatch */
 } CLCD_info_t;
 
+/**
+ * @brief Structure to represent LCD updates.
+ */
 typedef struct 
 {
-    bool isDateUpdate;
-    bool isTimeUpdate;
+    bool isDateUpdate; /**< Flag indicating whether date is updated */
+    bool isTimeUpdate; /**< Flag indicating whether time is updated */
 } CLCD_Updates_t;
 
 
@@ -106,9 +112,24 @@ typedef struct
 /* PUBLIC FUNCTION PROTOTYPES */
 /******************************************************************************/
 
+/**
+ * @brief Initializes the LCD.
+ */
 void CLCD_Init(void);
-void CLCD_Write(CLCD_info_t * info);
-void CLCD_GetUpdates(CLCD_Updates_t * updates);
+
+/**
+ * @brief Writes LCD information.
+ * 
+ * @param info Pointer to the LCD information structure.
+ */
+void CLCD_Write(CLCD_info_t *info);
+
+/**
+ * @brief Retrieves updates from the LCD.
+ * 
+ * @param updates Pointer to the LCD updates structure.
+ */
+void CLCD_GetUpdates(CLCD_Updates_t *updates);
 
 /******************************************************************************/
 

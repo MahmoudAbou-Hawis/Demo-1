@@ -3,6 +3,14 @@
  * @file switches_module.h
  * @brief Header File for Switch Control Module with Clock State Information
  *
+ * This header file declares the interface for a module to control switches and 
+ * provide clock state information over UART using a custom control protocol.
+ * 
+ * The module defines enums for different states of the clock (Edit, Stopwatch,
+ * Normal) and button presses, as well as structs to hold screen state 
+ * information. It also declares functions for module initialization, sending
+ * updates, and receiving updates.
+ *
  * @par Project Name
  * Embedded Switch Control System
  *

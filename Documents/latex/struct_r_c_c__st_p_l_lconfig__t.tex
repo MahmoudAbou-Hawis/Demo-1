@@ -1,0 +1,85 @@
+\doxysection{RCC\+\_\+st\+PLLconfig\+\_\+t Struct Reference}
+\hypertarget{struct_r_c_c__st_p_l_lconfig__t}{}\label{struct_r_c_c__st_p_l_lconfig__t}\index{RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}}
+
+
+PLL Configuration Structure.  
+
+
+
+
+{\ttfamily \#include $<$RCC.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a767e2d0377ece83806988cad16d26c00}{PLLSource}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a47b2bad1bc5c4933850bf15a3ce2ae18}{PLLM}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a121325796a829b278bf27082e04fa696}{PLLN}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a11ad8561ce1c69980b6107784d450cdb}{PLLP}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+PLL Configuration Structure. 
+
+This structure defines the parameters needed to configure a PLL (Phase-\/\+Locked Loop) in a microcontroller system. The PLL is an essential component for generating high-\/frequency clock signals with precise control over frequency and phase.
+
+
+\begin{DoxyItemize}
+\item PLLSource\+: Specifies the PLL input clock source, such as HSI, HSE, or PLLCLK.
+\item PLLM\+: Division factor for the PLL input clock.
+\item PLLN\+: Multiplication factor for the PLL VCO (Voltage-\/\+Controlled Oscillator) output.
+\item PLLP\+: Division factor for the main system clock (SYSCLK).
+\item PLLQ\+: Division factor for USB OTG FS, SDIO, and RNG clocks (if available).
+\end{DoxyItemize}
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Define\ and\ initialize\ a\ PLL\ configuration\ structure}}
+\DoxyCodeLine{\mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t}{RCC\_stPLLconfig\_t}}\ pllConfig\ =\ \{}
+\DoxyCodeLine{\ \ \ \ .\mbox{\hyperlink{struct_r_c_c__st_p_l_lconfig__t_a767e2d0377ece83806988cad16d26c00}{PLLSource}}\ =\ CLK\_HSE,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PLL\ input\ clock\ source:\ HSE}}
+\DoxyCodeLine{\ \ \ \ .PLLM\ =\ 8,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PLLM\ division\ factor}}
+\DoxyCodeLine{\ \ \ \ .PLLN\ =\ 336,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PLLN\ multiplication\ factor}}
+\DoxyCodeLine{\ \ \ \ .PLLP\ =\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PLLP\ division\ factor\ for\ SYSCLK}}
+\DoxyCodeLine{\ \ \ \ .PLLQ\ =\ 7\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ PLLQ\ division\ factor\ for\ USB\ OTG\ FS,\ SDIO,\ RNG\ clocks}}
+\DoxyCodeLine{\};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Configure\ the\ PLL\ with\ the\ specified\ parameters}}
+\DoxyCodeLine{RCC\_enuConfigPLL(\&pllConfig);}
+
+\end{DoxyCode}
+ 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{struct_r_c_c__st_p_l_lconfig__t_a47b2bad1bc5c4933850bf15a3ce2ae18}\label{struct_r_c_c__st_p_l_lconfig__t_a47b2bad1bc5c4933850bf15a3ce2ae18} 
+\index{RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}!PLLM@{PLLM}}
+\index{PLLM@{PLLM}!RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}}
+\doxysubsubsection{\texorpdfstring{PLLM}{PLLM}}
+{\footnotesize\ttfamily uint32\+\_\+t RCC\+\_\+st\+PLLconfig\+\_\+t\+::\+PLLM}
+
+PLLM must ensure that the VCO input frequency ranges from 1 to 2 MHz. 2\texorpdfstring{$<$}{<}= PLLM \texorpdfstring{$<$}{<}= 63 . VCO input frequency = PLL input clock frequency / PLLM \Hypertarget{struct_r_c_c__st_p_l_lconfig__t_a121325796a829b278bf27082e04fa696}\label{struct_r_c_c__st_p_l_lconfig__t_a121325796a829b278bf27082e04fa696} 
+\index{RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}!PLLN@{PLLN}}
+\index{PLLN@{PLLN}!RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}}
+\doxysubsubsection{\texorpdfstring{PLLN}{PLLN}}
+{\footnotesize\ttfamily uint32\+\_\+t RCC\+\_\+st\+PLLconfig\+\_\+t\+::\+PLLN}
+
+192 \texorpdfstring{$<$}{<}= PLLN \texorpdfstring{$<$}{<}= 432 VCO output frequency = VCO input frequency × PLLN \Hypertarget{struct_r_c_c__st_p_l_lconfig__t_a11ad8561ce1c69980b6107784d450cdb}\label{struct_r_c_c__st_p_l_lconfig__t_a11ad8561ce1c69980b6107784d450cdb} 
+\index{RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}!PLLP@{PLLP}}
+\index{PLLP@{PLLP}!RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}}
+\doxysubsubsection{\texorpdfstring{PLLP}{PLLP}}
+{\footnotesize\ttfamily uint32\+\_\+t RCC\+\_\+st\+PLLconfig\+\_\+t\+::\+PLLP}
+
+PLLP = 2, 4, 6, or 8 PLL output clock frequency = VCO frequency / PLLP \Hypertarget{struct_r_c_c__st_p_l_lconfig__t_a767e2d0377ece83806988cad16d26c00}\label{struct_r_c_c__st_p_l_lconfig__t_a767e2d0377ece83806988cad16d26c00} 
+\index{RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}!PLLSource@{PLLSource}}
+\index{PLLSource@{PLLSource}!RCC\_stPLLconfig\_t@{RCC\_stPLLconfig\_t}}
+\doxysubsubsection{\texorpdfstring{PLLSource}{PLLSource}}
+{\footnotesize\ttfamily uint32\+\_\+t RCC\+\_\+st\+PLLconfig\+\_\+t\+::\+PLLSource}
+
+PLL source must be CLK\+\_\+\+HSE or CLK\+\_\+\+HSI 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\+MCAL/RCC.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,418 @@
+\doxysection{src/\+MCAL/\+UART.c File Reference}
+\hypertarget{_u_a_r_t_8c}{}\label{_u_a_r_t_8c}\index{src/MCAL/UART.c@{src/MCAL/UART.c}}
+
+
+Implementation of the UART driver for STM32\+F401\+CC microcontrollers.  
+
+
+{\ttfamily \#include \"{}UART.\+h\"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_u_s_a_r_t__t}{USART\+\_\+t}}
+\begin{DoxyCompactList}\small\item\em Universal Synchronous Asynchronous Receiver Transmitter. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_uart_instance_properties}{Uart\+Instance\+Properties}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_u_a_r_t_8c_ab6caba5853a60a17e8e04499b52bf691}\label{_u_a_r_t_8c_ab6caba5853a60a17e8e04499b52bf691} 
+\#define {\bfseries \+\_\+\+\_\+\+IOM}~volatile
+\begin{DoxyCompactList}\small\item\em Defines \textquotesingle{}read / write\textquotesingle{} structure member permissions. \end{DoxyCompactList}\item 
+\Hypertarget{_u_a_r_t_8c_a4cc1649793116d7c2d8afce7a4ffce43}\label{_u_a_r_t_8c_a4cc1649793116d7c2d8afce7a4ffce43} 
+\#define {\bfseries \+\_\+\+\_\+\+IM}~volatile const
+\begin{DoxyCompactList}\small\item\em Defines \textquotesingle{}read only\textquotesingle{} structure member permissions. \end{DoxyCompactList}\item 
+\Hypertarget{_u_a_r_t_8c_aba87361bfad2ae52cfe2f40c1a1dbf9c}\label{_u_a_r_t_8c_aba87361bfad2ae52cfe2f40c1a1dbf9c} 
+\#define {\bfseries \+\_\+\+\_\+\+STATIC\+\_\+\+INLINE}~static inline
+\item 
+\Hypertarget{_u_a_r_t_8c_a820d7891677afb5bfb804527710c7fb5}\label{_u_a_r_t_8c_a820d7891677afb5bfb804527710c7fb5} 
+\#define {\bfseries PARITY\+\_\+\+ENABLE}~0x00000200U
+\item 
+\Hypertarget{_u_a_r_t_8c_a4b355291fe6b8ba8e167ab0faa862e45}\label{_u_a_r_t_8c_a4b355291fe6b8ba8e167ab0faa862e45} 
+\#define {\bfseries CLK}~16000000
+\item 
+\Hypertarget{_u_a_r_t_8c_aab37a5f2d76374c062728d70e9adf3ce}\label{_u_a_r_t_8c_aab37a5f2d76374c062728d70e9adf3ce} 
+\#define {\bfseries UART\+\_\+\+SR\+\_\+\+TXE\+\_\+\+Pos}~(7U)
+\item 
+\Hypertarget{_u_a_r_t_8c_a518116d3e25a9a039e1e1932f7f84e37}\label{_u_a_r_t_8c_a518116d3e25a9a039e1e1932f7f84e37} 
+\#define {\bfseries UART\+\_\+\+SR\+\_\+\+TXE\+\_\+\+Msk}~(0x1\+UL $<$$<$ UART\+\_\+\+SR\+\_\+\+TXE\+\_\+\+Pos)
+\item 
+\Hypertarget{_u_a_r_t_8c_a728317fa9449c33e31cf420cbb436f50}\label{_u_a_r_t_8c_a728317fa9449c33e31cf420cbb436f50} 
+\#define {\bfseries UART\+\_\+\+SR\+\_\+\+TXE}~UART\+\_\+\+SR\+\_\+\+TXE\+\_\+\+Msk
+\item 
+\Hypertarget{_u_a_r_t_8c_a7b51f39da7e612c22c31860bd071df60}\label{_u_a_r_t_8c_a7b51f39da7e612c22c31860bd071df60} 
+\#define {\bfseries UART\+\_\+\+SR\+\_\+\+RXNE\+\_\+\+Pos}~(5U)
+\item 
+\Hypertarget{_u_a_r_t_8c_ac1c7680bba8e36acd59097f600fad84b}\label{_u_a_r_t_8c_ac1c7680bba8e36acd59097f600fad84b} 
+\#define {\bfseries UART\+\_\+\+SR\+\_\+\+RXNE\+\_\+\+Msk}~(0x1\+UL $<$$<$ UART\+\_\+\+SR\+\_\+\+RXNE\+\_\+\+Pos)
+\item 
+\Hypertarget{_u_a_r_t_8c_a5079cbd6cf0bef29377a9c1664f5df48}\label{_u_a_r_t_8c_a5079cbd6cf0bef29377a9c1664f5df48} 
+\#define {\bfseries UART\+\_\+\+SR\+\_\+\+RXNE}~UART\+\_\+\+SR\+\_\+\+RXNE\+\_\+\+Msk
+\item 
+\Hypertarget{_u_a_r_t_8c_aaad6e3e553cdc0c798127012e49975fc}\label{_u_a_r_t_8c_aaad6e3e553cdc0c798127012e49975fc} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+TXEIE\+\_\+\+Pos}~(7U)
+\item 
+\Hypertarget{_u_a_r_t_8c_a7f2c735ecf5c91e6d9d84e034b71484c}\label{_u_a_r_t_8c_a7f2c735ecf5c91e6d9d84e034b71484c} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+TXEIE\+\_\+\+Msk}~(0x1\+UL $<$$<$ UART\+\_\+\+CR1\+\_\+\+TXEIE\+\_\+\+Pos)
+\item 
+\Hypertarget{_u_a_r_t_8c_a4536e5cb1a100779c29eee5dcf724c07}\label{_u_a_r_t_8c_a4536e5cb1a100779c29eee5dcf724c07} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+TXEIE}~UART\+\_\+\+CR1\+\_\+\+TXEIE\+\_\+\+Msk
+\item 
+\Hypertarget{_u_a_r_t_8c_ad6e4dbcdd9f7b112cded70a226a5d93d}\label{_u_a_r_t_8c_ad6e4dbcdd9f7b112cded70a226a5d93d} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+RXNEIE\+\_\+\+Pos}~(5U)
+\item 
+\Hypertarget{_u_a_r_t_8c_ae814e867a37fa929f74096d6dd198ccf}\label{_u_a_r_t_8c_ae814e867a37fa929f74096d6dd198ccf} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+RXNEIE\+\_\+\+Msk}~(0x1\+UL $<$$<$ UART\+\_\+\+CR1\+\_\+\+RXNEIE\+\_\+\+Pos)
+\item 
+\Hypertarget{_u_a_r_t_8c_afe1c2558c22141e9ad38d98aa791cf1a}\label{_u_a_r_t_8c_afe1c2558c22141e9ad38d98aa791cf1a} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+RXNEIE}~UART\+\_\+\+CR1\+\_\+\+RXNEIE\+\_\+\+Msk
+\item 
+\Hypertarget{_u_a_r_t_8c_ae915ddc70f2003b96c1f835a1df4e739}\label{_u_a_r_t_8c_ae915ddc70f2003b96c1f835a1df4e739} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+UE\+\_\+\+Pos}~(13U)
+\item 
+\Hypertarget{_u_a_r_t_8c_afc0355231130c59909fd6aaaf87b448e}\label{_u_a_r_t_8c_afc0355231130c59909fd6aaaf87b448e} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+UE\+\_\+\+Msk}~(0x1\+UL $<$$<$ UART\+\_\+\+CR1\+\_\+\+UE\+\_\+\+Pos)
+\item 
+\Hypertarget{_u_a_r_t_8c_af9aeb885323fd1fb5865a0122377328d}\label{_u_a_r_t_8c_af9aeb885323fd1fb5865a0122377328d} 
+\#define {\bfseries UART\+\_\+\+CR1\+\_\+\+UE}~UART\+\_\+\+CR1\+\_\+\+UE\+\_\+\+Msk
+\item 
+\Hypertarget{_u_a_r_t_8c_a2095bd67b5899bfc4cdb74c375dc8b66}\label{_u_a_r_t_8c_a2095bd67b5899bfc4cdb74c375dc8b66} 
+\#define {\bfseries UART\+\_\+\+CR3\+\_\+\+DMAR\+\_\+\+Pos}~(6U)
+\item 
+\Hypertarget{_u_a_r_t_8c_ad8d1fed24acfcc7d63f3a6d2571bc48a}\label{_u_a_r_t_8c_ad8d1fed24acfcc7d63f3a6d2571bc48a} 
+\#define {\bfseries UART\+\_\+\+CR3\+\_\+\+DMAR\+\_\+\+Msk}~(0x1U $<$$<$ UART\+\_\+\+CR3\+\_\+\+DMAR\+\_\+\+Pos)
+\item 
+\Hypertarget{_u_a_r_t_8c_aa3e5ff933f85c5a49e187a46b40c5189}\label{_u_a_r_t_8c_aa3e5ff933f85c5a49e187a46b40c5189} 
+\#define {\bfseries UART\+\_\+\+CR3\+\_\+\+DMAR}~UART\+\_\+\+CR3\+\_\+\+DMAR\+\_\+\+Msk
+\item 
+\Hypertarget{_u_a_r_t_8c_a72c33667ec7f4a6097a4b81866c1ce97}\label{_u_a_r_t_8c_a72c33667ec7f4a6097a4b81866c1ce97} 
+\#define {\bfseries UART\+\_\+\+CR3\+\_\+\+DMAT\+\_\+\+Pos}~(7U)
+\item 
+\Hypertarget{_u_a_r_t_8c_af106c8318f57dd34810979b190b787de}\label{_u_a_r_t_8c_af106c8318f57dd34810979b190b787de} 
+\#define {\bfseries UART\+\_\+\+CR3\+\_\+\+DMAT\+\_\+\+Msk}~(0x1U $<$$<$ UART\+\_\+\+CR3\+\_\+\+DMAT\+\_\+\+Pos)
+\item 
+\Hypertarget{_u_a_r_t_8c_a71ae334f71ad1b5fa950f609f0456227}\label{_u_a_r_t_8c_a71ae334f71ad1b5fa950f609f0456227} 
+\#define {\bfseries UART\+\_\+\+CR3\+\_\+\+DMAT}~UART\+\_\+\+CR3\+\_\+\+DMAT\+\_\+\+Msk
+\item 
+\Hypertarget{_u_a_r_t_8c_a211747649e2ac2340850c500fccad862}\label{_u_a_r_t_8c_a211747649e2ac2340850c500fccad862} 
+\#define {\bfseries NUMBER\+\_\+\+OF\+\_\+\+UART}~3
+\item 
+\Hypertarget{_u_a_r_t_8c_af0954e38e3c0348b97c4592a09116905}\label{_u_a_r_t_8c_af0954e38e3c0348b97c4592a09116905} 
+\#define {\bfseries IS\+\_\+\+NULL\+\_\+\+PTR}(\+\_\+\+PARAM)~(\+\_\+\+PARAM == NULL)
+\item 
+\#define \mbox{\hyperlink{_u_a_r_t_8c_a5f99f7bec22a99553d8cf9f1947de6de}{IS\+\_\+\+VALID\+\_\+\+OVER\+\_\+\+SAMPLING}}(\+\_\+\+PARAM)
+\item 
+\#define \mbox{\hyperlink{_u_a_r_t_8c_acd2f1242a693b10d5f8604af7b26bf2c}{IS\+\_\+\+VALID\+\_\+\+WORD\+\_\+\+LENGTH}}(\+\_\+\+PARAM)
+\item 
+\#define \mbox{\hyperlink{_u_a_r_t_8c_ab937677dc807b48742893574c2cc5bf6}{IS\+\_\+\+VALID\+\_\+\+STOP\+\_\+\+BITS}}(\+\_\+\+PARAM)
+\item 
+\#define \mbox{\hyperlink{_u_a_r_t_8c_aa3718b190100e175da3358caf7195092}{IS\+\_\+\+VALID\+\_\+\+PARITY}}(\+\_\+\+PARAM)
+\item 
+\#define \mbox{\hyperlink{_u_a_r_t_8c_a42ee8fc3d0a9754a002f40913b74e1c5}{IS\+\_\+\+VALID\+\_\+\+MODE}}(\+\_\+\+PARAM)
+\item 
+\#define \mbox{\hyperlink{_u_a_r_t_8c_a30830e6225037ffe1950e53a6245fcdb}{IS\+\_\+\+VALID\+\_\+\+USART\+\_\+\+INSTANCE}}(\+\_\+\+PARAM)
+\item 
+\Hypertarget{_u_a_r_t_8c_a545986fb26ab1b02de89503f9374a27c}\label{_u_a_r_t_8c_a545986fb26ab1b02de89503f9374a27c} 
+\#define {\bfseries IS\+\_\+\+NOT\+\_\+\+UART\+\_\+\+IN\+\_\+\+PROCESS}(\+\_\+\+PARAM)~(\+\_\+\+PARAM == false)
+\item 
+\Hypertarget{_u_a_r_t_8c_aa1d0cd442e806fbf7597e29cf180e253}\label{_u_a_r_t_8c_aa1d0cd442e806fbf7597e29cf180e253} 
+\#define {\bfseries IS\+\_\+\+UART\+\_\+\+INSTANCE\+\_\+\+BUSY}(\+\_\+\+PARAM)~(\+\_\+\+PARAM == true)
+\item 
+\Hypertarget{_u_a_r_t_8c_a97075bc06a62c182b0b9a00bbf04b170}\label{_u_a_r_t_8c_a97075bc06a62c182b0b9a00bbf04b170} 
+\#define {\bfseries UART\+\_\+\+DIV\+\_\+\+SAMPLING8}(\+\_\+\+PCLK\+\_\+,  \+\_\+\+BAUD\+\_\+)~((uint32\+\_\+t)((((uint64\+\_\+t)(\+\_\+\+PCLK\+\_\+))\texorpdfstring{$\ast$}{*}25U)/(2U\texorpdfstring{$\ast$}{*}((uint64\+\_\+t)(\+\_\+\+BAUD\+\_\+)))))
+\item 
+\Hypertarget{_u_a_r_t_8c_a3dafeed17fc4cf319b0dd88d7d0fb614}\label{_u_a_r_t_8c_a3dafeed17fc4cf319b0dd88d7d0fb614} 
+\#define {\bfseries UART\+\_\+\+DIVMANT\+\_\+\+SAMPLING8}(\+\_\+\+PCLK\+\_\+,  \+\_\+\+BAUD\+\_\+)~(UART\+\_\+\+DIV\+\_\+\+SAMPLING8((\+\_\+\+PCLK\+\_\+), (\+\_\+\+BAUD\+\_\+))/100U)
+\item 
+\Hypertarget{_u_a_r_t_8c_ae0c8a28dbc006a93dd8e90e8ff8a37a0}\label{_u_a_r_t_8c_ae0c8a28dbc006a93dd8e90e8ff8a37a0} 
+\#define {\bfseries UART\+\_\+\+DIVFRAQ\+\_\+\+SAMPLING8}(\+\_\+\+PCLK\+\_\+,  \+\_\+\+BAUD\+\_\+)~((((UART\+\_\+\+DIV\+\_\+\+SAMPLING8((\+\_\+\+PCLK\+\_\+), (\+\_\+\+BAUD\+\_\+)) -\/ (UART\+\_\+\+DIVMANT\+\_\+\+SAMPLING8((\+\_\+\+PCLK\+\_\+), (\+\_\+\+BAUD\+\_\+)) \texorpdfstring{$\ast$}{*} 100U)) \texorpdfstring{$\ast$}{*} 8U) + 50U) / 100U)
+\item 
+\#define \mbox{\hyperlink{_u_a_r_t_8c_ae36ed9e94681494a31a9d8a7bbcc1a2c}{UART\+\_\+\+BRR\+\_\+\+SAMPLING8}}(\+\_\+\+PCLK\+\_\+,  \+\_\+\+BAUD\+\_\+)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{_u_a_r_t_8c_aa1c6baa82b4edf2b72287431830746da}\label{_u_a_r_t_8c_aa1c6baa82b4edf2b72287431830746da} 
+\+\_\+\+\_\+\+STATIC\+\_\+\+INLINE \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} {\bfseries UART\+\_\+\+Waiting\+Flag\+Until\+Timeout} (\mbox{\hyperlink{struct_u_s_a_r_t__t}{USART\+\_\+t}} \texorpdfstring{$\ast$}{*}Instance, uint32\+\_\+t Flag, uint32\+\_\+t Timeout)
+\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8c_acd41ebe0214bd568789eaa47002b4d3f}{UART\+\_\+\+Init}} (const \mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const uart\+Handle)
+\begin{DoxyCompactList}\small\item\em Initializes a UART instance with the specified configuration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8c_aa6a31baa8fb93671c2042272bf8275a9}{UART\+\_\+\+Transmit\+Time\+Out}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, uint32\+\_\+t Timeout)
+\begin{DoxyCompactList}\small\item\em Transmits data over UART with a timeout mechanism. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8c_ae4acf8dd16f62654d168b29d2b788c6e}{UART\+\_\+\+Receive\+Time\+Out}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, uint32\+\_\+t Timeout)
+\begin{DoxyCompactList}\small\item\em Receives data over UART with a timeout mechanism. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8c_a920750f4a6071aa987540b4490c6616f}{UART\+\_\+\+Transmit\+Async\+Zero\+Copy}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, \mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}} CB)
+\begin{DoxyCompactList}\small\item\em Asynchronously transmits data over UART without data copying (zero-\/copy) and using a callback mechanism. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} \mbox{\hyperlink{_u_a_r_t_8c_a85375e33eb0a1063bf3bcdfba3525083}{UART\+\_\+\+Receive\+Async\+Zero\+Copy}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, char \texorpdfstring{$\ast$}{*}p\+Data, uint16\+\_\+t Size, \mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}} CB)
+\begin{DoxyCompactList}\small\item\em Asynchronously receives data over UART without data copying (zero-\/copy) and using a callback mechanism. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_a_r_t_8c_a666a4c337ea1569116ebc62cc51b4cbe}{UART\+\_\+\+Receive\+With\+DMA}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle)
+\begin{DoxyCompactList}\small\item\em Receives data using UART with DMA (Direct Memory Access). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_u_a_r_t_8c_a0f47aef3050c2c8aa84bc256bd47f0be}{UART\+\_\+\+Transmit\+With\+DMA}} (\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}uart\+Handle, \mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}} CB)
+\begin{DoxyCompactList}\small\item\em Transmits data using UART with DMA (Direct Memory Access). \end{DoxyCompactList}\item 
+\Hypertarget{_u_a_r_t_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc}\label{_u_a_r_t_8c_a7139cd4baabbbcbab0c1fe6d7d4ae1cc} 
+void {\bfseries USART1\+\_\+\+IRQHandler} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the UART driver for STM32\+F401\+CC microcontrollers. 
+
+\begin{DoxyParagraph}{Project Name}
+stm32f4xx drivers
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Code Language}
+C
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Description}
+This file provides the implementation of functions defined in the {\ttfamily \doxylink{_u_a_r_t_8h}{UART.\+h}} header file.
+\end{DoxyParagraph}
+\begin{DoxyParagraph}{Author}
+Mahmoud Abou-\/\+Hawis 
+\end{DoxyParagraph}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_u_a_r_t_8c_a42ee8fc3d0a9754a002f40913b74e1c5}\label{_u_a_r_t_8c_a42ee8fc3d0a9754a002f40913b74e1c5} 
+\index{UART.c@{UART.c}!IS\_VALID\_MODE@{IS\_VALID\_MODE}}
+\index{IS\_VALID\_MODE@{IS\_VALID\_MODE}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_MODE}{IS\_VALID\_MODE}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+MODE(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PARAM }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_PARAM\ ==\ UART\_MODE\_RX\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ UART\_MODE\_TX\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ UART\_MODE\_TX\_RX)}
+
+\end{DoxyCode}
+\Hypertarget{_u_a_r_t_8c_a5f99f7bec22a99553d8cf9f1947de6de}\label{_u_a_r_t_8c_a5f99f7bec22a99553d8cf9f1947de6de} 
+\index{UART.c@{UART.c}!IS\_VALID\_OVER\_SAMPLING@{IS\_VALID\_OVER\_SAMPLING}}
+\index{IS\_VALID\_OVER\_SAMPLING@{IS\_VALID\_OVER\_SAMPLING}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_OVER\_SAMPLING}{IS\_VALID\_OVER\_SAMPLING}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+OVER\+\_\+\+SAMPLING(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PARAM }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_PARAM\ ==\ UART\_OVERSAMPLING\_16\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ UART\_OVERSAMPLING\_8)}
+
+\end{DoxyCode}
+\Hypertarget{_u_a_r_t_8c_aa3718b190100e175da3358caf7195092}\label{_u_a_r_t_8c_aa3718b190100e175da3358caf7195092} 
+\index{UART.c@{UART.c}!IS\_VALID\_PARITY@{IS\_VALID\_PARITY}}
+\index{IS\_VALID\_PARITY@{IS\_VALID\_PARITY}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_PARITY}{IS\_VALID\_PARITY}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+PARITY(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PARAM }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_PARAM\ ==\ UART\_PARITY\_NONE\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ UART\_PARITY\_ODD\ ||\ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ UART\_PARITY\_EVEN)}
+
+\end{DoxyCode}
+\Hypertarget{_u_a_r_t_8c_ab937677dc807b48742893574c2cc5bf6}\label{_u_a_r_t_8c_ab937677dc807b48742893574c2cc5bf6} 
+\index{UART.c@{UART.c}!IS\_VALID\_STOP\_BITS@{IS\_VALID\_STOP\_BITS}}
+\index{IS\_VALID\_STOP\_BITS@{IS\_VALID\_STOP\_BITS}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_STOP\_BITS}{IS\_VALID\_STOP\_BITS}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+STOP\+\_\+\+BITS(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PARAM }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_PARAM\ ==\ UART\_STOP\_BITS\_ONE\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ UART\_STOP\_BITS\_TWO)}
+
+\end{DoxyCode}
+\Hypertarget{_u_a_r_t_8c_a30830e6225037ffe1950e53a6245fcdb}\label{_u_a_r_t_8c_a30830e6225037ffe1950e53a6245fcdb} 
+\index{UART.c@{UART.c}!IS\_VALID\_USART\_INSTANCE@{IS\_VALID\_USART\_INSTANCE}}
+\index{IS\_VALID\_USART\_INSTANCE@{IS\_VALID\_USART\_INSTANCE}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_USART\_INSTANCE}{IS\_VALID\_USART\_INSTANCE}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+USART\+\_\+\+INSTANCE(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PARAM }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_PARAM\ ==\ USART1\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ USART2\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ USART6)}
+
+\end{DoxyCode}
+\Hypertarget{_u_a_r_t_8c_acd2f1242a693b10d5f8604af7b26bf2c}\label{_u_a_r_t_8c_acd2f1242a693b10d5f8604af7b26bf2c} 
+\index{UART.c@{UART.c}!IS\_VALID\_WORD\_LENGTH@{IS\_VALID\_WORD\_LENGTH}}
+\index{IS\_VALID\_WORD\_LENGTH@{IS\_VALID\_WORD\_LENGTH}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{IS\_VALID\_WORD\_LENGTH}{IS\_VALID\_WORD\_LENGTH}}
+{\footnotesize\ttfamily \#define IS\+\_\+\+VALID\+\_\+\+WORD\+\_\+\+LENGTH(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PARAM }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (\_PARAM\ ==\ UART\_WORDLENGTH\_8B\ ||\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_PARAM\ ==\ UART\_WORDLENGTH\_9B)}
+
+\end{DoxyCode}
+\Hypertarget{_u_a_r_t_8c_ae36ed9e94681494a31a9d8a7bbcc1a2c}\label{_u_a_r_t_8c_ae36ed9e94681494a31a9d8a7bbcc1a2c} 
+\index{UART.c@{UART.c}!UART\_BRR\_SAMPLING8@{UART\_BRR\_SAMPLING8}}
+\index{UART\_BRR\_SAMPLING8@{UART\_BRR\_SAMPLING8}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_BRR\_SAMPLING8}{UART\_BRR\_SAMPLING8}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+BRR\+\_\+\+SAMPLING8(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+PCLK\+\_\+,  }\item[{}]{\+\_\+\+BAUD\+\_\+ }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((UART\_DIVMANT\_SAMPLING8((\_PCLK\_),\ (\_BAUD\_))\ <<\ 4U)\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((UART\_DIVFRAQ\_SAMPLING8((\_PCLK\_),\ (\_BAUD\_))\ \&\ 0xF8U)\ <<\ 1U)\ +\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (UART\_DIVFRAQ\_SAMPLING8((\_PCLK\_),\ (\_BAUD\_))\ \&\ 0x07U))}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_u_a_r_t_8c_acd41ebe0214bd568789eaa47002b4d3f}\label{_u_a_r_t_8c_acd41ebe0214bd568789eaa47002b4d3f} 
+\index{UART.c@{UART.c}!UART\_Init@{UART\_Init}}
+\index{UART\_Init@{UART\_Init}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_Init()}{UART\_Init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Init (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{uart\+Handle }\end{DoxyParamCaption})}
+
+
+
+Initializes a UART instance with the specified configuration. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure containing the UART instance and configuration.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of initialization.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+it is mandatory to call init function before utilizing other APIs. 
+\end{DoxyNote}
+\Hypertarget{_u_a_r_t_8c_a85375e33eb0a1063bf3bcdfba3525083}\label{_u_a_r_t_8c_a85375e33eb0a1063bf3bcdfba3525083} 
+\index{UART.c@{UART.c}!UART\_ReceiveAsyncZeroCopy@{UART\_ReceiveAsyncZeroCopy}}
+\index{UART\_ReceiveAsyncZeroCopy@{UART\_ReceiveAsyncZeroCopy}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveAsyncZeroCopy()}{UART\_ReceiveAsyncZeroCopy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Receive\+Async\+Zero\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{\mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}}}]{CB }\end{DoxyParamCaption})}
+
+
+
+Asynchronously receives data over UART without data copying (zero-\/copy) and using a callback mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the buffer where the received data will be stored. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Maximum size of data to be received in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em CB} & Callback function that will be invoked upon reception completion or errors.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of starting asynchronous reception. 
+\end{DoxyReturn}
+\Hypertarget{_u_a_r_t_8c_ae4acf8dd16f62654d168b29d2b788c6e}\label{_u_a_r_t_8c_ae4acf8dd16f62654d168b29d2b788c6e} 
+\index{UART.c@{UART.c}!UART\_ReceiveTimeOut@{UART\_ReceiveTimeOut}}
+\index{UART\_ReceiveTimeOut@{UART\_ReceiveTimeOut}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveTimeOut()}{UART\_ReceiveTimeOut()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Receive\+Time\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{uint32\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+
+Receives data over UART with a timeout mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the buffer where the received data will be stored. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Maximum size of data to be received in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Timeout} & Timeout value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of reception. 
+\end{DoxyReturn}
+No Thing\Hypertarget{_u_a_r_t_8c_a666a4c337ea1569116ebc62cc51b4cbe}\label{_u_a_r_t_8c_a666a4c337ea1569116ebc62cc51b4cbe} 
+\index{UART.c@{UART.c}!UART\_ReceiveWithDMA@{UART\_ReceiveWithDMA}}
+\index{UART\_ReceiveWithDMA@{UART\_ReceiveWithDMA}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_ReceiveWithDMA()}{UART\_ReceiveWithDMA()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Receive\+With\+DMA (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle }\end{DoxyParamCaption})}
+
+
+
+Receives data using UART with DMA (Direct Memory Access). 
+
+This function receives data through the UART peripheral using Direct Memory Access (DMA). It returns the status of the reception, indicating success or an error.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_u_a_r_t_8c_a920750f4a6071aa987540b4490c6616f}\label{_u_a_r_t_8c_a920750f4a6071aa987540b4490c6616f} 
+\index{UART.c@{UART.c}!UART\_TransmitAsyncZeroCopy@{UART\_TransmitAsyncZeroCopy}}
+\index{UART\_TransmitAsyncZeroCopy@{UART\_TransmitAsyncZeroCopy}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_TransmitAsyncZeroCopy()}{UART\_TransmitAsyncZeroCopy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Transmit\+Async\+Zero\+Copy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{\mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}}}]{CB }\end{DoxyParamCaption})}
+
+
+
+Asynchronously transmits data over UART without data copying (zero-\/copy) and using a callback mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the data to be transmitted . \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Size of the data to be transmitted in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em CB} & Callback function that will be invoked upon transmission completion or errors.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of starting asynchronous transmission. 
+\end{DoxyReturn}
+\Hypertarget{_u_a_r_t_8c_aa6a31baa8fb93671c2042272bf8275a9}\label{_u_a_r_t_8c_aa6a31baa8fb93671c2042272bf8275a9} 
+\index{UART.c@{UART.c}!UART\_TransmitTimeOut@{UART\_TransmitTimeOut}}
+\index{UART\_TransmitTimeOut@{UART\_TransmitTimeOut}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_TransmitTimeOut()}{UART\_TransmitTimeOut()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{_u_a_r_t_8h_a9c3fb7c0675883fbfae946600dd24a3c}{UART\+\_\+\+Error\+Status\+\_\+t}} UART\+\_\+\+Transmit\+Time\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{char \texorpdfstring{$\ast$}{*}}]{p\+Data,  }\item[{uint16\+\_\+t}]{Size,  }\item[{uint32\+\_\+t}]{Timeout }\end{DoxyParamCaption})}
+
+
+
+Transmits data over UART with a timeout mechanism. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance. \\
+\hline
+\mbox{\texttt{ in}}  & {\em p\+Data} & Pointer to the data to be transmitted. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Size} & Size of the data to be transmitted in bytes. \\
+\hline
+\mbox{\texttt{ in}}  & {\em Timeout} & Timeout value.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+UART\+\_\+\+Error\+Status\+\_\+t An error status code indicating the success or failure of transmission. 
+\end{DoxyReturn}
+No Thing\Hypertarget{_u_a_r_t_8c_a0f47aef3050c2c8aa84bc256bd47f0be}\label{_u_a_r_t_8c_a0f47aef3050c2c8aa84bc256bd47f0be} 
+\index{UART.c@{UART.c}!UART\_TransmitWithDMA@{UART\_TransmitWithDMA}}
+\index{UART\_TransmitWithDMA@{UART\_TransmitWithDMA}!UART.c@{UART.c}}
+\doxysubsubsection{\texorpdfstring{UART\_TransmitWithDMA()}{UART\_TransmitWithDMA()}}
+{\footnotesize\ttfamily void UART\+\_\+\+Transmit\+With\+DMA (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{uart\+Handle,  }\item[{\mbox{\hyperlink{_u_a_r_t_8h_ac16066e0c3e7d53f4bf40f5a5bc5a526}{Uart\+\_\+\+Call\+Back}}}]{CB }\end{DoxyParamCaption})}
+
+
+
+Transmits data using UART with DMA (Direct Memory Access). 
+
+This function transmits data through the UART peripheral using Direct Memory Access (DMA). It returns the status of the transmission, indicating success or an error.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em uart\+Handle} & Pointer to a \doxylink{struct_u_a_r_t___handle__t}{UART\+\_\+\+Handle\+\_\+t} structure identifying the UART instance.\\
+\hline
+\mbox{\texttt{ in}}  & {\em CB} & Callback function that will be invoked upon transmission completion. \\
+\hline
+\end{DoxyParams}
